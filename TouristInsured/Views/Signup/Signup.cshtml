@@ -1,0 +1,176 @@
+﻿@model TouristInsuredEntity.SignupModel
+
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    function Submit() {
+        debugger
+        var txtfirstname = $("#txtfirstname").val();
+        var txtLastname = $("#txtLastname").val();
+        var txtDob = $("#txtDob").val();
+        var txtEmail = $("#txtEmail").val();
+        var txtContactNo = $("#txtContactNo").val();
+        var txtAddress = $("#txtAddress").val();
+        var ddlGender = $("#ddlGender").find("option:selected").val();
+        var txtPassword = $("#txtPassword").val();
+        var txtConfirmpassword = $("#txtConfirmpassword").val();
+        if (txtfirstname == "" || txtfirstname == "undefined") {
+            alert("Please enter First Name");
+        }
+        else if (txtLastname == "" || txtLastname == "undefined") {
+            alert("Please enter Last Name");
+        }
+        else if (txtDob == "" || txtDob == "undefined") {
+            alert("Please enter Date of Birth");
+        }
+        else if (txtEmail == "" || txtEmail == "undefined") {
+            alert("Please enter Email");
+        }
+        else if (txtContactNo == "" || txtContactNo == "undefined") {
+            alert("Please enter Contact No");
+        }
+        else if (txtAddress == "" || txtAddress == "undefined") {
+            alert("Please enter Address");
+        }
+        else if (ddlGender == 0 || txtEmail == "undefined") {
+            alert("Please Select Gender");
+        }
+        else if (txtPassword == "" || txtPassword == "undefined") {
+            alert("Please enter Password");
+        }
+        else if (txtPassword != txtConfirmpassword) {
+            alert("Password Do not Match");
+        }
+        else {
+            var Gender = $("#ddlGender").find("option:selected").text();
+            var formdata = new FormData();
+
+            formdata.append('txtfirstname', txtfirstname); formdata.append('txtLastname', txtLastname); formdata.append('txtDob', txtDob);
+            formdata.append('txtEmail', txtEmail); formdata.append('txtContactNo', txtContactNo);
+            formdata.append('txtAddress', txtAddress); formdata.append('Gender', Gender); formdata.append('txtPassword', txtPassword);
+            $.ajax({
+                url: "/Signup/SaveDetails/",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                //dataType: "json",
+                data: formdata,
+                success: function (data) {
+                    debugger
+                    if (data != 0) {
+                        Clear();
+                        alert("User Saved Successfully");
+                       // window.location.href = '/Signup/ConfirmTrawick?Data=' + data;
+                    }
+                    else {
+                        alert("User Not Saved");
+                    }
+                 
+                 
+                       
+                   },
+                error: function (data) {
+                }
+            });
+        }
+
+    }
+    function Clear() {
+        $("#txtfirstname").val("");
+        $("#txtLastname").val("");
+       $("#txtDob").val("");
+       $("#txtEmail").val("");
+       $("#txtContactNo").val("");
+       $("#txtAddress").val("");
+       $("#ddlGender").val(0);
+       $("#txtPassword").val("");
+      $("#txtConfirmpassword").val("");
+    }
+</script>
+<h4 style="color: #07457a;text-align: center;font-weight: 600;font-size: 24px;margin-top: 51px;">Sign Up</h4>
+
+<div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>First Name</label>
+                @Html.TextBoxFor(Model => Model.First_Name, new { @id = "txtfirstname", @class = "form-control", @placeholder = "Enter First Name" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Last Name</label>
+                @Html.TextBoxFor(Model => Model.Last_Name, new { @id = "txtLastname", @class = "form-control", @placeholder = "Enter Last Name" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Date of Birth</label>
+                @Html.TextBoxFor(Model => Model.DOB, new { @id = "txtDob", @class = "form-control", @placeholder = "Enter Date of Birth" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Email </label>
+                @Html.TextBoxFor(Model => Model.EmailID, new { @id = "txtEmail", @class = "form-control", @placeholder = "Enter Email" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Contact No</label>
+                @Html.TextBoxFor(Model => Model.Contact_No, new { @id = "txtContactNo", @class = "form-control", @placeholder = "Enter Contact No" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Address</label>
+                @Html.TextBoxFor(Model => Model.Address, new { @id = "txtAddress", @class = "form-control", @placeholder = "Enter Address" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Gender</label>
+                @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+  {
+                      new SelectListItem() {Text = "Select", Value="0"},
+                      new SelectListItem() {Text = "MALE", Value="M"},
+                      new SelectListItem() {Text = "FMALE", Value="F"}
+  }, new { @id = "ddlGender", @class = "form-control" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Email </label>
+                @Html.TextBoxFor(Model => Model.Password, new { @type = "password", @id = "txtPassword", @class = "form-control", @placeholder = "Enter Password" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Contact No</label>
+                @Html.TextBoxFor(Model => Model.Password, new { @type = "password", @id = "txtConfirmpassword", @class = "form-control", @placeholder = "Confirm Password" })
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center">
+        <button class="btn-cf-submit2" id="btnsavetripdetails" style="background-color: #07457a;width: 83px; color: white" onclick="Submit()">
+            Sign Up
+            <img src="" width="14" height="13" alt="">
+        </button>
+    </div>
+
+</div>

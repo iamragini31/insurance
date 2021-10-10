@@ -1,0 +1,3083 @@
+﻿
+@model IEnumerable<TouristInsuredEntity.ComparePolicyModel>
+
+
+@{
+    ViewBag.Title = "ComparePolicy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+
+        var ap1 = ""; var ap2 = ""; var ap3 = "";
+        var AP = $("#AP").val();
+        if (AP == undefined) {
+            AP = "";
+        }
+        var DI = $("#DI").val();
+        if (DI == undefined) {
+            DI = "";
+        }
+        var DILTI = $("#DILTI").val();
+        if (DILTI == undefined) {
+            DILTI = "";
+        }
+        var AT = $("#AT").val();
+        if (AT == undefined) {
+            AT = "";
+        }
+        var AE = $("#AE").val();
+        if (AE == undefined) {
+            AE = "";
+        }
+        var INFT = $("#INFT").val();
+        if (INFT == undefined) {
+            INFT = "";
+        }
+        var INFS = $("#INFS").val();
+        if (INFS == undefined)
+        {
+            INFS = "";
+        }
+        var STU = $("#STU").val();
+        if (STU == undefined) {
+            STU = "";
+        }
+        var STUCS = $("#STUCS").val();
+        if (STUCS == undefined) {
+            STUCS = "";
+        }
+        var STUC = $("#STUC").val();
+        if (STUC == undefined) {
+            STUC = "";
+        }
+        var STI = $("#STI").val();
+        if (STI == undefined) {
+            STI = "";
+        }
+
+        var STICS = $("#STICS").val();
+        if (STICS == undefined) {
+            STICS = "";
+        }
+
+        var INFP = $("#INFP").val();
+        if (INFP == undefined) {
+            INFP = "";
+        }
+        var INFE = $("#INFE").val();
+        if (INFE == undefined) {
+            INFE = "";
+        }
+        var PATAP = $("#PATAP").val();
+        if (PATAP == undefined) {
+            PATAP = "";
+        }
+        var PATAI = $("#PATAI").val();
+        if (PATAI == undefined) {
+            PATAI = "";
+        }
+        var PPLAI = $("#PPLAI").val();
+        if (PPLAI == undefined) {
+            PPLAI = "";
+        }
+        var PPLII = $("#PPLII").val();
+        if (PPLII == undefined) {
+            PPLII = "";
+        }
+
+        var PATII = $("#PATII").val();
+        if (PATII == undefined) {
+            PATII = "";
+        }
+
+        var VICA  = $("#VICA").val();
+        if (VICA  == undefined) {
+            VICA  = "";
+        } var VICB = $("#VICB").val();
+        if (VICB == undefined) {
+            VICB = "";
+        }
+        var VICC = $("#VICC").val();
+        if (VICC == undefined) {
+            VICC = "";
+        }
+
+        var VIS = $("#VIS").val();
+        if (VIS == undefined) {
+            VIS = "";
+        }
+        var VISI = $("#VISI").val();
+        if (VISI == undefined) {
+            VISI = "";
+        }
+        var STVU = $("#STVU").val();
+        if (STVU == undefined) {
+            STVU = "";
+        }
+        var DIA = $("#DIA").val();
+        if (DIA == undefined) {
+            DIA = "";
+        } 
+    var ATI = $("#ATI").val();
+        if (ATI == undefined) {
+            ATI = "";
+        }
+
+        var AEI = $("#AEI").val();
+        if (AEI == undefined) {
+            AEI = "";
+        }
+        var API = $("#API").val();
+        if (API == undefined) {
+            API = "";
+        }
+        var SHAA = $("#SHAA").val();
+        if (SHAA == undefined) {
+            SHAA = "";
+        }
+        var SHAPA = $("#SHAPA").val();
+        if (SHAPA == undefined) {
+            SHAPA = "";
+        }
+
+        var EPSNI = $("#EPSNI").val();
+        if (EPSNI == undefined) {
+            EPSNI = "";
+        }
+        var CCE = $("#CCE").val();
+        if (CCE == undefined) {
+            CCE = "";
+        }
+        var CCEH = $("#CCEH").val();
+        if (CCEH == undefined) {
+            CCEH = "";
+        }
+        var CCEL = $("#CCEL").val();
+        if (CCEL == undefined) {
+            CCEL = "";
+        }
+        var CCEX = $("#CCEX").val();
+        if (CCEX == undefined) {
+            CCEX = "";
+        }
+
+        if (CCE != "") {
+            if (ap1 == "") {
+                ap1 = CCE;
+            }
+            else if (ap2 == "") {
+                if (ap1 == CCE) {
+
+                }
+                else {
+                    ap2 = CCE;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == CCE) {
+
+                }
+                else {
+                    ap3 = CCE;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (CCEH != "") {
+            if (ap1 == "") {
+                ap1 = CCEH;
+            }
+            else if (ap2 == "") {
+                if (ap1 == CCEH) {
+
+                }
+                else {
+                    ap2 = CCEH;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == CCEH) {
+
+                }
+                else {
+                    ap3 = CCEH;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (CCEL != "") {
+            if (ap1 == "") {
+                ap1 = CCEL;
+            }
+            else if (ap2 == "") {
+                if (ap1 == CCEL) {
+
+                }
+                else {
+                    ap2 = CCEL;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == CCEL) {
+
+                }
+                else {
+                    ap3 = CCEL;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (CCEX != "") {
+            if (ap1 == "") {
+                ap1 = CCEX;
+            }
+            else if (ap2 == "") {
+                if (ap1 == CCEX) {
+
+                }
+                else {
+                    ap2 = CCEX;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == CCEX) {
+
+                }
+                else {
+                    ap3 = CCEX;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        var SUHB = $("#SUHB").val();
+        if (SUHB == undefined) {
+            SUHB = "";
+        }
+        var SUHBS = $("#SUHBS").val();
+        if (SUHBS == undefined) {
+            SUHBS = "";
+        }
+        var SUHP3 = $("#SUHP3").val();
+        if (SUHP3 == undefined) {
+            SUHP3 = "";
+        }
+        var SUHP5 = $("#SUHP5").val();
+        if (SUHP5 == undefined) {
+            SUHP5 = "";
+        }
+        if (SUHB != "") {
+            if (ap1 == "") {
+                ap1 = SUHB;
+            }
+            else if (ap2 == "") {
+                if (ap1 == SUHB) {
+
+                }
+                else {
+                    ap2 = SUHB;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == SUHB) {
+
+                }
+                else {
+                    ap3 = SUHB;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (SUHBS != "") {
+            if (ap1 == "") {
+                ap1 = SUHBS;
+            }
+            else if (ap2 == "") {
+                if (ap1 == SUHBS) {
+
+                }
+                else {
+                    ap2 = SUHBS;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == SUHBS) {
+
+                }
+                else {
+                    ap3 = SUHBS;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (SUHP3 != "") {
+            if (ap1 == "") {
+                ap1 = SUHP3;
+            }
+            else if (ap2 == "") {
+                if (ap1 == SUHP3) {
+
+                }
+                else {
+                    ap2 = SUHP3;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == SUHP3) {
+
+                }
+                else {
+                    ap3 = SUHP3;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (SUHP5 != "") {
+            if (ap1 == "") {
+                ap1 = SUHP5;
+            }
+            else if (ap2 == "") {
+                if (ap1 == SUHP5) {
+
+                }
+                else {
+                    ap2 = SUHP5;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == SUHP5) {
+
+                }
+                else {
+                    ap3 = SUHP5;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        var Elite = $("#Elite").val();
+        if (Elite == undefined) {
+            Elite = "";
+        }
+        var Budget = $("#Budget").val();
+        if (Budget == undefined) {
+            Budget = "";
+        }
+        var Select = $("#Select").val();
+        if (Select == undefined) {
+            Select = "";
+        }
+        var Smart = $("#Smart").val();
+        if (Smart == undefined) {
+            Smart = "";
+        }
+
+        if (Elite != "") {
+            if (ap1 == "") {
+                ap1 = Elite;
+            }
+            else if (ap2 == "") {
+                if (ap1 == Elite) {
+
+                }
+                else {
+                    ap2 = Elite;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == Elite) {
+
+                }
+                else {
+                    ap3 = Elite;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (Budget != "") {
+            if (ap1 == "") {
+                ap1 = Budget;
+            }
+            else if (ap2 == "") {
+                if (ap1 == Budget) {
+
+                }
+                else {
+                    ap2 = Budget;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == Budget) {
+
+                }
+                else {
+                    ap3 = Budget;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (Select != "") {
+            if (ap1 == "") {
+                ap1 = Select;
+            }
+            else if (ap2 == "") {
+                if (ap1 == Select) {
+
+                }
+                else {
+                    ap2 = Select;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == Select) {
+
+                }
+                else {
+                    ap3 = Select;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (Smart != "") {
+            if (ap1 == "") {
+                ap1 = Smart;
+            }
+            else if (ap2 == "") {
+                if (ap1 == Smart) {
+
+                }
+                else {
+                    ap2 = Smart;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == Smart) {
+
+                }
+                else {
+                    ap3 = Smart;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (EPSNI != "") {
+            if (ap1 == "") {
+                ap1 = EPSNI;
+            }
+            else if (ap2 == "") {
+                if (ap1 == EPSNI) {
+
+                }
+                else {
+                    ap2 = EPSNI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == EPSNI) {
+
+                }
+                else {
+                    ap3 = EPSNI;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (SHAPA != "") {
+            if (ap1 == "") {
+                ap1 = SHAPA;
+            }
+            else if (ap2 == "") {
+                if (ap1 == SHAPA) {
+
+                }
+                else {
+                    ap2 = SHAPA;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == SHAPA) {
+
+                }
+                else {
+                    ap3 = SHAPA;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (SHAA != "") {
+            if (ap1 == "") {
+                ap1 = SHAA;
+            }
+            else if (ap2 == "") {
+                if (ap1 == SHAA) {
+
+                }
+                else {
+                    ap2 = SHAA;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == SHAA) {
+
+                }
+                else {
+                    ap3 = SHAA;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (AP != "")
+        {
+            if (ap1 == "") {
+                ap1 = AP;
+            }
+            else if (ap2 == "") {
+                if (ap1 == AP) {
+
+                }
+                else {
+                    ap2 = AP;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == AP) {
+
+                }
+                else {
+                    ap3 = AP;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+
+        if (AT != "")
+        {
+            if (ap1 == "") {
+                ap1 = AT;
+            }
+            else if (ap2 == "") {
+                if (ap1 == AT) {
+
+                }
+                else {
+                    ap2 = AT;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == AT) {
+
+                }
+                else {
+                    ap3 = AT;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+
+        if (AE != "")
+        {
+            if (ap1 == "") {
+                ap1 = AE;
+            }
+            else if (ap2 == "") {
+                if (ap1 == AE) {
+
+                }
+                else {
+                    ap2 = AE;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == AE) {
+
+                }
+                else {
+                    ap3 = AE;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (INFT != "")
+        {
+            if (ap1 == "") {
+                ap1 = INFT;
+            }
+            else if (ap2 == "") {
+                if (ap1 == INFT) {
+
+                }
+                else {
+                    ap2 = INFT;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == INFT) {
+
+                }
+                else {
+                    ap3 = INFT;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+
+        if (INFS != "")
+        {
+            if (ap1 == "") {
+                ap1 = INFS;
+            }
+            else if (ap2 == "") {
+                if (ap1 == INFS) {
+
+                }
+                else {
+                    ap2 = INFS;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == INFS) {
+
+                }
+                else {
+                    ap3 = INFS;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (STU != "") {
+            if (ap1 == "") {
+                ap1 = STU;
+            }
+            else if (ap2 == "") {
+                if (ap1 == STU) {
+
+                }
+                else {
+                    ap2 = STU;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == STU) {
+
+                }
+                else {
+                    ap3 = STU;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (STUCS != "")
+        {
+            if (ap1 == "") {
+                ap1 = STUCS;
+            }
+            else if (ap2 == "") {
+                if (ap1 == STUCS) {
+
+                }
+                else {
+                    ap2 = STUCS;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == STUCS) {
+
+                }
+                else {
+                    ap3 = STUCS;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (STUC != "")
+        {
+            if (ap1 == "") {
+                ap1 = STUC;
+            }
+            else if (ap2 == "") {
+                if (ap1 == STUC) {
+
+                }
+                else {
+                    ap2 = STUC;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == STUC) {
+
+                }
+                else {
+                    ap3 = STUC;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (STI != "")
+        {
+            if (ap1 == "") {
+                ap1 = STI;
+            }
+            else if (ap2 == "") {
+                if (ap1 == STI) {
+
+                }
+                else {
+                    ap2 = STI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == STI) {
+
+                }
+                else {
+                    ap3 = STI;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (STICS != "")
+        {
+            if (ap1 == "") {
+                ap1 = STICS;
+            }
+            else if (ap2 == "") {
+                if (ap1 == STICS) {
+
+                }
+                else {
+                    ap2 = STICS;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == STICS) {
+
+                }
+                else {
+                    ap3 = STICS;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+
+
+
+        if (INFE != "") {
+            if (ap1 == "") {
+                ap1 = INFE;
+            }
+            else if (ap2 == "") {
+                if (ap1 == INFE) {
+
+                }
+                else {
+                    ap2 = INFE;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == INFE) {
+
+                }
+                else {
+                    ap3 = INFE;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+
+        if (INFP != "") {
+            if (ap1 == "") {
+                ap1 = INFP;
+            }
+            else if (ap2 == "") {
+                if (ap1 == INFP) {
+
+                }
+                else {
+                    ap2 = INFP;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == INFP) {
+
+                }
+                else {
+                    ap3 = INFP;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (PATAP != "") {
+            if (ap1 == "") {
+                ap1 = PATAP;
+            }
+            else if (ap2 == "") {
+                if (ap1 == PATAP) {
+
+                }
+                else {
+                    ap2 = PATAP;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == PATAP) {
+
+                }
+                else {
+                    ap3 = PATAP;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (PATAI != "") {
+            if (ap1 == "") {
+                ap1 = PATAI;
+            }
+            else if (ap2 == "") {
+                if (ap1 == PATAI) {
+
+                }
+                else {
+                    ap2 = PATAI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == PATAI) {
+
+                }
+                else {
+                    ap3 = PATAI;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (PPLAI != "") {
+            if (ap1 == "") {
+                ap1 = PPLAI;
+            }
+            else if (ap2 == "") {
+                if (ap1 == PPLAI) {
+
+                }
+                else {
+                    ap2 = PPLAI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == PPLAI) {
+
+                }
+                else {
+                    ap3 = PPLAI;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (PPLII != "") {
+            if (ap1 == "") {
+                ap1 = PPLII;
+            }
+            else if (ap2 == "") {
+                if (ap1 == PPLII) {
+
+                }
+                else {
+                    ap2 = PPLII;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == PPLII) {
+
+                }
+                else {
+                    ap3 = PPLII;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (PATII != "") {
+            if (ap1 == "") {
+                ap1 = PATII;
+            }
+            else if (ap2 == "") {
+                if (ap1 == PATII) {
+
+                }
+                else {
+                    ap2 = PATII;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == PATII) {
+
+                }
+                else {
+                    ap3 = PATII;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (VICA  != "") {
+            if (ap1 == "") {
+                ap1 = VICA ;
+            }
+            else if (ap2 == "") {
+                if (ap1 == VICA ) {
+
+                }
+                else {
+                    ap2 = VICA ;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == VICA ) {
+
+                }
+                else {
+                    ap3 = VICA ;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (VICB != "") {
+            if (ap1 == "") {
+                ap1 = VICB;
+            }
+            else if (ap2 == "") {
+                if (ap1 == VICB) {
+
+                }
+                else {
+                    ap2 = VICB;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == VICB) {
+
+                }
+                else {
+                    ap3 = VICB;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (VICC != "") {
+            if (ap1 == "") {
+                ap1 = VICC;
+            }
+            else if (ap2 == "") {
+                if (ap1 == VICC) {
+
+                }
+                else {
+                    ap2 = VICC;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == VICC) {
+
+                }
+                else {
+                    ap3 = VICC;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (VIS != "") {
+            if (ap1 == "") {
+                ap1 = VIS;
+            }
+            else if (ap2 == "") {
+                if (ap1 == VIS) {
+
+                }
+                else {
+                    ap2 = VIS;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == VIS) {
+
+                }
+                else {
+                    ap3 = VIS;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (DIA != "") {
+            if (ap1 == "") {
+                ap1 = DIA;
+            }
+            else if (ap2 == "") {
+                if (ap1 == DIA) {
+
+                }
+                else {
+                    ap2 = DIA;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == DIA) {
+
+                }
+                else {
+                    ap3 = DIA;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (API != "") {
+            if (ap1 == "") {
+                ap1 = API;
+            }
+            else if (ap2 == "") {
+                if (ap1 == API) {
+
+                }
+                else {
+                    ap2 = API;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == API) {
+
+                }
+                else {
+                    ap3 = API;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (AEI != "") {
+            if (ap1 == "") {
+                ap1 = AEI;
+            }
+            else if (ap2 == "") {
+                if (ap1 == AEI) {
+
+                }
+                else {
+                    ap2 = AEI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == AEI) {
+
+                }
+                else {
+                    ap3 = AEI;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (API != "") {
+            if (ap1 == "") {
+                ap1 = API;
+            }
+            else if (ap2 == "") {
+                if (ap1 == API) {
+
+                }
+                else {
+                    ap2 = API;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == API) {
+
+                }
+                else {
+                    ap3 = API;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (VISI != "") {
+            if (ap1 == "") {
+                ap1 = VISI;
+            }
+            else if (ap2 == "") {
+                if (ap1 == VISI) {
+
+                }
+                else {
+                    ap2 = VISI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == API) {
+
+                }
+                else {
+                    ap3 = VISI;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (STVU != "") {
+            if (ap1 == "") {
+                ap1 = STVU;
+            }
+            else if (ap2 == "") {
+                if (ap1 == STVU) {
+
+                }
+                else {
+                    ap2 = STVU;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == STVU) {
+
+                }
+                else {
+                    ap3 = STVU;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        if (DILTI != "") {
+            if (ap1 == "") {
+                ap1 = STVU;
+            }
+            else if (ap2 == "") {
+                if (ap1 == DI) {
+
+                }
+                else {
+                    ap2 = DI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == DI) {
+
+                }
+                else {
+                    ap3 = DI;
+                }
+
+            }
+            else {
+
+            }
+        }
+        if (DILTI != "") {
+            if (ap1 == "") {
+                ap1 = STVU;
+            }
+            else if (ap2 == "") {
+                if (ap1 == DILTI) {
+
+                }
+                else {
+                    ap2 = DILTI;
+                }
+            }
+            else if (ap3 == "") {
+                if (ap1 == DILTI) {
+
+                }
+                else {
+                    ap3 = DILTI;
+                }
+
+            }
+            else {
+
+            }
+        }
+
+        var formdata = new FormData();
+        formdata.append('ap1', ap1); formdata.append('ap2', ap2); formdata.append('ap3', ap3);
+        $.ajax({
+            url: "/ComparePolicy/Test/",
+            type: "POST",
+            contentType: false,
+            processData: false,
+            //dataType: "json",
+            data: formdata,
+
+            success: function (data) {
+                
+
+                $.each(data, function (i, item) {
+
+
+
+                    if (item.Plan_ID == ap1) {
+                        debugger
+                        //var comparetab = "<label style='margin-left:17px;' id='Property_Name'>" + item.Property_name[0].Property_name + "</label>";
+                        //comparetab += " <div class='col-md-4' style='    width: 77.333333%;'>";
+                        //comparetab += "       <div class='product-item-classic'>";
+                        //comparetab += "            <div class='thumbnail clearfix'>";
+                        //comparetab += "                <div class='caption'>";
+                        //comparetab += "                 <div class='product-item-title'><a href='#'></a></div>";
+                        //comparetab += "                    <div class='product-item-text'>";
+                        //comparetab += "                  <p id='value'> " + item.Property_name[0].Value + "</p > ";
+
+                        //comparetab += "              </div>";
+                        //comparetab += "               </div>";
+                        //comparetab += "            </div>";
+                        //comparetab += "   </div>";
+                        //comparetab += "  </div></br>";
+                        //$("#bindcomparetab").append(comparetab);
+
+                        if (item.Property_name[0].Property_name == "URGENT CARE") {
+                            var URGENT_CARE = "  <p style='text-decoration:none;background:none;font-family:" +'Open Sans'+' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#URGENT_CARE").append(URGENT_CARE);
+                        }
+                        else if (item.Property_name[0].Property_name == "PRE EXISTING CONDITION(ACUTE ONSET/RECURRENCE/FULL)") {
+                            var PRE_EXISTING_CONDITION = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#PRE_EXISTING_CONDITION").append(PRE_EXISTING_CONDITION);
+                        }
+                        else if (item.Property_name[0].Property_name == "HOSPITAL ROOM AND BOARD- AVERAGE SEMI PRIVATE ROOM") {
+                            var HOSPITAL_ROOM_AND_BOARD_AVERAGE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#HOSPITAL_ROOM_AND_BOARD_AVERAGE").append(HOSPITAL_ROOM_AND_BOARD_AVERAGE);
+                        }
+                        else if (item.Property_name[0].Property_name == "INTENSIVE CARE UNIT(ICU)") {
+                            var INTENSIVE_CARE_UNIT = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#INTENSIVE_CARE_UNIT").append(INTENSIVE_CARE_UNIT);
+                        }
+                        else if (item.Property_name[0].Property_name == "AMBULANCE") {
+                            var AMBULANCE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >"+ item.Property_name[0].Value + " </p >"
+                            $("#AMBULANCE").append(AMBULANCE);
+                        }
+                        else if (item.Property_name[0].Property_name == "DOCTOR VISIT") {
+                            var DOCTOR_VISIT = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#DOCTOR_VISIT").append(DOCTOR_VISIT);
+                        }
+                        else if (item.Property_name[0].Property_name == "X-RAY AND LABS") {
+                            var XRAY_AND_LABS = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#XRAY_AND_LABS").append(XRAY_AND_LABS);
+                        }
+                        else if (item.Property_name[0].Property_name == "PHYSICAL THERAPY (TREATMENT PLAN REQUIRED)") {
+                            var PHYSICAL_THERAPY = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#PHYSICAL_THERAPY").append(PHYSICAL_THERAPY);
+                        }
+                        else if (item.Property_name[0].Property_name == "DENTAL TREATMENT DUE TO ACCIDENT OR SUDDEN PAIN.") {
+                            var DENTAL_TREATMENT = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#DENTAL_TREATMENT").append(DENTAL_TREATMENT);
+                        }
+                        else if (item.Property_name[0].Property_name == "EMERGENCY MEDICAL EVACUATION") {
+                            var EMERGENCY_MEDICAL_EVACUATION = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#EMERGENCY_MEDICAL_EVACUATION").append(EMERGENCY_MEDICAL_EVACUATION);
+                        }
+                       
+                        else if (item.Property_name[0].Property_name == "ACCIDENTAL DEATH & DISMEMBERMENT") {
+                            var ACCIDENTAL_DEATH = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#ACCIDENTAL_DEATH").append(ACCIDENTAL_DEATH);
+                        }
+                        else if (item.Property_name[0].Property_name == "RETURN OF MORTAL REMAINS") {
+                            var RETURN_OF_MORTAL_REMAINS = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#RETURN_OF_MORTAL_REMAINS").append(RETURN_OF_MORTAL_REMAINS);
+                        }
+                        else if (item.Property_name[0].Property_name == "TRIP INTERRUPTION") {
+                            var TRIP_INTERRUPTION = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#TRIP_INTERRUPTION").append(TRIP_INTERRUPTION);
+                        }
+                        else if (item.Property_name[0].Property_name == "LOST BAGGAGE") {
+                            var LOST_BAGGAGE = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#LOST_BAGGAGE").append(LOST_BAGGAGE);
+                        }
+
+
+
+
+
+
+                        
+                    }
+                    else if (item.Plan_ID == ap2) {
+                        debugger
+                        //var comparetab = "<label style='margin-left:17px;' id='Property_Name'>" + item.Property_name[0].Property_name + "</label>";
+                        //comparetab += " <div class='col-md-4' style='    width:77.333333%;'>";
+                        //comparetab += "       <div class='product-item-classic'>";
+                        //comparetab += "            <div class='thumbnail clearfix'>";
+                        //comparetab += "                <div class='caption'>";
+                        //comparetab += "                 <div class='product-item-title'><a href='#'></a></div>";
+                        //comparetab += "                    <div class='product-item-text'>";
+                        //comparetab += "                  <p id='value'> " + item.Property_name[0].Value + "</p > ";
+
+                        //comparetab += "              </div>";
+                        //comparetab += "               </div>";
+                        //comparetab += "            </div>";
+                        //comparetab += "   </div>";
+                        //comparetab += "  </div></br>";
+                        //$("#bindcomparetab2").append(comparetab);
+                        //$("#bindcomparetab2").show();
+
+
+                        if (item.Property_name[0].Property_name == "URGENT CARE") {
+                            var URGENT_CARE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#URGENT_CARE1").append(URGENT_CARE);
+                        }
+                        else if (item.Property_name[0].Property_name == "PRE EXISTING CONDITION(ACUTE ONSET/RECURRENCE/FULL)") {
+                            var PRE_EXISTING_CONDITION = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#PRE_EXISTING_CONDITION1").append(PRE_EXISTING_CONDITION);
+                        }
+                        else if (item.Property_name[0].Property_name == "HOSPITAL ROOM AND BOARD- AVERAGE SEMI PRIVATE ROOM") {
+                            var HOSPITAL_ROOM_AND_BOARD_AVERAGE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#HOSPITAL_ROOM_AND_BOARD_AVERAGE1").append(HOSPITAL_ROOM_AND_BOARD_AVERAGE);
+                        }
+                        else if (item.Property_name[0].Property_name == "INTENSIVE CARE UNIT(ICU)") {
+                            var INTENSIVE_CARE_UNIT = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#INTENSIVE_CARE_UNIT1").append(INTENSIVE_CARE_UNIT);
+                        }
+                        else if (item.Property_name[0].Property_name == "AMBULANCE") {
+                            var AMBULANCE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#AMBULANCE1").append(AMBULANCE);
+                        }
+                        else if (item.Property_name[0].Property_name == "DOCTOR VISIT") {
+                            var DOCTOR_VISIT = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#DOCTOR_VISIT1").append(DOCTOR_VISIT);
+                        }
+                        else if (item.Property_name[0].Property_name == "X-RAY AND LABS") {
+                            var XRAY_AND_LABS = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#XRAY_AND_LABS1").append(XRAY_AND_LABS);
+                        }
+                        else if (item.Property_name[0].Property_name == "PHYSICAL THERAPY (TREATMENT PLAN REQUIRED)") {
+                            var PHYSICAL_THERAPY = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#PHYSICAL_THERAPY1").append(PHYSICAL_THERAPY);
+                        }
+                        else if (item.Property_name[0].Property_name == "DENTAL TREATMENT DUE TO ACCIDENT OR SUDDEN PAIN.") {
+                            var DENTAL_TREATMENT = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#DENTAL_TREATMENT1").append(DENTAL_TREATMENT);
+                        }
+                        else if (item.Property_name[0].Property_name == "EMERGENCY MEDICAL EVACUATION") {
+                            var EMERGENCY_MEDICAL_EVACUATION = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#EMERGENCY_MEDICAL_EVACUATION1").append(EMERGENCY_MEDICAL_EVACUATION);
+                        }
+
+                        else if (item.Property_name[0].Property_name == "ACCIDENTAL DEATH & DISMEMBERMENT") {
+                            var ACCIDENTAL_DEATH = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#ACCIDENTAL_DEATH1").append(ACCIDENTAL_DEATH);
+                        }
+                        else if (item.Property_name[0].Property_name == "RETURN OF MORTAL REMAINS") {
+                            var RETURN_OF_MORTAL_REMAINS = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#RETURN_OF_MORTAL_REMAINS1").append(RETURN_OF_MORTAL_REMAINS);
+                        }
+                        else if (item.Property_name[0].Property_name == "TRIP INTERRUPTION") {
+                            var TRIP_INTERRUPTION = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#TRIP_INTERRUPTION1").append(TRIP_INTERRUPTION);
+                        }
+                        else if (item.Property_name[0].Property_name == "LOST BAGGAGE") {
+                            var LOST_BAGGAGE = "<a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#LOST_BAGGAGE1").append(LOST_BAGGAGE);
+                        }
+                    }
+                    else {
+                        //var comparetab = "<label style='margin-left:17px;' id='Property_Name'>" + item.Property_name[0].Property_name + "</label>";
+                        //comparetab += " <div class='col-md-4' style='    width:77.333333%;'>";
+                        //comparetab += "       <div class='product-item-classic'>";
+                        //comparetab += "            <div class='thumbnail clearfix'>";
+                        //comparetab += "                <div class='caption'>";
+                        //comparetab += "                 <div class='product-item-title'><a href='#'></a></div>";
+                        //comparetab += "                    <div class='product-item-text'>";
+                        //comparetab += "                  <p id='value'> " + item.Property_name[0].Value + "</p > ";
+
+                        //comparetab += "              </div>";
+                        //comparetab += "               </div>";
+                        //comparetab += "            </div>";
+                        //comparetab += "   </div>";
+                        //comparetab += "  </div></br>";
+                        //$("#bindcomparetab3").append(comparetab);
+                        //$("#bindcomparetab3").show();
+
+                        $("#3rdtabBind").show();
+                        $("#3rdtabBind1").show();
+                        $("#3rdtabBind2").show();
+                        $("#3rdtabBind3").show();
+                        $("#3rdtabBind").show();
+                        $("#3rdtabBind4").show();
+                        $("#3rdtabBind5").show();
+                        $("#3rdtabBind6").show();
+                        $("#3rdtabBind7").show();
+                        $("#3rdtabBind8").show();
+                        $("#3rdtabBind9").show();
+                        $("#3rdtabBind10").show();
+                        $("#3rdtabBind11").show();
+                        $("#3rdtabBind12").show();
+                        $("#3rdtabBind13").show();
+                        //$("#3rdtab2ndBind").show();
+                        //$("#3rdtab3rdBind").show();
+
+                        if (item.Property_name[0].Property_name == "URGENT CARE") {
+                            var URGENT_CARE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#URGENT_CARE2").append(URGENT_CARE);
+                        }
+                        else if (item.Property_name[0].Property_name == "PRE EXISTING CONDITION(ACUTE ONSET/RECURRENCE/FULL)") {
+                            var PRE_EXISTING_CONDITION = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#PRE_EXISTING_CONDITION2").append(PRE_EXISTING_CONDITION);
+                        }
+                        else if (item.Property_name[0].Property_name == "HOSPITAL ROOM AND BOARD- AVERAGE SEMI PRIVATE ROOM") {
+                            var HOSPITAL_ROOM_AND_BOARD_AVERAGE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#HOSPITAL_ROOM_AND_BOARD_AVERAGE2").append(HOSPITAL_ROOM_AND_BOARD_AVERAGE);
+                        }
+                        else if (item.Property_name[0].Property_name == "INTENSIVE CARE UNIT(ICU)") {
+                            var INTENSIVE_CARE_UNIT = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#INTENSIVE_CARE_UNIT2").append(INTENSIVE_CARE_UNIT);
+                        }
+                        else if (item.Property_name[0].Property_name == "AMBULANCE") {
+                            var AMBULANCE = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#AMBULANCE2").append(AMBULANCE);
+                        }
+                        else if (item.Property_name[0].Property_name == "DOCTOR VISIT") {
+                            var DOCTOR_VISIT = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#DOCTOR_VISIT2").append(DOCTOR_VISIT);
+                        }
+                        else if (item.Property_name[0].Property_name == "X-RAY AND LABS") {
+                            debugger
+                            var XRAY_AND_LABS = "  <p style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </p >"
+                            $("#XRAY_AND_LABS2").append(XRAY_AND_LABS);
+                        }
+                        else if (item.Property_name[0].Property_name == "PHYSICAL THERAPY (TREATMENT PLAN REQUIRED)") {
+                            var PHYSICAL_THERAPY = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#PHYSICAL_THERAPY2").append(PHYSICAL_THERAPY);
+                        }
+                        else if (item.Property_name[0].Property_name == "DENTAL TREATMENT DUE TO ACCIDENT OR SUDDEN PAIN.") {
+                            var DENTAL_TREATMENT = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#DENTAL_TREATMENT2").append(DENTAL_TREATMENT);
+                        }
+                        else if (item.Property_name[0].Property_name == "EMERGENCY MEDICAL EVACUATION") {
+                            var EMERGENCY_MEDICAL_EVACUATION = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#EMERGENCY_MEDICAL_EVACUATION2").append(EMERGENCY_MEDICAL_EVACUATION);
+                        }
+
+                        else if (item.Property_name[0].Property_name == "ACCIDENTAL DEATH & DISMEMBERMENT") {
+                            var ACCIDENTAL_DEATH = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#ACCIDENTAL_DEATH2").append(ACCIDENTAL_DEATH);
+                        }
+                        else if (item.Property_name[0].Property_name == "RETURN OF MORTAL REMAINS") {
+                            var RETURN_OF_MORTAL_REMAINS = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#RETURN_OF_MORTAL_REMAINS2").append(RETURN_OF_MORTAL_REMAINS);
+                        }
+                        else if (item.Property_name[0].Property_name == "TRIP INTERRUPTION") {
+                            var TRIP_INTERRUPTION = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#TRIP_INTERRUPTION2").append(TRIP_INTERRUPTION);
+                        }
+                        else if (item.Property_name[0].Property_name == "LOST BAGGAGE") {
+                            var LOST_BAGGAGE = "  <a style='text-decoration:none;background:none;font-family:" + 'Open Sans' + ' ;font-weight:500;font-size:12px;line-height:20px;color:#555555;' + "  class='scroll' >" + item.Property_name[0].Value + " </a >"
+                            $("#LOST_BAGGAGE2").append(LOST_BAGGAGE);
+                        }
+                    }
+                });
+
+
+
+
+
+
+
+                //        $("#bindcomparetab").append(Header);
+
+
+                //});
+
+
+
+
+
+            }
+            ,
+            error: function (data) {
+
+            }
+        });
+    });
+</script>
+<script>
+ 
+    function GetPrice(TillDate, getPlanDeductible, getplanmaximum, ISOCODE, LeavingHome, planID, TouristISOCODE, TravelersDOB, exactamount, Appname, policyname, INsuranceComp, Age, spouseage, child1age, child2age, child3age, child4age) {
+
+        var _array = [];
+        _array.push({
+            Age: Age,
+            SpouseAge: spouseage,
+            TotalAmount: exactamount,
+            PlanId: planID,
+            planDeductible: getPlanDeductible,
+            SpouseDOB: "",
+            child1Age: child1age,
+            Child2age: child2age,
+            Child3age: child3age,
+            Child4age: child4age,
+            planMaximum: getplanmaximum,
+            INsuranceComp: INsuranceComp,
+            policyName: policyname,
+            LeavingHome: LeavingHome,
+            TillDate: TillDate,
+            ISOCODE: ISOCODE,
+            TouristISOCODE: TouristISOCODE,
+            TravelersDOB: TravelersDOB,
+            Appname: Appname
+        });
+        window.location.href = '/PurchasePolicy/PurchasePolicy?Data=' + JSON.stringify(_array);
+    }
+</script>
+<style>
+    .policy {
+        /*display: flex;*/
+        display: -webkit-flex;
+        /*justify-content: center;*/
+        -webkit-justify-content: center;
+        /*align-items: center;*/
+        -webkit-align-items: center;
+        width: 50px;
+        height: 50px;
+        /*overflow: hidden;*/
+        line-height: 20px;
+        position: absolute;
+        top: 0;
+        left: 15px;
+        bottom: 0;
+        color: #fff;
+        text-transform: uppercase;
+        border-top-left-radius: 8px;
+        box-sizing: border-box;
+    }
+
+    .Policy2 {
+        padding-top: 0%;
+        padding-left: 70px;
+    }
+
+    .immunity {
+        padding-top: 25px;
+    }
+
+    .MainHeader {
+        padding: 0 24px;
+        margin: 0;
+        /*display: flex;*/
+        align-items: center;
+        min-height: 64px;
+        position: relative;
+        word-break: normal;
+    }
+
+    .Pill {
+        background-color: #ddd;
+        border: none;
+        color: black;
+        padding: 4px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20px;
+    }
+</style>
+<!--Start Collapsable-->
+<style>
+    .collapsible {
+        background-color: white;
+        color: Blue;
+        text-align: center;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+        .active, .collapsible:hover {
+            /*background-color: #555;*/
+        }
+
+    .colap {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .ComparePolicyClass0 {
+        background: antiquewhite;
+    }
+
+    .ComparePolicyClass1 {
+        background: aquamarine;
+    }
+
+    .ComparePolicyClass2 {
+        background: #e6e6fa;
+    }
+    .spec-list {
+        width: 25%;
+        min-height: 100%;
+        border-bottom: 1px solid rgba(142,162,185,.4);
+    }
+
+
+    @@media (max-width: 1136px) {
+        .spec-list {
+            width: 35%;
+            min-width:100%;
+        }
+    }
+/*    @@media (max-width: 1136px) {
+        .spec-list {
+            width: 35%;
+            min-width: 100%;
+        }
+    }*/
+    /* Extra small devices (phones, 600px and down) */
+@@media only screen and (max-width: 600px) {
+    .spec-list {
+        width: 35%;
+        min-width: 65%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@@media only screen and (min-width: 600px) {
+    .spec-list {
+        width: 35%;
+        min-width: 40%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@@media only screen and (min-width: 768px) {
+    .spec-list {
+        width: 35%;
+        min-width: 45%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@@media only screen and (min-width: 992px) {
+    .spec-list {
+        width: 35%;
+        min-width: 25%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@@media only screen and (min-width: 1200px) {
+  .example {background: pink;}
+}
+</style>
+
+
+<div @*style="background:url(/images/img/CloudBackground2.jpg)"*@>
+
+    <div class="breadcrumbs1_wrapper novi-background">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="index.html">Home</a><span></span>Compare Policy</div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div style="width:100% ;margin-bottom: 28px;position: relative;">
+
+            <img src="~/images/img/com11.jpg" style="width: 100%;" />
+            <div style="background: rgb(0, 0, 0); /* Fallback color */background: rgba(21, 173, 187, 0.64);
+color: #fff;text-align: center;margin-top: 0%;position: absolute;z-index: 3;border-radius: 8px; border: 1px solid #eeeeee;top: 42%;left: 41%;font-size: 34px;width: 20%;height: 15%;">
+                <h3 style="FONT-SIZE:3vw;font-weight: bolder;    margin-top: 0vw;font-family:Open Sans;">
+                    COMPARE
+                </h3>
+            </div>
+        </div>
+    </div>
+    <br />
+
+
+    @*<div class="section-md-bottom content novi-background bg-cover" style="">
+        <div class="container" style="padding: 28px 30px 30px 20px;background: #ffffff;position: relative;width: 100%; box-shadow: 0px 10px 8px #888888;">
+            <div id="loader" style="display:none;"></div>
+
+
+        </div>
+    </div>*@
+
+
+
+
+    <div class="section-md-bottom content novi-background bg-cover" style="  width:100%;      overflow-x: scroll;  flex-direction: row;">
+        <div id="loader" style="display:none;"></div>
+
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+
+
+                            <ul>
+                                <li style=" padding-bottom: 30px;">
+                                    <a style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 400; font-size: 13px;line-height: 20px;color: #555555;" href="#" class="scroll">The benefits comparison of different plans shown in this page are taken from the policy document of each plan  and we are trying to cover few important benefits for your comparison and information.</a>
+                                </li>
+                                <li style="">
+                                    <a style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 400; font-size: 13px;line-height: 20px;color: #555555;" href="#" class="scroll">Please review the plan brochure and summary of coverage for detailed and more benefits , exclusions and limitations.</a>
+                                </li>
+
+                            </ul>
+
+                    
+            </div>
+
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    @Html.HiddenFor(model => item.Appname, new { @id = @item.Appname })
+                    <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+
+                        <div class="product-box-vertical">
+                            <div class="box-vertical-inner">
+                                <div class="caption">
+                                    <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;    height: 178px;">
+                                        <div class="info1" style="padding-top: 5px;">
+                                            <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;height: 69px;"><a href="#" style="font-size: 20px;">@Html.DisplayFor(modelItem => item.policyname)</a></div>
+                                            <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                                <a href="#" style="font-size: 13px;">Trawick International</a>
+                                                <div class="txt1" style="text-align:center;"><a href="#" style="font-size: 13px;">COMPREHENSIVE</a></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="caption-footer" style="padding-top: 0px;">
+                                            <div class="info2" style="width:100%;">
+                                                <div class="txt6" style="text-align: center;">
+                                                    <div class="material-bootstrap-select auto-width extra">
+                                                        <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf">PLAN BROCHURE</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="txt6" style="color: #07457a;">
+                                        <label>COVERAGE LIMIT</label>
+                                        <label style="float:right">DEDUCTIBLE</label>
+                                    </div>
+                                    <div class="txt6" style="color: #07457a;">
+                                        <span style="border:1px solid #918282;float:left">$@Html.DisplayFor(model => item.getplanmaximum)</span>
+                                        &nbsp;  <span style="border:1px solid #918282;float:right">$ @Html.DisplayFor(model => item.getPlanDeductible)</span>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <div class="txt6" style="text-align: center;font-weight: 700;    margin-top: 8px;color: #07457a;">
+                                        TOTAL COVERAGE
+
+                                    </div>
+                                    <div class="info2">
+                                        <div class="txt6" style="">
+                                            <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                                                <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;" id="lblAmount">$ @Html.DisplayFor(model => item.exactamount)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width: 98%;margin-top: 3%;">
+                                            <div class="txt6">
+                                                <div class="material-bootstrap-select auto-width extra" style="padding-left: 16px;padding-right:15px;">
+                                                    <p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="txt6" style="display:none">
+                                        <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <label>Deductible</label>
+                                    </div>
+                                    <div class="txt6" style="display:none">
+                                        <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                        <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                    </div>
+                                    <div class="caption-footer">
+                                        <div class="info3" style="">
+                                            <div class="txt7" style="">
+                                                <button type="submit" onclick="GetPrice('@item.TillDate',@item.getPlanDeductible,@item.getplanmaximum,'@item.ISOCODE','@item.LeavingHome',@item.planID,'@item.TouristISOCODE','@item.TravelersDOB',@item.exactamount,'@item.Appname','@item.policyname','@item.INsuranceComp','@item.Age','@item.spouseage','@item.child1age','@item.child2age','@item.child3age','@item.child4age')" class="btn-default btn-form2-submit" style="line-height: 30px;">BUY</button>
+                                                @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+
+
+
+
+        </div>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px  24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">URGENT CARE</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="URGENT_CARE">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="URGENT_CARE1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind">
+                <span id="URGENT_CARE2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">PRE EXISTING CONDITION (ACUTE ONSET/ RECURRENCE/ FULL)</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="PRE_EXISTING_CONDITION">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="PRE_EXISTING_CONDITION1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind1">
+                <span id="PRE_EXISTING_CONDITION2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">HOSPITAL ROOM AND BOARD- AVERAGE SEMI PRIVATE ROOM</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="HOSPITAL_ROOM_AND_BOARD_AVERAGE">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="HOSPITAL_ROOM_AND_BOARD_AVERAGE1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind2">
+                <span id="HOSPITAL_ROOM_AND_BOARD_AVERAGE2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">INTENSIVE CARE UNIT(ICU)</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="INTENSIVE_CARE_UNIT">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="INTENSIVE_CARE_UNIT1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind3">
+                <span id="INTENSIVE_CARE_UNIT2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">AMBULANCE</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="AMBULANCE">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="AMBULANCE1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind4">
+                <span id="AMBULANCE2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">DOCTOR VISIT</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="DOCTOR_VISIT">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="DOCTOR_VISIT1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind5">
+                <span id="DOCTOR_VISIT2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">X-RAY AND LABS</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="XRAY_AND_LABS">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="XRAY_AND_LABS1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind6">
+                <span id="XRAY_AND_LABS2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">PHYSICAL THERAPY (TREATMENT PLAN REQUIRED)</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="PHYSICAL_THERAPY">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="PHYSICAL_THERAPY1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind7">
+                <span id="PHYSICAL_THERAPY2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">DENTAL TREATMENT DUE TO ACCIDENT OR SUDDEN PAIN.</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="DENTAL_TREATMENT">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="DENTAL_TREATMENT1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind8">
+                <span id="DENTAL_TREATMENT2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">EMERGENCY MEDICAL EVACUATION</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="EMERGENCY_MEDICAL_EVACUATION">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="EMERGENCY_MEDICAL_EVACUATION1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind9">
+                <span id="EMERGENCY_MEDICAL_EVACUATION2"> </span>
+            </div>
+        </div>
+        <header style="display:block"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px; border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">ACCIDENTAL DEATH & DISMEMBERMENT</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="ACCIDENTAL_DEATH">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);" id="ACCIDENTAL_DEATH1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px; border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind10">
+                <span id="ACCIDENTAL_DEATH2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px;border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">RETURN OF MORTAL REMAINS </p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);" id="RETURN_OF_MORTAL_REMAINS">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);" id="RETURN_OF_MORTAL_REMAINS1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind11">
+                <span id="RETURN_OF_MORTAL_REMAINS2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px;border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">TRIP INTERRUPTION</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);" id="TRIP_INTERRUPTION">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);" id="TRIP_INTERRUPTION1">
+            </div>
+
+            <div class="spec-list" style=";float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind12">
+                <span id="TRIP_INTERRUPTION2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+
+        <div class="" id="tabContainerId" style="        display: inline-flex; margin: 0 -16px;     display: flex;       flex-direction: row;">
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 40px 24px;border-left: 1px solid rgba(142,162,185,.4);">
+                <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">LOST BAGGAGE</p>
+
+            </div>
+
+
+
+
+            <div class="spec-list" style="  float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);" id="LOST_BAGGAGE">
+            </div>
+
+            <div class="spec-list" style="   float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);" id="LOST_BAGGAGE1">
+            </div>
+
+            <div class="spec-list" style="float: left;   padding: 12px 20px 24px;border-left: 1px solid rgba(142,162,185,.4);display:none" id="3rdtabBind13">
+                <span id="LOST_BAGGAGE2"> </span>
+            </div>
+        </div>
+        <header style="display:block;"></header>
+    </div>
+
+
+
+
+
+    <div class="section-md-bottom content novi-background bg-cover" style="display:none">
+        <div class="container" style="padding: 28px 30px 30px 20px;background: #ffffff;position: relative;width: 100%; box-shadow: 0px 10px 8px #888888;">
+            <div id="loader" style="display:none;"></div>
+
+            <div class="row" id="tabContainerId" style="">
+
+
+                <div class="col-md-3" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:552px">
+                            <div style="">
+                                <ul>
+                                    <li style="padding:24px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">URGENT CARE</p>
+                                    </li>
+                                    <li style="padding:27px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:434px">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">PRE EXISTING CONDITION(ACUTE ONSET/RECURRENCE/FULL)</p>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-3" id="1sttabBind" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:552px">
+                            <div style="">
+                                <ul>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px;" id="URGENT_CARE">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> $40 max per visit/10 max visits</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:434px" id="PRE_EXISTING_CONDITION">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Acute Onset of Pre-Existing Conditions-  Limited coverage for onset of non-recurring, non-chronic conditions. $25,000 max per coverage period. Emergency Medical Evacuation: Arises or results directly from a covered Acute Onset of a Pre-existing Condition - Maximum Limit : $25,000</p>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="2ndtabBind" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:552px">
+                            <div style="">
+                                <ul>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px" id="URGENT_CARE1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> $40 max per visit/10 max visits</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:434px" id="PRE_EXISTING_CONDITION1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Acute Onset of Pre-Existing Conditions-  Limited coverage for onset of non-recurring, non-chronic conditions. $25,000 max per coverage period. Emergency Medical Evacuation: Arises or results directly from a covered Acute Onset of a Pre-existing Condition - Maximum Limit : $25,000</p>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="3rdtabBind" style="display:none">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:552px">
+                            <div style="">
+                                <ul>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px" id="URGENT_CARE2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> $40 max per visit/10 max visits</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:434px" id="PRE_EXISTING_CONDITION2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Acute Onset of Pre-Existing Conditions-  Limited coverage for onset of non-recurring, non-chronic conditions. $25,000 max per coverage period. Emergency Medical Evacuation: Arises or results directly from a covered Acute Onset of a Pre-existing Condition - Maximum Limit : $25,000</p>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="section-md-bottom content novi-background bg-cover" style="display:none">
+        <div class="container" style="padding: 28px 30px 30px 20px;background: #ffffff;position: relative;width: 100%; box-shadow: 0px 10px 8px #888888;">
+            <div id="loader" style="display:none;"></div>
+
+            <div class="row" id="tabContainerId" style="">
+
+
+                <div class="col-md-3" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:595px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:26px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">HOSPITAL ROOM AND BOARD- AVERAGE SEMI PRIVATE ROOM</p>
+                                    </li>
+                                    <li style="padding:27px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">INTENSIVE CARE UNIT(ICU)</p>
+                                    </li>
+                                    <li style="padding:26px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">AMBULANCE</p>
+                                    </li>
+                                    <li style="padding:25px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">DOCTOR VISIT</p>
+                                    </li>
+                                    <li style="padding:24px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">X-RAY AND LABS</p>
+                                    </li>
+                                    <li style="padding:24px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:107px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">PHYSICAL THERAPY (TREATMENT PLAN REQUIRED)</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-3" id="1sttab2ndBind" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:595px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="HOSPITAL_ROOM_AND_BOARD_AVERAGE">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Up to $825 max per day 30 day max per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="INTENSIVE_CARE_UNIT">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Up to an additional $400 max per day, 8 day max per period of coverage </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px" id="AMBULANCE">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Up to $250 max per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="DOCTOR_VISIT">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> $40 max per visit. 30 max visits per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="XRAY_AND_LABS">
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:107px" id="PHYSICAL_THERAPY">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">
+                                                In-Network: 100%, after deductible
+                                                Out-of-Network: after deductible, 80% up to $5,000, then 100% .
+                                            </p>*@
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="2ndtab2ndBind" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:595px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="HOSPITAL_ROOM_AND_BOARD_AVERAGE1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Up to $825 max per day 30 day max per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="INTENSIVE_CARE_UNIT1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Up to an additional $400 max per day, 8 day max per period of coverage </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px" id="AMBULANCE1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Up to $250 max per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="DOCTOR_VISIT1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> $40 max per visit. 30 max visits per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="XRAY_AND_LABS1">
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:107px" id="PHYSICAL_THERAPY1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="3rdtab2ndBind" style="display:none">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:595px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="HOSPITAL_ROOM_AND_BOARD_AVERAGE2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Up to $825 max per day 30 day max per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="INTENSIVE_CARE_UNIT2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Up to an additional $400 max per day, 8 day max per period of coverage </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:100px" id="AMBULANCE2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Up to $250 max per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="DOCTOR_VISIT2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> $40 max per visit. 30 max visits per period of coverage</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="XRAY_AND_LABS2">
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:107px" id="PHYSICAL_THERAPY2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="section-md-bottom content novi-background bg-cover" style="display:none">
+        <div class="container" style="padding: 28px 30px 30px 20px;background: #ffffff;position: relative;width: 100%; box-shadow: 0px 10px 8px #888888;">
+            <div id="loader" style="display:none;"></div>
+
+            <div class="row" id="tabContainerId" style="">
+
+
+                <div class="col-md-3" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:646px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:27px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:125px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">DENTAL TREATMENT DUE TO ACCIDENT OR SUDDEN PAIN.</p>
+                                    </li>
+                                    <li style="padding:26px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:101px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">EMERGENCY MEDICAL EVACUATION</p>
+                                    </li>
+                                    <li style="padding:27px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">ACCIDENTAL DEATH & DISMEMBERMENT</p>
+                                    </li>
+                                    <li style="padding:26px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:127px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">RETURN OF MORTAL REMAINS </p>
+                                    </li>
+                                    <li style="padding:25px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">TRIP INTERRUPTION</p>
+                                    </li>
+                                    <li style="padding:24px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px;color: #07457a;">
+                                        <p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 13px;line-height: 20px;color: #07457a;" href="#" class="scroll">LOST BAGGAGE</p>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-3" id="1sttab3rdBind" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:646px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:125px" id="DENTAL_TREATMENT">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Limit : $300, unexpected pain or Treatment due to an Accident. </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:101px" id="EMERGENCY_MEDICAL_EVACUATION">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Upto $1,000,000. </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="ACCIDENTAL_DEATH">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  Principal Sum Maximum Limit $50,000. </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:127px" id="RETURN_OF_MORTAL_REMAINS">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">
+                                                Up to the Period Of Coverage limit, 
+                                                Local Burial/Cremation Maximum Limit : $5000. Return of Insured Persons's Mortal Remains to Country of Residence. 
+                                            </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="TRIP_INTERRUPTION">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> LIMIT: $10,000</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="LOST_BAGGAGE">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> Limit : $500 , Limit : $50 per item. </p>*@
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="2ndtab3rdBind" style="">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:646px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:125px" id="DENTAL_TREATMENT1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:101px" id="EMERGENCY_MEDICAL_EVACUATION1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="ACCIDENTAL_DEATH1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:127px" id="RETURN_OF_MORTAL_REMAINS1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="TRIP_INTERRUPTION1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="LOST_BAGGAGE1">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="3rdtab3rdBind" style="display:none">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner" style="height:646px">
+                            <div style="">
+                                <ul>
+
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:125px" id="DENTAL_TREATMENT2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level </p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:101px" id="EMERGENCY_MEDICAL_EVACUATION2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="ACCIDENTAL_DEATH2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll">  The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:127px" id="RETURN_OF_MORTAL_REMAINS2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="TRIP_INTERRUPTION2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                    <li style="padding:15px;border-bottom: 1px solid rgba(0, 0, 0, 0.39);height:90px" id="LOST_BAGGAGE2">
+                                        @*<p style=" text-decoration: none; background: none; font-family: 'Open Sans'  ; font-weight: 700; font-size: 10px;line-height: 20px;color: #555555;" href="#" class="scroll"> The comparison of insurance plans shown below is generic and high level</p>*@
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="row" style="margin-left: 2%; margin-right: 2%;">
+        <div class="col-sm-12 col-md-12" style="display:none">
+            <div class="row">
+                <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4">
+                    <div class="product-minimal">
+                        <!--Policy Header Start  -->
+                        <div class="product-list-classic">
+                            <div class="product-box-horizontal">
+                                <div class="product-box-inner">
+                                    <div class="caption">
+                                        <!--Start Policy Header-->
+                                        <div class="caption-header">
+                                            <div class="policy" style="background-color: #ffcc00;">
+                                                <em>CA-G</em>
+                                                <div class="txt2">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="Policy2">
+                                                    <div class="">
+                                                        <h6>CoverAmerica - Gold</h6>
+                                                    </div>
+                                                    <div class="">Comprehensive Coverage</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="immunity">
+                                            <div class="row">
+                                                <!--start Dropdown-->
+                                                <div class="row" style="padding-left: 10%;">
+                                                    <div class="col-md-6">
+                                                        <h6>
+                                                            <label>Covrage Limit<a href="#"><i class="icon icon-info_outline"></i></a></label>
+                                                        </h6>
+                                                        <div class="dropdown bootstrap-select policy-max-options">
+                                                            <select class="selectpicker policy-max-options" data-size="0" tabindex="-98">
+                                                                <option value="2" selected="">$ 50,000</option>
+                                                                <option value="3">$ 100,000</option>
+                                                                <option value="4">$ 250,000</option>
+                                                                <option value="5">$ 500,000</option>
+                                                                <option value="6">$ 1,000,000</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="material-bootstrap-select auto-width extra">
+                                                            <h6>
+                                                                <label>Deductible<a href="#" class="quote-help" data-toggle="modal" data-target="#deductible_modal"><i class="icon icon-info_outline"></i></a></label>
+                                                            </h6>
+                                                            <div class="dropdown bootstrap-select deductible-options">
+                                                                <select>
+                                                                    <option value="4">$ 100 </option>
+                                                                    <option value="6" selected="">$ 250 </option>
+                                                                    <option value="7">$ 500222 </option>
+                                                                    <option value="8">$ 1,00022 </option>
+                                                                    <option value="9">$ 2,50022 </option>
+                                                                    <option value="12">$ 5,000222 </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Dropdown-->
+                                            <div class="row" style="padding-left: 10%; padding-top: 3%">
+
+                                                <button class="Pill" style="background-color: #080; color: white">BUY &nbsp&nbsp&nbsp$25650</button>
+                                            </div>
+                                        </div>
+                                        <!--End Policy Header-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Policy Header  End -->
+                    </div>
+                </div>
+                <!--Policy Header Start  -->
+                <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4">
+                    <div class="product-minimal">
+                        <div class="product-list-classic">
+                            <div class="product-box-horizontal">
+                                <div class="product-box-inner">
+                                    <div class="caption">
+                                        <!--Start Policy Header-->
+                                        <div class="caption-header">
+                                            <div class="policy" style="background-color: #ffcc00;">
+                                                <em>CA-G</em>
+                                                <div class="txt2">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="Policy2">
+                                                    <div class="">
+                                                        <h6>CoverAmerica - Gold</h6>
+                                                    </div>
+                                                    <div class="">Comprehensive Coverage</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--End Policy Header-->
+
+                                        <div class="immunity">
+                                            <div class="row">
+                                                <!--start Dropdown-->
+                                                <div class="row" style="padding-left: 10%;">
+                                                    <div class="col-md-6">
+                                                        <h6>
+                                                            <label>Covrage Limit<a href="#"><i class="icon icon-info_outline"></i></a></label>
+                                                        </h6>
+                                                        <div class="dropdown bootstrap-select policy-max-options">
+                                                            <select class="selectpicker policy-max-options" data-size="0" tabindex="-98">
+                                                                <option value="2" selected="">$ 50,000</option>
+                                                                <option value="3">$ 100,000</option>
+                                                                <option value="4">$ 250,000</option>
+                                                                <option value="5">$ 500,000</option>
+                                                                <option value="6">$ 1,000,000</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="material-bootstrap-select auto-width extra">
+                                                            <h6>
+                                                                <label>Deductible<a href="#" class="quote-help" data-toggle="modal" data-target="#deductible_modal"><i class="icon icon-info_outline"></i></a></label>
+                                                            </h6>
+                                                            <div class="dropdown bootstrap-select deductible-options">
+                                                                <select class="selectpicker deductible-options" data-size="0" tabindex="-98">
+                                                                    <option value="4">$ 100 </option>
+                                                                    <option value="6" selected="">$ 250 </option>
+                                                                    <option value="7">$ 500222 </option>
+                                                                    <option value="8">$ 1,00022 </option>
+                                                                    <option value="9">$ 2,50022 </option>
+                                                                    <option value="12">$ 5,000222 </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Dropdown-->
+                                            <div class="row" style="padding-left: 10%; padding-top: 3%">
+
+                                                <button class="Pill" style="background-color: #080; color: white">BUY &nbsp&nbsp&nbsp$25650</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Policy Header  End -->
+                <!--Policy Header Start  -->
+                <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4">
+                    <div class="product-minimal">
+                        <div class="product-list-classic">
+                            <div class="product-box-horizontal">
+                                <div class="product-box-inner">
+                                    <div class="caption">
+                                        <!--Start Policy Header-->
+                                        <div class="caption-header">
+                                            <div class="policy" style="background-color: #ffcc00;">
+                                                <em>CA-G</em>
+                                                <div class="txt2">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="Policy2">
+                                                    <div class="">
+                                                        <h6>CoverAmerica - Gold</h6>
+
+                                                    </div>
+                                                    <div class="">Comprehensive Coverage</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--End Policy Header-->
+
+                                        <div class="immunity">
+                                            <div class="row">
+                                                <!--start Dropdown-->
+                                                <div class="row" style="padding-left: 10%;">
+                                                    <div class="col-md-6">
+                                                        <h6>
+                                                            <label>Covrage Limit<a href="#"><i class="icon icon-info_outline"></i></a></label>
+                                                        </h6>
+                                                        <div class="dropdown bootstrap-select policy-max-options">
+                                                            <select class="selectpicker policy-max-options" data-size="0" tabindex="-98">
+                                                                <option value="2" selected="">$ 50,000</option>
+                                                                <option value="3">$ 100,000</option>
+                                                                <option value="4">$ 250,000</option>
+                                                                <option value="5">$ 500,000</option>
+                                                                <option value="6">$ 1,000,000</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="material-bootstrap-select auto-width extra">
+                                                            <h6>
+                                                                <label>Deductible<a href="#" class="quote-help" data-toggle="modal" data-target="#deductible_modal"><i class="icon icon-info_outline"></i></a></label>
+                                                            </h6>
+                                                            <div class="dropdown bootstrap-select deductible-options">
+                                                                <select class="selectpicker deductible-options" data-size="0" tabindex="-98">
+                                                                    <option value="4">$ 100 </option>
+                                                                    <option value="6" selected="">$ 250 </option>
+                                                                    <option value="7">$ 500222 </option>
+                                                                    <option value="8">$ 1,00022 </option>
+                                                                    <option value="9">$ 2,50022 </option>
+                                                                    <option value="12">$ 5,000222 </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Dropdown-->
+                                            <div class="row" style="padding-left: 10%; padding-top: 3%">
+
+                                                <button class="Pill" style="background-color: #080; color: white">BUY &nbsp&nbsp&nbsp$25650</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Policy Header  End -->
+            </div>
+        </div>
+
+        <div>
+
+
+
+            <!--Start-->
+            @*<div class="row">
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            @Html.HiddenFor(model => item.Appname, new { @id = @item.Appname })
+
+                            <div class="@Html.DisplayTextFor(model =>item.ComparePolicyClass) col-xxs-12 col-xs-6 col-md-3 " style="margin: 16px;">
+                                <div class="product-minimal">
+                                    <div class="thumbnail clearfix">
+                                        <figure class="product-minimal-img">
+                                            <a href="#">
+                                                <img style="height:150px;" src="~/images/img/@Html.DisplayTextFor(model =>item.Logo)" alt="" class="@Html.DisplayTextFor(model =>item.ComparePolicyClass) img-responsive">
+                                            </a>
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="product-minimal-title"><a href="#"><label>@Html.DisplayFor(modelItem => item.policyname)</label></a></div>
+                                            <div class="info">
+                                                <span class="stars" style="padding-left: 12px;">
+                                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;</span>
+                                                    <label>$@Html.DisplayFor(model => item.getplanmaximum) </label>
+
+
+                                                </span>
+                                                <span class="stars" style="padding-left: 22px;">
+                                                    <label>Deductible</label> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                    <label>$ @Html.DisplayFor(model => item.getPlanDeductible) </label>
+
+                                                </span>
+                                            </div>
+                                            <div class="info" style="margin-bottom: 0px;padding-bottom: 0px;">
+                                                <label class="stars" style="padding-left: 10px;font-size: 23px;color:#000;">$ @Html.DisplayFor(model => item.exactamount)</label>
+                                                <div class="txt7" style="width: 43%;"><button type="button" style="width:90%;" onclick="GetPrice('@item.TillDate',@item.getPlanDeductible,@item.getplanmaximum,'@item.ISOCODE','@item.LeavingHome',@item.planID,'@item.TouristISOCODE','@item.TravelersDOB',@item.exactamount,'@item.Appname','@item.policyname','@item.INsuranceComp','@item.Age')" class="btn-default btn3">BUY</button></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>*@
+
+
+
+            <div class="row">
+
+                <div id="bindcomparetab" class="col-md-4" style="    width: 28.333333%;">
+
+                </div>
+                <div id="bindcomparetab2" class="col-md-4" style="    width: 28.333333%;display:none">
+
+                </div>
+                <div id="bindcomparetab3" class="col-md-4" style="    width: 28.333333%;display:none">
+
+                </div>
+            </div>
+            <div class="row" style="display:none">
+
+                <div id="bindcomparetab" class="col-md-4">
+                    <label style="margin-left: 75px;" id="Property_Name">Dr. / Physician Visit</label>
+                    <div class="col-sm-4" style="    width: 70.333333%;">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div class="caption">
+                                    <div class="product-item-title"><a href="#"></a></div>
+                                    <div class="product-item-text">
+                                        <p id="value">
+
+                                        </p>
+                                        <ul class="text-list">
+                                            <ol>$50,000 Policy Max</ol>
+                                            <ol>$65 per visit, 10 visits max</ol>
+                                            <ol>$100,000 Policy Max </ol>
+                                            <ol>$90 per visit, 10 visits max</ol>
+                                            <ol>$150,000 Policy Max</ol>
+                                            <ol>$130 per visit, 10 visits maxs</ol>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="bindcomparetab2" class="col-md-4">
+                    <label style="margin-left: 75px;" id="Property_Name">Dr. / Physician Visit</label>
+                    <div class="col-sm-4" style="    width: 70.333333%;">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div class="caption">
+                                    <div class="product-item-title"><a href="#"></a></div>
+                                    <div class="product-item-text">
+                                        <p id="value">
+
+                                        </p>
+                                        <ul class="text-list">
+                                            <ol>$50,000 Policy Max</ol>
+                                            <ol>$65 per visit, 10 visits max</ol>
+                                            <ol>$100,000 Policy Max </ol>
+                                            <ol>$90 per visit, 10 visits max</ol>
+                                            <ol>$150,000 Policy Max</ol>
+                                            <ol>$130 per visit, 10 visits maxs</ol>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="bindcomparetab3" class="col-md-4">
+                    <label style="margin-left: 75px;" id="Property_Name">Dr. / Physician Visit</label>
+                    <div class="col-sm-4" style="    width: 70.333333%;">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div class="caption">
+                                    <div class="product-item-title"><a href="#"></a></div>
+                                    <div class="product-item-text">
+                                        <p id="value">
+
+                                        </p>
+                                        <ul class="text-list">
+                                            <ol>$50,000 Policy Max</ol>
+                                            <ol>$65 per visit, 10 visits max</ol>
+                                            <ol>$100,000 Policy Max </ol>
+                                            <ol>$90 per visit, 10 visits max</ol>
+                                            <ol>$150,000 Policy Max</ol>
+                                            <ol>$130 per visit, 10 visits maxs</ol>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div style="text-align:center; ">
+        <h5 style="color:#555555"><b>DISCLAIMER </b></h5>
+        <p style="color:#555555;padding-left:10PX;padding-right:10PX">
+            Please refer to the plan brochure for accurate details, benefits, limitations, and exclusions. For every company and plan, benefits and conditions may differ. Information provided here is general and for knowledge-sharing purposes only. If you find any mismatch between the information provided on our website and the insurance companies' plan documents, be advised the insurance company’s plan documents take precedence.
+
+
+        </p>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("pageshow", function (event) {
+        debugger
+        var historyTraversal = event.persisted ||
+            (typeof window.performance != "undefined" &&
+                window.performance.navigation.type === 2);
+        if (historyTraversal) {
+            debugger
+            // Handle page restore.
+            window.location.reload();
+        }
+    });
+</script>

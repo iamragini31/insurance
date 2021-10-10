@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="GenderTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Female">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Male">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GenderTypes" nillable="true" type="tns:GenderTypes" />
+  <xs:simpleType name="ProductOptionTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AccidentalDeath" />
+      <xs:enumeration value="Life" />
+      <xs:enumeration value="SupplementalLife" />
+      <xs:enumeration value="DailyIndemnity" />
+      <xs:enumeration value="Maternity" />
+      <xs:enumeration value="LeisureSportsRider" />
+      <xs:enumeration value="TerrorRider" />
+      <xs:enumeration value="ReturnRider" />
+      <xs:enumeration value="ChaperoneRider" />
+      <xs:enumeration value="ExtremeSportsRider" />
+      <xs:enumeration value="CoinsuranceBuyUpRider" />
+      <xs:enumeration value="PersonalLiabilityRider" />
+      <xs:enumeration value="SportsRider" />
+      <xs:enumeration value="ExclusionaryRider" />
+      <xs:enumeration value="PreExistingConditionRider" />
+      <xs:enumeration value="AdventureSportsRider" />
+      <xs:enumeration value="CitizenshipReturnRider" />
+      <xs:enumeration value="FlexibleUnderwritingRider" />
+      <xs:enumeration value="MoratoriumRider" />
+      <xs:enumeration value="HeartCarePlusRider" />
+      <xs:enumeration value="EvacuationPlusRider" />
+      <xs:enumeration value="SixMonthPreExistingConditionRider" />
+      <xs:enumeration value="ProfessionalSportsRider" />
+      <xs:enumeration value="DentalVisionRider" />
+      <xs:enumeration value="Fulfillment" />
+      <xs:enumeration value="HomeCountryCoverage" />
+      <xs:enumeration value="VisaType_F1_F2" />
+      <xs:enumeration value="VisaType_J1_J2" />
+      <xs:enumeration value="VisaType_M1_M2" />
+      <xs:enumeration value="VisaType_A1_A2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProductOptionTypes" nillable="true" type="tns:ProductOptionTypes" />
+</xs:schema>

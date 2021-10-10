@@ -1,0 +1,725 @@
+﻿@model TouristInsuredEntity.PolicyIdCardModel
+
+@{
+    ViewBag.Title = "PolicyIdCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+    .head1 {
+        margin-top: 50px;
+    }
+
+
+    .figure-section-text {
+        padding-bottom: 35px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    * {
+        box-sizing: border-box
+    }
+
+    /* Set a style for all buttons */
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+        button:hover {
+            opacity: 1;
+        }
+
+    /* Float cancel and delete buttons and add an equal width */
+    .cancelbtn, .deletebtn {
+        float: left;
+        width: 50%;
+    }
+
+    /* Add a color to the cancel button */
+    .cancelbtn {
+        background-color: #ccc;
+        color: black;
+    }
+
+    /* Add a color to the delete button */
+    .deletebtn {
+        background-color: #f44336;
+    }
+
+    /* Add padding and center-align text to the container */
+    .container1 {
+        padding: 16px;
+        text-align: center;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: #474e5d;
+        padding-top: 50px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* Style the horizontal ruler */
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* The Modal Close Button (x) */
+    .close {
+        position: absolute;
+        right: 3vw;
+        top: 16vw;
+        font-size: 9vw;
+        opacity: 1;
+        font-weight: bold;
+        color: #f1f1f1;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #f44336;
+            cursor: pointer;
+        }
+
+    /* Clear floats */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Change styles for cancel button and delete button on extra small screens */
+    @@media screen and (max-width: 300px) {
+        .cancelbtn, .deletebtn {
+            width: 100%;
+        }
+    }
+    .btn-default{
+        margin-top:20px;
+    }
+</style>
+<style>
+  /*  .mahtab {
+        font-size: 40px;
+        font-weight: bolder;
+        font-family: Open Sans;
+        margin-top: 16px;
+    }*/
+/*    @@media only screen and (max-width: 768px) {
+        .mahtab {
+            font-size: 40px;
+            margin-top: 14px;
+            font-weight: bolder;
+            font-family: Open Sans;
+        }
+    }*/
+
+    /*@@media only screen and (max-width: 300px){
+        .mahtab {
+            font-size: 14px;
+            margin-top: 4px;
+            font-weight: bolder;
+            font-family: Open Sans;
+        }
+           }*/
+  /*  @@media only screen and (min-width: 412px) {
+        .mahtab {
+            font-size: 12px;
+            margin-top: 5px;
+            font-weight: bolder;
+            font-family: Open Sans;
+        }
+    }*/
+
+
+</style>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id03');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id04');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Disable cut copy paste
+        $('body').bind('cut copy paste', function (e) {
+            e.preventDefault();
+            alert("The copy and cut function is disabled.");
+        });
+
+        //Disable mouse right click
+        //$("body").on("contextmenu", function (e) {
+        //    return false;
+        //});
+    });
+</script>
+
+
+
+<div>
+
+    <div class="breadcrumbs1_wrapper novi-background">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="/Login/Login">Home</a><span></span>Policy Id Card</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="width:100% ;margin-bottom: 28px;position: relative;">
+
+            <img src="~/images/img/pol1.jpg" style="width: 100%;" />
+            
+                    <div style="border-radius: 8px; border: 1px solid #eeeeee;background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;margin-top:1%;position: absolute;top: 42%;left: 36%;font-size: 34px;width: 30%;height: 15%;">
+                        <h1 class="mahtab" style="font-size: 3vw;font-weight: bolder;  font-family: Open Sans;      margin-top: 0vw;">
+                            POLICY ID CARD
+                        </h1>
+
+                  
+            </div>
+        </div>
+    </div>
+            <div class="section section-md novi-background bg-cover" style="    padding: 60px 0;">
+                <div class="container">
+
+                    @*<div class="col-sm-6 col-md-5">*@
+
+                    @*<div class="banner-title">REQUEST FOR POLICY ID </div>
+                <br>*@
+                    @*<p>202 W 7th St, Suite 233 Los Angeles, CA 90014 USA</p>
+                <p><i class="fa fa-envelope novi-icon" aria-hidden="true"></i> - <a href="mailto:#">info@demolink.org</a></p>
+                <p><i class="fa fa-phone novi-icon" aria-hidden="true"></i> - <a href="tel:#">1-800-624-5462</a></p>
+                <p><i class="fa fa-clock-o novi-icon" aria-hidden="true"></i> - Monday to Friday from 09.00 to 18.00</p>*@
+                    <p>
+                        As soon as you purchase your insurance policy of any company, you receive a policy id card in your email. Just in case if you
+                        have not received your id card in the email or misplaced the email or not able to retrieve the id card from the email, you can simply
+                        request for your id card from the insurance company.
+                    </p>
+                    <p>
+                        Below is the list of companies and all their plan names with the links or email id resource, to request for a policy id card.
+                        Please choose your insurer and place the request with all the information regarding the policy for quicker response.
+                    </p>
+
+
+                    @*</div>*@
+                    @*<div class="col-sm-6 col-md-6 col-md-offset-1">
+                    <form class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="forms" method="post" action="bat/rd-mailform.php">
+                        <div class="row row-15 row-fix">
+                            <div class="col-md-12">
+                                <div class="form-wrap">
+                                    <label class="form-label" for="forms-name">Full name</label>
+                                    <input class="form-input" id="forms-name" type="text" name="name" data-constraints="@Required">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-wrap">
+                                    <label class="form-label" for="forms-email">E-mail address</label>
+                                    <input class="form-input" id="forms-email" type="email" name="email" data-constraints="@Email @Required">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-wrap">
+                                    <label class="form-label" for="forms-message">Message</label>
+                                    <textarea class="form-input" id="forms-message" name="message" data-constraints="@Required"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn-default btn-cf-submit3">SEND MESSAGE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>*@
+
+                </div>
+            </div>
+
+
+            <div class="row row-fix" style="width:100%;">
+                <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+                    <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                        @*<div class="head1" style=" font-family: 'Open Sans';font-weight: 700;font-size: 22px;line-height: 20px;color: #043055;">
+                        T R A W I C K &nbsp; I N T E R N A T I O N A L
+                    </div>*@
+                        @*<h3>Why People Choose Us</h3>*@
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="figure-section-text" style="">
+                                    <ul class="list-marked-left" style="text-align:center">
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                        </li>
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">TRAWICK INTERNATIONAL</h4>
+                                        </li>
+                                        @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS USA</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS USA COST SAVER</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS USA COMPREHENSIVE</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS FOR VISITORS TO THE USA</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS INTERNATIONAL COST SAVER</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS INTERNATIONAL </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS SCHENGEN VISA</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS OUTBOUND</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS OUTBOUND COST PLUS</li>
+
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- STANDARD</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- PREFERRED</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- SILVER</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- GOLD</li>*@
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-marked-left" style="text-align:center">
+
+                                    <li>
+                                        <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                                    </li>
+
+                                    <li>
+
+                                        <div class="">
+                                            @*<button type="submit" onclick="window.location.href='mailto:info@trawickinternational.com'" style="width: 225px; margin-left: 20%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>*@
+                                            <button type="submit" onclick="document.getElementById('id01').style.display='block'" style="width: 225px;    transform: translate(-50%, -50%); left: 50%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>
+                                            <div id="id01" class="modal">
+                                                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close">&times;</span>
+                                                <form class="modal-content" action="/action_page.php">
+                                                    <div class="container1">
+                                                        <h1 style="color:#043055;">E-mail Us</h1>
+                                                        <p style="color:#555555;font-size:20px">info@trawickinternational.com</p>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+
+                                        @*<a style=" font-size: 16px;line-height: 2;color: #181c2a; PADDING-LEFT: 89PX;" href="https://zone.hccmis.com/clientzone/?_ga=2.87171806.770594515.1589773160-1592603283.1589773160"> PLACE YOUR REQUEST </a>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="row row-fix" style="width:100%;">
+                <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+                    <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                        @*<div class="head1" style=" font-family: 'Open Sans';font-weight: 700;font-size: 22px;line-height: 20px;color: #043055;">
+                        T O K I O &nbsp; M A R I N E &nbsp; H C C
+                    </div>*@
+                        @*<h3>Why People Choose Us</h3>*@
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="figure-section-text" style="">
+                                    <ul class="list-marked-left" style="text-align:center">
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                        </li>
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">TOKIO MARINE HCC</h4>
+                                        </li>
+                                        @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> ATLAS TRAVEL</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> ATLAS ESSENTIAL</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> ATLAS PREMIUM</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITOR SECURE</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDENT SECURE- BUDGET</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT SECURE- ELITE </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT SECURE- SELECT</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT SECURE- SMART</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">ATLAS MULTITRIP</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">ATLAS GROUP</li>*@
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-marked-left" style="text-align:center">
+                                    <li>
+                                        <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                                    </li>
+
+                                    <li>
+                                        <div class="">
+                                            <button type="submit" onclick="window.location.href='https://zone.hccmis.com/clientzone/?_ga=2.87171806.770594515.1589773130-1592603283.1589773130'" style="width: 225px;    transform: translate(-50%, -50%); left: 50%;border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>
+
+                                        </div>
+
+
+                                        @*<a style=" font-size: 16px;line-height: 2;color: #181c2a; PADDING-LEFT: 89PX;" href="mailto:info@trawickinternational.com"> PLACE YOUR REQUEST </a>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <br />
+            <br />
+            <br />
+
+            <div class="row row-fix" style="width:100%;">
+                <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+                    <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                        @*<div class="head1" style=" font-family: 'Open Sans';font-weight: 700;font-size: 22px;line-height: 20px;color: #043055;">
+                        U S I &nbsp; A F F I N I T Y
+                    </div>*@
+                        @*<h3>Why People Choose Us</h3>*@
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="figure-section-text" style="">
+                                    <ul class="list-marked-left" style="text-align:center">
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                        </li>
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">USI AFFINITY</h4>
+                                        </li>
+                                        @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDY USA HEALTHCARE- BASIC </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDY USA HEALTHCARE- STANDARD  </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDY USA HEALTHCARE- PREFERRED300  </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDY USA HEALTHCARE- PREFERRED500  </li>*@
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-marked-left" style="text-align:center">
+
+                                    <li>
+                                        <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                                    </li>
+
+                                    <li>
+
+                                        <div class="">
+                                            @*<button type="submit" onclick="window.location.href='mailto:info@travelinsure.com'"  style="width: 225px; margin-left: 20%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>*@
+                                            <button type="submit" onclick="document.getElementById('id02').style.display='block'" style="width: 225px;    transform: translate(-50%, -50%); left: 50%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>
+                                            <div id="id02" class="modal">
+                                                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close">&times;</span>
+                                                <form class="modal-content" action="/action_page.php">
+                                                    <div class="container1">
+                                                        <h1 style="color:#043055;">E-mail Us</h1>
+                                                        <p style="color:#555555;font-size:20px">info@travelinsure.com</p>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            @*<button type="submit" onclick="window.location.href='https://www.hccmis.com/claims-resource-center/'" class="btn-default btn-cf-submit3" style=" background: #07457a;content:none;font-weight: 700;margin-top: 0px; font-size: 16px;padding: 0 10px;">PLACE YOUR REQUEST</button>*@
+                                        </div>
+
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
+            <div class="row row-fix" style="width:100%;">
+                <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+                    <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                        @*<div class="head1" style=" font-family: 'Open Sans';font-weight: 700;font-size: 19px;line-height: 20px;color: #043055;">
+                        G L O B A L &nbsp; U N D E R W R I T E R S
+                    </div>*@
+                        @*<h3>Why People Choose Us</h3>*@
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="figure-section-text" style="">
+                                    <ul class="list-marked-left" style="text-align:center">
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                        </li>
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">GLOBAL UNDERWRITERS</h4>
+                                        </li>
+                                        @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> DIPLOMAT AMERICA </li>*@
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-marked-left" style="text-align:center;">
+                                    <li>
+                                        <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                                    </li>
+                                    <li>
+
+
+
+                                        <div class="">
+                                            @*<button type="submit" onclick="window.location.href='mailto:policies@globalunderwriters.com'" style="width: 225px; margin-left: 20%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>*@
+
+                                            <button type="submit" onclick="document.getElementById('id03').style.display='block'" style="width: 225px;    transform: translate(-50%, -50%); left: 50%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>
+                                            <div id="id03" class="modal">
+                                                <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close">&times;</span>
+                                                <form class="modal-content" action="/action_page.php">
+                                                    <div class="container1">
+                                                        <h1 style="color:#043055;">E-mail Us</h1>
+                                                        <p style="color:#555555;font-size:20px">policies@globalunderwriters.com</p>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            @*<button type="submit" onclick="window.location.href='https://www.hccmis.com/claims-resource-center/'" class="btn-default btn-cf-submit3" style=" background: #07457a;content:none;font-weight: 700;margin-top: 0px; font-size: 16px;padding: 0 10px;">PLACE YOUR REQUEST</button>*@
+                                        </div>
+
+                                        @*<a style=" font-size: 16px;line-height: 2;color: #181c2a; PADDING-LEFT: 89PX;" href="mailto:policies@globalunderwriters.com "> PLACE YOUR REQUEST </a>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
+            <div class="row row-fix" style="width:100%;">
+                <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+                    <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                        @*<div class="head1" style=" font-family: 'Open Sans';font-weight: 700;font-size: 19px;line-height: 20px;color: #043055;">
+                        A Z I M U T H &nbsp; R I S K &nbsp; S O L U T I O N S
+                    </div>*@
+                        @*<h3>Why People Choose Us</h3>*@
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="figure-section-text" style="">
+                                    <ul class="list-marked-left" style="text-align:center">
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                        </li>
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">AZIMUTH RISK SOLUTIONS</h4>
+                                        </li>
+                                        @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> BEACON AMERICA </li>
+                                    <li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> BEACON INTERNATIONAL </li>*@
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-marked-left" style="text-align:center">
+                                    <li>
+                                        <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                                    </li>
+                                    <li>
+                                        <div class="">
+                                            @*<button type="submit" onclick="window.location.href='mailto:service@azimuthrisk.com'" style="width: 225px; margin-left: 20%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>*@
+                                            <button type="submit" onclick="document.getElementById('id04').style.display='block'" style="width: 225px;     transform: translate(-50%, -50%); left: 50%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>
+                                            <div id="id04" class="modal">
+                                                <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close ">&times;</span>
+                                                <form class="modal-content" action="/action_page.php">
+                                                    <div class="container1">
+                                                        <h1 style="color:#043055;">E-mail Us</h1>
+                                                        <p style="color:#555555;font-size:20px">service@azimuthrisk.com</p>
+
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            @*<button type="submit" onclick="window.location.href='https://www.hccmis.com/claims-resource-center/'" class="btn-default btn-cf-submit3" style=" background: #07457a;content:none;font-weight: 700;margin-top: 0px; font-size: 16px;padding: 0 10px;">PLACE YOUR REQUEST</button>*@
+                                        </div>
+
+
+                                        @*<a style=" font-size: 16px;line-height: 2;color: #181c2a; PADDING-LEFT: 89PX;" href="mailto:service@azimuthrisk.com"> PLACE YOUR REQUEST </a>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
+            <div class="row row-fix" style="width:100%;">
+                <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+                    <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover; ">
+                        @*<div class="head1" style=" font-family: 'Open Sans';font-weight: 700;font-size: 19px;line-height: 20px;color: #043055;">
+                        I M G
+                    </div>*@
+                        @*<h3>Why People Choose Us</h3>*@
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="figure-section-text" style="">
+                                    <ul class="list-marked-left" style="text-align:center">
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                        </li>
+                                        <li>
+                                            <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">IMG</h4>
+                                        </li>
+                                        @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT AMERICA TRAVEL</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT AMERICA PLUS </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT PLATINUM AMERICA</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITORS CARE PLAN A.</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITORS CARE PLAN B.</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITORS CARE PLAN C. </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT INTERNATIONAL TRAVEL</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT PLATINUM INTERNATIONAL</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT  EXCHANGE PROGRAM</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE AMERICA</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE PLATINUM AMERICA</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE INTERNATIONAL</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE PLATINUM INTERNATIONAL</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT MULTITRIP</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">GLOBEHOPPER SENIOR MULTI-TRIP </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">IMG GLOBAL MEDICAL </li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT GROUP TRAVEL MEDICAL INSURANCE</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT AMERICA PLUS GROUP</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT PLATINUM GROUP TRAVEL MEDICAL INSURANCE</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT MULTI-TRIP GROUP</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT GROUP EXCHANGE PROGRAM</li>
+                                    <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE GROUP</li>*@
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-marked-left" style="text-align:center">
+                                    <li>
+                                        <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                                    </li>
+
+                                    <li>
+
+                                        <div class="">
+                                            <button type="submit" onclick="window.location.href='https://www.imglobal.com/member/plan-documents'" style="width: 225px;     transform: translate(-50%, -50%); left: 50%; border-style: none;" class="btn-default btn-form2-submit">PLACE YOUR REQUEST</button>
+
+                                            @*<button type="submit" onclick="window.location.href='https://www.hccmis.com/claims-resource-center/'" class="btn-default btn-cf-submit3" style=" background: #07457a;content:none;font-weight: 700;margin-top: 0px; font-size: 16px;padding: 0 10px;">PLACE YOUR REQUEST</button>*@
+                                        </div>
+
+
+                                        @*<a style=" font-size: 16px;line-height: 2;color: #181c2a; PADDING-LEFT: 89PX;" href="https://www.imglobal.com/member/plan-documents"> PLACE YOUR REQUEST </a>*@
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div style="text-align:center; ">
+                <h5 style="color:#555555"><b>DISCLAIMER </b></h5>
+                <p style="color:#555555;padding-left:10PX;padding-right:10PX;font-size:13PX">
+                    Please refer to the plan brochure for accurate details, benefits, limitations, and exclusions. For every company and plan, benefits and conditions may differ. Information provided here is general and for knowledge-sharing purposes only. If you find any mismatch between the information provided on our website and the insurance companies' plan documents, be advised the insurance company’s plan documents take precedence.
+
+
+                </p>
+            </div>
+        </div>

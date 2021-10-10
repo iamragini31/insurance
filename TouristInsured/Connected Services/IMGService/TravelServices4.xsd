@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Img.Rules" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Img.Rules" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="RuleResponses">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Inconclusive" />
+      <xs:enumeration value="Failure" />
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="NotApplicable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RuleResponses" nillable="true" type="tns:RuleResponses" />
+</xs:schema>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Travel.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Travel.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" />
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" />
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core" />
+  <xs:complexType name="TravelPurchaseCertificateRequestDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppType" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" minOccurs="0" name="ChargeInfo" nillable="true" type="q1:ChargeDto" />
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Deductible" type="xs:decimal" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" minOccurs="0" name="Destination" nillable="true" type="q2:DestinationDto" />
+      <xs:element minOccurs="0" name="HomeCountryDepartureDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HomeCountryReturnDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsTest" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LegacyAuthentication" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaximumLimit" type="xs:decimal" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" minOccurs="0" name="PaymentAccount" nillable="true" type="q3:PaymentAccountDto" />
+      <xs:element minOccurs="0" name="PrimaryApplicant" nillable="true" type="tns:PrimaryTravelApplicantDto" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" minOccurs="0" name="Producer" nillable="true" type="q4:ProducerDto" />
+      <xs:element minOccurs="0" name="ProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestedEffectiveDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RequestedExpirationDate" type="xs:dateTime" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" minOccurs="0" name="SelectedOptions" nillable="true" type="q5:ArrayOfSelectedProductOptionDto" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" minOccurs="0" name="Signature" nillable="true" type="q6:SignatureDto" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" minOccurs="0" name="TaxLocationInfo" nillable="true" type="q7:TaxLocationInfoDto" />
+      <xs:element minOccurs="0" name="TransactionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TripCost" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Uservar" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TravelPurchaseCertificateRequestDto" nillable="true" type="tns:TravelPurchaseCertificateRequestDto" />
+  <xs:complexType name="PrimaryTravelApplicantDto">
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" minOccurs="0" name="Beneficiaries" nillable="true" type="q8:ArrayOfBeneficiaryDto" />
+      <xs:element minOccurs="0" name="CitizenshipCountryCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" minOccurs="0" name="ContactInformation" nillable="true" type="q9:ArrayOfContactInformationDto" />
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateOfUsArrival" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Dependents" nillable="true" type="tns:ArrayOfDependentTravelApplicantDto" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" minOccurs="0" name="EligibilityResponses" nillable="true" type="q10:ArrayOfEligibilityResponseDto" />
+      <xs:element minOccurs="0" name="ExistingNonTravelInsurance" nillable="true" type="tns:InsuranceInfoDto" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core" minOccurs="0" name="Gender" nillable="true" type="q11:GenderTypes" />
+      <xs:element minOccurs="0" name="GovernmentIssuedIdNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeCountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreviousInternationalInsurance" nillable="true" type="tns:InsuranceInfoDto" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" minOccurs="0" name="SelectedOptions" nillable="true" type="q12:ArrayOfSelectedProductOptionDto" />
+      <xs:element minOccurs="0" name="Spouse" nillable="true" type="tns:DependentTravelApplicantDto" />
+      <xs:element minOccurs="0" name="WorkTravelInformation" nillable="true" type="tns:WorkTravelInformationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PrimaryTravelApplicantDto" nillable="true" type="tns:PrimaryTravelApplicantDto" />
+  <xs:complexType name="ArrayOfDependentTravelApplicantDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DependentTravelApplicantDto" nillable="true" type="tns:DependentTravelApplicantDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDependentTravelApplicantDto" nillable="true" type="tns:ArrayOfDependentTravelApplicantDto" />
+  <xs:complexType name="DependentTravelApplicantDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ExistingInsuranceInfo" nillable="true" type="tns:InsuranceInfoDto" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core" minOccurs="0" name="Gender" nillable="true" type="q13:GenderTypes" />
+      <xs:element minOccurs="0" name="GovernmentIssuedIdNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" minOccurs="0" name="SelectedOptions" nillable="true" type="q14:ArrayOfSelectedProductOptionDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DependentTravelApplicantDto" nillable="true" type="tns:DependentTravelApplicantDto" />
+  <xs:complexType name="InsuranceInfoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Acknowledgment" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Carrier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpireDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PolicyNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InsuranceInfoDto" nillable="true" type="tns:InsuranceInfoDto" />
+  <xs:complexType name="WorkTravelInformationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgramParticipation" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkTravelInformationDto" nillable="true" type="tns:WorkTravelInformationDto" />
+</xs:schema>

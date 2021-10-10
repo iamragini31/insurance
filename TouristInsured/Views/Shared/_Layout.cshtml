@@ -1,0 +1,1353 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Your description" />
+    <meta name="keywords" content="Your keywords" />
+    <meta name="author" content="Your name" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700%7COpen+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" type="text/css" />
+    @*<link rel="icon" href="images/favicon.ico" type="image/x-icon" />*@
+    <link rel="icon" href="images/tourist-insured-favicon.png" type="image/x-icon" />
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/light-gallery.css" rel="stylesheet" />
+    <link href="~/css/elegant-icons.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/select2.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/js/jquery.easing.1.3.js"></script>
+    <script src="~/js/pointer-events.js"></script>
+
+    <script src="~/js/jquery.flexslider-min.js"></script>
+    <script src="~/js/select2.js"></script>
+    <script src="~/js/jquery.superslides.js"></script>
+    <script src="~/js/jquery.sticky.js"></script>
+    <script src="~/js/jquery.appear.js"></script>
+
+    <script src="~/js/jquery.ui.totop.js"></script>
+    <script src="~/js/jquery.caroufredsel.js"></script>
+    <script src="~/js/jquery.touchSwipe.min.js"></script>
+    <script src="~/js/material-parallax.js"></script>
+    <script src="~/js/owl-carousel.js"></script>
+    <script src="~/js/rd-mailform.js"></script>
+    <script src="~/js/rd-navbar.js"></script>
+    <script src="~/js/light-gallery.js"></script>
+    <script src="~/js/swiper.js"></script>
+    <script src="~/js/waypoint.js"></script>
+    <script src="~/js/scripts.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            ValidateSession();
+            $("#closefollowus").click(function () {
+                $("#showfollowup").hide();
+            });
+            window.onclick = function (event) {
+
+                var modal = document.getElementById("showfollowup");
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+
+            }
+
+
+        });
+        function ValidateSession() {
+            $.ajax({
+                url: "/Login/ValidateSession/",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                //dataType: "json",
+
+
+                success: function (data) {
+
+                    if (data != 0) {
+                        var Usersection = document.getElementById("Usersection");
+                        Usersection.style.display = "inline-block";
+                        var lblprofile = document.getElementById("loginli");
+                        lblprofile.style.display = "none";
+                        //var lblprofile = document.getElementById("lblprofile");
+                        //lblprofile.style.display = "block";
+                        //var lbllogin = document.getElementById("lbllogin");
+                        //lbllogin.style.display = "none";
+                        //var lblorderlist = document.getElementById("lblorderlist");
+                        //lblorderlist.style.display = "block";
+                        //var lblsignup = document.getElementById("lblsignup");
+                        //lblsignup.style.display = "none";
+                        //var logout = document.getElementById("logout");
+                        //logout.style.display = "block";
+                    }
+
+                    else {
+                        var Usersection = document.getElementById("Usersection");
+                        Usersection.style.display = "none";
+                        var lblprofile = document.getElementById("loginli");
+                        lblprofile.style.display = "inline-block";
+                        //var lblprofile = document.getElementById("lblprofile");
+                        //lblprofile.style.display = "none";
+                        //var lbllogin = document.getElementById("lbllogin");
+                        //lbllogin.style.display = "block";
+                        //var lblorderlist = document.getElementById("lblorderlist");
+                        //lblorderlist.style.display = "none";
+                        //var lblsignup = document.getElementById("lblsignup");
+                        //lblsignup.style.display = "block";
+                        //var logout = document.getElementById("logout");
+                        //logout.style.display = "none";
+
+                    }
+
+                }
+                ,
+                error: function (data) {
+                    alert("User not Found");
+                }
+            });
+        }
+        function Authenticate() {
+
+            var formdata = new FormData();
+            var singInName = $("#singInName").val();
+            var password = $("#password").val();
+            formdata.append('singInName', singInName); formdata.append('password', password);
+            $.ajax({
+                url: "/Login/ValidateUser/",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                cache: false,
+                //dataType: "json",
+                data: formdata,
+
+                success: function (data) {
+
+                    if (data != 0) {
+                        var Usersection = document.getElementById("Usersection");
+                        Usersection.style.display = "inline-block";
+                        var lblprofile = document.getElementById("loginli");
+                        lblprofile.style.display = "none";
+                        //var lblprofile = document.getElementById("lblprofile");
+                        //lblprofile.style.display = "block";
+                        //var lbllogin = document.getElementById("lbllogin");
+                        //lbllogin.style.display = "none";
+                        //var lblorderlist = document.getElementById("lblorderlist");
+                        //lblorderlist.style.display = "block";
+                        //var lblsignup = document.getElementById("lblsignup");
+                        //lblsignup.style.display = "none";
+                        //var logout = document.getElementById("logout");
+                        //logout.style.display = "block";
+                    }
+
+                    else {
+                        var Usersection = document.getElementById("Usersection");
+                        Usersection.style.display = "none";
+                        var lblprofile = document.getElementById("loginli");
+                        lblprofile.style.display = "inline-block";
+                        //var lblprofile = document.getElementById("lblprofile");
+                        //lblprofile.style.display = "none";
+                        //var lbllogin = document.getElementById("lbllogin");
+                        //lbllogin.style.display = "block";
+                        //var lblorderlist = document.getElementById("lblorderlist");
+                        //lblorderlist.style.display = "none";
+                        //var lblsignup = document.getElementById("lblsignup");
+                        //lblsignup.style.display = "block";
+                        //var logout = document.getElementById("logout");
+                        //logout.style.display = "none";
+
+                    }
+
+                }
+                ,
+                error: function (data) {
+                    alert("User not Found");
+                }
+            });
+        }
+        function Clearsession() {
+
+            $.ajax({
+                url: "/Login/LogoutSession/",
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+
+                    if (data == 0) {
+                        var Usersection = document.getElementById("Usersection");
+                        Usersection.style.display = "none";
+                        var lblprofile = document.getElementById("loginli");
+                        lblprofile.style.display = "inline-block";
+                        //var lblprofile = document.getElementById("lblprofile");
+                        //lblprofile.style.display = "none";
+                        //var lbllogin = document.getElementById("lbllogin");
+                        //lbllogin.style.display = "block";
+                        //var lblorderlist = document.getElementById("lblorderlist");
+                        //lblorderlist.style.display = "none";
+                        //var lblsignup = document.getElementById("lblsignup");
+                        //lblsignup.style.display = "block";
+                        //var logout = document.getElementById("logout");
+                        //logout.style.display = "none";
+                    }
+                    else {
+
+                    }
+
+                }
+                ,
+                error: function (data) {
+                    ;
+                }
+
+            });
+        }
+        function gotousermaster() {
+
+            $.ajax({
+                url: "/UserDetail/UserDetail/",
+
+                type: "GET",
+                contentType: "application/json",
+                dataType: "json",
+
+
+                success: function (data) {
+
+                    if (data.length > 0) {
+
+                    }
+                    else {
+                        alert("User not Registered");
+                    }
+
+                }
+                ,
+                error: function (data) {
+                    alert("User not Found");
+                }
+            });
+        }
+
+        function Signinmodel() {
+
+            // Get the modal
+            var modal = document.getElementById("SigninModal");
+            var modal1 = document.getElementById("SignupModal");
+            // Get the button that opens the modal
+            var btn = document.getElementById("login");
+            var login = document.getElementById("loginli");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close2")[0];
+
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+            login.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+        function Showsignupform() {
+
+            var modal = document.getElementById("SigninModal");
+            var modal1 = document.getElementById("SignupModal");
+            var span1 = document.getElementById("closesignup");
+
+
+            modal1.style.display = "block";
+            modal.style.display = "none";
+
+            span1.onclick = function () {
+                modal1.style.display = "none";
+            }
+        }
+
+        function Submit() {
+
+            var singUPName = $("#singUPName").val();
+
+            var Signuppassword = $("#Signuppassword").val();
+            var Confirmpassword = $("#Confirmpassword").val();
+            if (singUPName == "" || singUPName == "undefined") {
+                alert("Please enter First Name");
+            }
+
+            else if (Signuppassword == "" || Signuppassword == "undefined") {
+                alert("Please enter Password");
+            }
+            else if (Signuppassword != Confirmpassword) {
+                alert("Password Do not Match");
+            }
+            else {
+
+                var formdata = new FormData();
+
+                formdata.append('Signuppassword', Signuppassword); formdata.append('Confirmpassword', Confirmpassword); formdata.append('singUPName', singUPName);
+
+                $.ajax({
+                    url: "/Login/SaveDetails/",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    //dataType: "json",
+                    data: formdata,
+                    success: function (data) {
+
+                        if (data != 0) {
+                            Clear();
+                            alert("User Saved Successfully");
+                            var modal1 = document.getElementById("SignupModal");
+
+
+
+                            modal1.style.display = "none";
+                            // window.location.href = '/Signup/ConfirmTrawick?Data=' + data;
+                        }
+                        else {
+                            alert("User Not Saved");
+                            var modal1 = document.getElementById("SignupModal");
+
+
+
+                            modal1.style.display = "none";
+                        }
+
+
+
+                    },
+                    error: function (data) {
+                    }
+                });
+            }
+
+        }
+        function Clear() {
+            $("#singUPName").val("");
+            $("#Signuppassword").val("");
+            $("#Confirmpassword").val("");
+
+        }
+        function ClearLoginform() {
+            $("#singInName").val("");
+            $("#password").val("");
+        }
+        function showfollowus() {
+            $("#showfollowup").show();
+
+        }
+        $(function () {
+            $('#showfollowus').mouseover(function () {
+                $('#showfollowup').show();
+
+            });
+        })
+
+        $(function () {
+            $("#buttonsignin").click(function () {
+                var formData = new FormData();
+                formData.append("singInName", $("#singInName").val());
+                formData.append("password", $("#password").val());
+
+                $.ajax({
+                    url: "/Login/ValidateUser",
+                    type: 'POST',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (response) {
+                        if (response != 0) {
+                            ClearLoginform();
+                            var Usersection = document.getElementById("Usersection");
+                            Usersection.style.display = "inline-block";
+                            var lblprofile = document.getElementById("loginli");
+                            lblprofile.style.display = "none";
+                            var modal = document.getElementById("SigninModal");
+                            modal.style.display = "none";
+                            //var lbllogin = document.getElementById("lbllogin");
+                            //lbllogin.style.display = "none";
+                            //var lblorderlist = document.getElementById("lblorderlist");
+                            //lblorderlist.style.display = "block";
+                            //var lblsignup = document.getElementById("lblsignup");
+                            //lblsignup.style.display = "none";
+                            //var logout = document.getElementById("logout");
+                            //logout.style.display = "block";
+                        }
+
+                        else {
+                            ClearLoginform();
+                            var Usersection = document.getElementById("Usersection");
+                            Usersection.style.display = "none";
+                            var lblprofile = document.getElementById("loginli");
+                            lblprofile.style.display = "inline-block";
+                            var modal = document.getElementById("SigninModal");
+                            modal.style.display = "none";
+                            //var lblprofile = document.getElementById("lblprofile");
+                            //lblprofile.style.display = "none";
+                            //var lbllogin = document.getElementById("lbllogin");
+                            //lbllogin.style.display = "block";
+                            //var lblorderlist = document.getElementById("lblorderlist");
+                            //lblorderlist.style.display = "none";
+                            //var lblsignup = document.getElementById("lblsignup");
+                            //lblsignup.style.display = "block";
+                            //var logout = document.getElementById("logout");
+                            //logout.style.display = "none";
+
+                        }
+                    }
+                });
+            });
+        });
+
+        $(function () {
+            $("#btnsignup").click(function () {
+                var singUPName = $("#singUPName").val();
+
+                var Signuppassword = $("#Signuppassword").val();
+                var Confirmpassword = $("#Confirmpassword").val();
+                if (singUPName == "" || singUPName == "undefined") {
+                    alert("Please enter First Name");
+                }
+
+                else if (Signuppassword == "" || Signuppassword == "undefined") {
+                    alert("Please enter Password");
+                }
+                else if (Signuppassword != Confirmpassword) {
+                    alert("Password Do not Match");
+                }
+                else {
+                    var formData = new FormData();
+                    formData.append("singUPName", $("#singUPName").val());
+                    formData.append("Signuppassword", $("#Signuppassword").val());
+
+                    $.ajax({
+                        url: "/Login/SaveDetails/",
+                        type: 'POST',
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        data: formData,
+                        success: function (data) {
+
+                            if (data != 0) {
+                                Clear();
+                                alert("User Saved Successfully");
+                                var modal1 = document.getElementById("SignupModal");
+
+
+
+                                modal1.style.display = "none";
+                                // window.location.href = '/Signup/ConfirmTrawick?Data=' + data;
+                            }
+                            else {
+                                Clear();
+                                alert("User Not Saved");
+                                var modal1 = document.getElementById("SignupModal");
+
+
+
+                                modal1.style.display = "none";
+                            }
+
+
+
+                        },
+                    });
+                }
+            });
+        });
+
+    </script>
+    <style>
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #043055;
+            color: white;
+            cursor: pointer;
+            padding: 9px 19px;
+            border-radius: 4px;
+            overflow: hidden
+        }
+
+            #myBtn:hover {
+                background-color: #555;
+            }
+
+        .modal2 {
+            margin: 25px 50px 25px 30px;
+            position: absolute;
+            display: none;
+            z-index: 9;
+            /* padding-top: 62px; */
+            /*left: 755px;
+        top: 31%;*/
+            left: 417px;
+            top: 32%;
+            width: 35%;
+            height: 84%;
+            overflow: hidden;
+            /* background-color: rgb(0,0,0); */
+            /* background-color: rgba(0,0,0,0.4); */
+        }
+        /* Modal Content */
+        .modal-content2 {
+            position: relative;
+            background-color: #fefefe;
+            background: url('../images/testimonial-bg.jpg');
+            height: 347px;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        /* The Close Button */
+        .close2 {
+            color: black;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close2:hover,
+            .close2:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .modal-header2 {
+            padding: 2px 16px;
+            background-color: #fff;
+            color: white;
+        }
+
+        .modal-body2 {
+            padding: 15px 30px;
+        }
+
+        .modal-footer2 {
+            padding: 0px 16px;
+            background-color: #fff;
+            color: white;
+        }
+
+        .modal3 {
+            margin: 25px 50px 25px 30px;
+            position: absolute;
+            display: none;
+            z-index: 9;
+            /* padding-top: 62px; */
+            /*left: 755px;
+        top: 31%;*/
+            left: 417px;
+            top: 32%;
+            width: 35%;
+            height: 97%;
+            overflow: hidden;
+            /* background-color: rgb(0,0,0); */
+            /*background-color: rgba(0,0,0,0.4);*/
+        }
+        /* Modal Content */
+        .modal-content3 {
+            position: relative;
+            background-color: #fefefe;
+            background: url('../images/testimonial-bg.jpg');
+            height: 408px;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        /* The Close Button */
+        .close3 {
+            color: black;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close3:hover,
+            .close3:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .modal-header3 {
+            padding: 2px 16px;
+            background-color: #fff;
+            color: white;
+        }
+
+        .modal-body3 {
+            padding: 15px 30px;
+        }
+
+        .modal-footer3 {
+            padding: 0px 16px;
+            background-color: #fff;
+            color: white;
+        }
+    </style>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /*/ Create two equal columns that floats next to each other /*/
+        .column {
+            float: left;
+            width: 50%;
+            /*padding: 10px;*/
+            /*height: 300px;*/ /*/ Should be removed. Only for demonstration /*/
+        }
+
+        /*/ Clear floats after the columns /*/
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+
+    <style>
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .input-icons i {
+            position: absolute;
+            top: 39px;
+            right: 20px;
+            font-size: 13px;
+        }
+
+        .input-icons {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            padding: 10px;
+            min-width: 40px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+
+        .sub-menu ul, .rd-navbar-submenu .rd-navbar-dropdown {
+            text-transform: none;
+        }
+
+        form-control, form-wrap, form-group {
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+
+        .input-iconss i {
+            position: relative;
+            top: 27px;
+            right: 13px;
+            font-size: 13px;
+            float:right;
+        }
+
+        .input-iconss {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            padding: 10px;
+            min-width: 40px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /*.input-field {
+                                        text-transform: uppercase;
+                                    }*/
+
+    </style>
+</head>
+<body class="front" data-spy="scroll" data-target="#top1" data-offset="96">
+    <div id="main">
+        <header class="section page-header">
+
+            <!-- RD Navbar-->
+            <div class="rd-navbar-wrap">
+                <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed"
+                     data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static"
+                     data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static"
+                     data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px"
+                     data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+                    <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse">
+                        <span></span>
+                    </div>
+
+                    <div class="rd-navbar-aside-outer rd-navbar-collapse bg-gray-dark" style="padding-left:0px;
+    padding-right: 0px;width:100%">
+                        @*<p style=" line-height: 45px;   color: #fff;font-size: 18px;text-align: center;font-family: 'Open Sans', sans-serif;
+                              font-weight: 600;background-image: linear-gradient(#2172B4, #2A8DDE );
+                                    border-bottom: 1px solid #333;
+                            ">
+                                                        Most of the student plans now cover COVID-19. Please check policy documents.</
+                                                    </p>*@
+                        <p style="line-height: 45px;   color: #fff;font-size: 15px;text-align: center;font-family: 'Open Sans', sans-serif;
+          font-weight: 500;background-image: linear-gradient(#2172B4, #2A8DDE );
+                border-bottom: 1px solid #333;">
+                            <i class="fa fa-info" style="color:#d40000;font-size:20px;font-weight: lighter;" aria-hidden="true"></i> &nbsp; Coronavirus (COVID-19) Coverage.
+                            <a href="/Covid/Covid" style="display: inline-block;line-height: 25px;font-weight: 500;text-decoration:underline;color:#fff" class="">
+                                Learn
+                            </a>
+                        </p>
+
+                    </div>
+
+
+                    <div class="rd-navbar-main-outer">
+                        <div class="rd-navbar-main">
+                            <div class="rd-navbar-panel">
+                                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                                <div class="rd-navbar-brand">
+                                    <a class="brand" href="http://touristinsured.com/">
+                                        <img class="brand-logo-dark" src="~/images/img/touristNewL.png" alt="" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="rd-navbar-main-element">
+                                <div class="rd-navbar-nav-wrap">
+                                    <ul class="rd-navbar-nav" style="">
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="/Login/Login">Home</a>
+                                        </li>
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="#">Travel Medical Products</a>
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/Login/Login">Tourist Worldwide</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/Schengen/Schengen">Tourist to Schengen/Europe</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/TouristToUS/TouristToUS">Tourist to USA</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/BusinessTrip/BusinessTrip">Business Trip to USA</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/MultitripHome/Multitrip">Multi-Trip</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/GlobalHome/Global">Global Tourist</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/GroupTripHome/GroupTrip">Group Travel</a></li>
+
+
+
+                                                @*<li class="rd-dropdown-item"><a class="rd-dropdown-link" href="http://touristtourist.com/Login/Login"> TRAVEL MEDICAL INSURANCE</a></li>
+                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="http://trip.touristtourist.com/">TRIP INSURANCE</a></li>
+                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="http://cruise.touristtourist.com/">CRUISE TRIP INSURANCE</a></li>*@
+                                                @*<li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">SPORTS INSURANCE </a></li>
+                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">CAR RENTAL</a></li>*@
+
+                                                @*<li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">HOME RENTAL INSURANCE</a></li>*@
+
+
+                                            </ul>
+                                        </li>
+
+
+                                        <li class="rd-nav-item">
+                                            <a class="rd-nav-link" href="#">Other Insurance Products</a>
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/InternationalStudentWorldWide/InternationalStudentWorldWide">International Students/Scholars Worldwide</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/InternationalStudentToUsa/InternationalStudentToUsa">International Students/Scholars to USA</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/Immigrant/Immigrant">New Immigrant to USA</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/JVISA/JVISA">J Visa USA</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="http://trip.erpcart.in/">Trip Insurance</a></li>
+                                                @*<li class="rd-dropdown-item"><a class="rd-dropdown-link" href="http://cruise.erpcart.in/">Cruise Trip Insurance</a></li>*@
+
+
+
+
+
+                                            </ul>
+                                        </li>
+
+                                        <li class="rd-nav-item" style="display:none">
+                                            <a class="rd-nav-link" href="#">Other Insurance Products</a>
+                                            <div class="rd-menu rd-navbar-dropdown" style="width:550px">
+                                                <div class="row">
+                                                    <div class="column" style="">
+                                                        <ul style="list-style-type:none;margin-left:-25px">
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/Login/Login">Tourist Worldwide</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/InternationalStudentWorldWide/InternationalStudentWorldWide">International Students/SCHOLARS WORLDWIDE</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/Schengen/Schengen">TOURIST TO SCHENGEN/EUROPE</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/TouristToUS/TouristToUS">TOURIST TO USA</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/InternationalStudentToUsa/InternationalStudentToUsa">INTERNATIONAL STUDENTS/SCHOLARS TO USA</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="column" style="width:275px">
+                                                        <ul style="list-style-type:none; margin-left:-30px">
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/Immigrant/Immigrant"> NEW IMMIGRANT TO USA</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/BusinessTrip/BusinessTrip">BUSINESS TRIP TO USA</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/JVISA/JVISA"> J VISA USA</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/MultitripHome/Multitrip"> MULTI-TRIP</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/GlobalHome/Global">GLOBAL TOURIST</a></li>
+                                                            <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/GroupTripHome/GroupTrip">GROUP TRAVEL</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </li>
+
+                                        <li class="rd-nav-item" style="	text-transform: capitalize;">
+                                            <a class="rd-nav-link" href="#" style="	text-transform: capitalize;">Knowledge Bank</a>
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/deduc/deduc">Understanding Deductibles</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/typesofplans/typesofplans">Types Of Coverage</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/whatToSee/whatToSee">What To See In A Plan</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/HowInsuranceWorks/HowInsuranceWorks">How Insurance Works</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/FAQ/FAQ">Frequently Asked Questions</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/HowtripWorks/HowtripWorks">How Trip Insurance Work</a></li>
+
+
+
+
+
+                                            </ul>
+                                        </li>
+                                        <li class="rd-nav-item" style="	text-transform: capitalize;">
+                                            <a class="rd-nav-link" href="#" style="	text-transform: capitalize;">Assistance</a>
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/PolicyIdCard/PolicyIdCard">Policy Id Card</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/RectifyPolicy/RectifyPolicy">Error Correction</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/RewPolicy/RewPolicy">Renew Policy</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/Cpolicy/Cpolicy">Cancel Policy</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/HosAndDoc/HosAndDoc">Doctors And Hospitals Directory</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/ClaimForm/ClaimForm">Claim Center</a></li>
+                                                @*<li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">CONTACT SUPPORT</a></li>*@
+
+                                            </ul>
+                                        </li>
+                                        <li class="rd-nav-item" style="display:none">
+                                            <a class="rd-nav-link"
+                                               href="/DoctorNow/DoctorNow">24*7 Doctor</a>
+                                            @*<ul class="rd-menu rd-navbar-dropdown">
+                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">Doctor Now</a></li>
+
+            </ul>*@
+                                        </li>
+
+                                        @*<li class="rd-nav-item"><a class="rd-nav-link" href="#best">About Tourist Insured</a></li>
+        <li class="rd-nav-item">
+            <a class="rd-nav-link" data-custom-scroll-to="testimonials"
+               href="#testimonials">Providers</a>
+        </li>*@
+                                        @*<li class="rd-nav-item"><a class="rd-nav-link" href="#">Contact US</a></li>*@
+
+                                        @*<li class="rd-nav-item"><a class="rd-nav-link" id="login" href="#">Log In</a></li>*@
+                                        <li class="rd-nav-item" id="loginli" onclick="Signinmodel()">
+                                            <a class="rd-nav-link" id="login" href="#" onclick="Signinmodel()">Log In</a>
+                                        </li>
+
+                                        @*<li class="rd-nav-item" id="Usersection" >
+            <a class="rd-nav-link" href="#">My Account</a>
+            <ul class="rd-menu rd-navbar-dropdown">
+                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/UserDetail/UserDetail/" id="lblprofile">Profile</a></li>
+                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/OrderDetails/OrderDetails/" id="lblorderlist">Order Details</a></li>
+                <li class="rd-dropdown-item"><a class="rd-dropdown-link" id="logout" onclick="Clearsession()" href="#">Logout</a></li>
+            </ul>
+        </li>*@
+                                        <li class="rd-nav-item" id="Usersection">
+                                            <a class="rd-nav-link" href="#" style="display:none">My Account</a>
+                                            <ul class="rd-menu rd-navbar-dropdown">
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/UserDetail/UserDetail/" id="lblprofile">Profile</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="/OrderDetails/OrderDetails/" id="lblorderlist">Order Details</a></li>
+                                                <li class="rd-dropdown-item"><a class="rd-dropdown-link" id="logout" onclick="Clearsession()" href="#">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        @RenderBody()
+
+        <hr />
+
+        <div class="section pre-footer novi-background bg-cover" id="showfollowup" style="display:none">
+            <div class="container">
+                <span id="closefollowus" style="color: black;float: right;font-size: 28px;font-weight: bold;">X</span>
+                <div style="font-size: 18px;letter-spacing: 0;line-height: 1.5rem;font-weight: 400;color: #fff;padding: 0 0 29px;margin: 0 0 5px;text-align: center;border-bottom: 1px solid white;">Follow Us</div>
+                <div class="row">
+                    <div class="social-footer">
+                        <ul class="social-footer-list">
+                            <li>
+                                <a href="#">
+                                    <span aria-hidden="true" style="color: white;" class="fa fa-facebook-square"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span aria-hidden="true" style="color: white;" class="fa fa-twitter-square"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span aria-hidden="true" style="color: white;" class="fa fa-pinterest-p"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span aria-hidden="true" style="color: white;" class="fa fa-google-plus-official"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span aria-hidden="true" style="color: white;" class="fa fa-youtube-play"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span aria-hidden="true" style="color: white;" class="fa fa-skype"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    @*<div class="col-sm-6 col-md-6">
+                            <div class="footer-title">
+                                <span>About us</span>
+                            </div>
+                            <div class="news-minimal">
+                                <p class="news-minimal-text" style="color: white">The 2019 RDX Will Be the Sportiest Lexus Crossover Ever Built</p>
+                                <p class="news-minimal-text" style="color: white">The 2019 RDX Will Be the Sportiest Lexus Crossover Ever Built</p>
+                                <p class="news-minimal-text" style="color: white">The 2019 RDX Will Be the Sportiest Lexus Crossover Ever Built</p>
+                                <p class="news-minimal-text" style="color: white">The 2019 RDX Will Be the Sportiest Lexus Crossover Ever Built</p>
+                                <p class="news-minimal-text" style="color: white">The 2019 RDX Will Be the Sportiest Lexus Crossover Ever Built</p>
+                                <p class="news-minimal-text" style="color: white">The 2019 RDX Will Be the Sportiest Lexus Crossover Ever Built</p>
+
+                                <div class="news-minimal-link">
+                                    <a href="#" style="font-size: 12px;">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                            <div class="footer-title">
+                                <span>Quick link</span>
+                            </div>
+                            <div>
+                                <p><a href="#" style="color: white">Home</a></p>
+                            </div>
+                            <div>
+                                <p><a href="#" style="color: white">About us</a></p>
+                            </div>
+                            <div>
+                                <p><a href="#" style="color: white">Services</a></p>
+                            </div>
+                            <div>
+                                <p><a href="#" style="color: white">Contact us </a></p>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-3">
+                            <div class="footer-title">
+                                <span>CONTACT US</span>
+                            </div>
+                            <address>
+                                <span aria-hidden="true" class="fa fa-map-marker novi-icon"></span>
+                                <a href="#" style="color: white">202 W 7th St, Suite 233 Los Angeles, California 90014 USA </a>
+                            </address>
+                            <div class="footer-info">
+                                <div class="info-phone">
+                                    <span aria-hidden="true" class="fa fa-phone novi-icon"></span>
+                                    <a href="tel:#" style="color: white">Phone: 1-800- 624-5462</a>
+                                </div>
+                                <div class="info-fax">
+                                    <span aria-hidden="true" class="fa fa-fax novi-icon"></span>
+
+                                    <a href="tel:#" style="color: white">FAX: 1-800- 624-5462</a>
+                                </div>
+                                <div class="info-email">
+                                    <span aria-hidden="true" class="fa fa-envelope novi-icon"></span>
+
+                                    <a href="mailto:#" tabindex="-1" style="color: white">Email: info@demolink.org</a>
+                                </div>
+                            </div>
+                        </div>*@
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <footer class="section novi-background bg-cover" style=" background-image: linear-gradient(#2172B4, #2A8DDE );">
+
+            <div class="container">
+                <div class="row" style="  text-align:center   ">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2" style="">
+                        <h4><a href="/ourstory/ourstory" style="color: white;text-decoration: none;">Our Story</a></h4>
+                    </div>
+                    <div class="col-md-2" style="text-align:center">
+                        <h4><a href="/OurPartners/OurPartners" style="color: white;text-decoration: none;">Our Partners</a></h4>
+                    </div>
+
+                    <div class="col-md-2" style="text-align:center">
+                        <h4><a href="/Carrer/Carrer" style="color: white;text-decoration: none;">Careers</a></h4>
+                    </div>
+                    <div class="col-md-2" style="text-align:center">
+                        <h4 style=""><a href="/GrowWithUs/GrowWithUs" style="color: white;text-decoration: none;">Grow With Us</a></h4>
+                    </div>
+                    <div class="col-md-2" style="text-align:center">
+                        <h4 style=""><a href="/Contact/Contact" style="color: white;text-decoration: none;">Contact Us</a></h4>
+                    </div>
+
+                </div>
+                <div class="row-flex">
+
+                    <div class="right-block" style="margin-bottom:0PX;">
+                        <div class="social-footer">
+                            <ul class="social-footer-list">
+                                <li>
+                                    <a href="#">
+                                        <img src="~/images/img/fb1.png" style="height:40px;width:40px" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/images/img/insta1.png" style="height:40px;width:40px" />
+                                    </a>
+                                </li>
+                                @*<li>
+                                        <a href="#">
+                                            <span aria-hidden="true" class="fa fa-pinterest-p"></span>
+                                        </a>
+                                    </li>*@
+                                <li>
+                                    <a href="#">
+                                        <img src="~/images/img/tweet1.png" style="height:40px;width:40px" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="~/images/img/link1.png" style="height:40px;width:40px" />
+                                    </a>
+                                </li>
+                                @*<li>
+                                        <a href="#">
+                                            <span aria-hidden="true" class="fa fa-skype"></span>
+                                        </a>
+                                    </li>*@
+                            </ul>
+                        </div>
+                        <div class="footer-menu">
+                            <ul class="footer-menu-list">
+                                <li>
+                                    <a href="/TermsOfService/TermsOfService">Terms  of Service</a>
+                                </li>
+                                <li>
+                                    <a href="#">|</a>
+                                </li>
+                                <li>
+                                    <a href="/privacypolicy/privacypolicy">Privacy Policy</a>
+                                </li>
+                                @*<li>
+                                    <a href="#">|</a>
+                                </li>*@
+                                @*<li>
+                                        <a href="/licence/licence">License</a>
+                                    </li>*@
+                                @*<li>
+                                        <a href="#">|</a>
+                                    </li>*@
+                                @*<li>
+                                        <a href="#">Trust</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">|</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Security</a>
+                                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="left-block">
+                        <div class="footer-logo">
+                            @*<a href="/Login/Login" class="logo2">
+                                    <img src="~/images/logotravel1.png" alt="" class="img-responsive">
+                                </a>*@
+                        </div>
+                        <div style="">
+                            <span>Copyright © 2020 Tourist Insured Services LLC ®. All Rights Reserved.</span><br /><span>License #LA-1588326, LB-1588326</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </footer>
+        <a onclick="topFunction()" href="#" id="myBtn" title="Go to top"><span><i class="fa fa-angle-up"></i></span></a>
+    </div>
+    <div id="SigninModal" class="modal2">
+
+        <!-- Modal content -->
+        <div class="modal-content2">
+            <div class="modal-header2">
+                <span class="close2">&times;</span>
+                <h2></h2>
+            </div>
+            <div class="modal-body2">
+                <h4 class="modal-title" style="text-align:center"> Log In</h4>
+                <form style="padding-top: 20px;margin-top: 20px;">
+
+
+                    <div class="row row-fix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-wrap">
+                                <label for="singInName">
+                                    Email ID
+                                </label><input type="text" class="form-control" id="singInName" name="name">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-wrap">
+                                <label for="password">Password</label><input type="password" class="form-control" id="password"
+                                                                             name="pas">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="buttonsignin" type="button" class="btn-default btn-form2-submit" value="Submit">Submit</button>
+
+                    <span style="text-align:left"><a href="#">Forgot Password</a></span> @*<span style="text-align:right;float:right"><a onclick="Showsignupform()" href="#">Sign Up</a></span>*@
+                </form>
+            </div>
+            <div class="modal-footer2">
+                <h3></h3>
+            </div>
+        </div>
+
+    </div>
+    <div id="SignupModal" class="modal3">
+
+        <!-- Modal content -->
+        <div class="modal-content3">
+            <div class="modal-header3">
+                <span id="closesignup" class="close3">&times;</span>
+                <h2></h2>
+            </div>
+            <div class="modal-body3">
+                <h4 class="modal-title" style="text-align:center">Sign Up</h4>
+                <form style="padding-top: 20px;margin-top: 20px;">
+
+
+                    <div class="row row-fix">
+                        <div class="col-sm-12">
+                            <div class="form-group form-wrap">
+                                <label for="singUPName">
+                                    Email ID
+                                </label><input type="text" class="form-control" id="singUPName" name="name">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-wrap">
+                                <label for="password">Password</label><input type="password" class="form-control" id="Signuppassword"
+                                                                             name="pas">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group form-wrap">
+                                <label for="password">Confirm Password</label><input type="password" class="form-control" id="Confirmpassword"
+                                                                                     name="pas">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="btnsignup" type="button" class="btn-default btn-form2-submit">Submit</button>
+
+
+                </form>
+            </div>
+            <div class="modal-footer3">
+                <h3></h3>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade popup-form" id="SignIn" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"> Log In</h4>
+                    <form class="rd-mailform" data-form-output="form-output-global" data-form-type="forms" method="post"
+                          action="bat/rd-mailform.php">
+                        <div class="row row-fix">
+                            <div class="col-sm-12">
+                                <div class="form-group form-wrap">
+                                    <label for="singInName1">
+                                        Email ID
+                                    </label><input type="text" class="form-control" id="singInName1" name="name">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-wrap">
+                                    <label for="password1">Password</label><input type="password" class="form-control" id="password1"
+                                                                                  name="pas">
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="Authenticate()" class="btn-default btn-form2-submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade popup-form" id="register" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"> SIGN UP</h4>
+                    <form class="rd-mailform" data-form-output="form-output-global" data-form-type="forms" method="post"
+                          action="bat/rd-mailform.php">
+                        <div class="row row-fix">
+                            <div class="col-sm-12">
+                                <div class="form-group form-wrap">
+                                    <label for="regName">
+                                        Your
+                                        Name
+                                    </label><input type="text" class="form-control" id="regName" name="name">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-wrap">
+                                    <label for="regEmail">Email</label><input type="text" class="form-control" id="regEmail" name="email">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group form-wrap">
+                                    <label for="passwordReg">Password</label><input type="password" class="form-control" id="passwordReg"
+                                                                                    name="pas">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-default btn-form2-submit">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Disable cut copy paste
+            $('body').bind('cut copy paste', function (e) {
+                e.preventDefault();
+                alert("The copy and cut function is disabled.");
+            });
+
+            //Disable mouse right click
+            //$("body").on("contextmenu", function (e) {
+            //    return false;
+            //});
+        });
+    </script>
+    <script>
+        $(function () {
+            debugger
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+    @*<script>
+            $(function () {
+                $('[data-toggle="popover"]').popover()
+            })
+        </script>*@
+</body>
+</html>

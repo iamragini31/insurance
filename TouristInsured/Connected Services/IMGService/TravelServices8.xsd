@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto.Rules" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto.Rules" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Img.Rules" />
+  <xs:complexType name="ArrayOfRuleEvaluationResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleEvaluationResponseDto" nillable="true" type="tns:RuleEvaluationResponseDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuleEvaluationResponseDto" nillable="true" type="tns:ArrayOfRuleEvaluationResponseDto" />
+  <xs:complexType name="RuleEvaluationResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalContext" nillable="true" type="tns:ArrayOfRuleElementDto" />
+      <xs:element minOccurs="0" name="BrokenRules" nillable="true" type="tns:ArrayOfRuleDto" />
+      <xs:element minOccurs="0" name="Context" nillable="true" type="tns:ArrayOfRuleElementDto" />
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Img.Rules" minOccurs="0" name="Response" type="q1:RuleResponses" />
+      <xs:element minOccurs="0" name="RuleSet" type="xs:int" />
+      <xs:element minOccurs="0" name="RuleSetDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RuleEvaluationResponseDto" nillable="true" type="tns:RuleEvaluationResponseDto" />
+  <xs:complexType name="ArrayOfRuleElementDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleElementDto" nillable="true" type="tns:RuleElementDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuleElementDto" nillable="true" type="tns:ArrayOfRuleElementDto" />
+  <xs:complexType name="RuleElementDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RuleId" type="xs:int" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RuleElementDto" nillable="true" type="tns:RuleElementDto" />
+  <xs:complexType name="ArrayOfRuleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuleDto" nillable="true" type="tns:RuleDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuleDto" nillable="true" type="tns:ArrayOfRuleDto" />
+  <xs:complexType name="RuleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RuleSet" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RuleDto" nillable="true" type="tns:RuleDto" />
+</xs:schema>

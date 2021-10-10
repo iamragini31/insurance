@@ -1,0 +1,631 @@
+﻿@model TouristInsuredEntity.LoginModel
+
+@{
+    ViewBag.Title = "Multitrip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+
+@*<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">*@
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+    var jq = $.noConflict(true);
+    $(document).ready(function () {
+
+        $("#CountryName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/MultitripHome/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#hdnisocode").val(i.item.val);
+            },
+        });
+
+
+        $("#txttouristountry").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/MultitripHome/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#hdnTouristIsocode").val(i.item.val);
+            },
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('input[type=datetime]').datepicker({
+            dateFormat: "dd-MM-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+0"
+        });
+        $("#txtCoverageStartDate").datepicker({ dateFormat: 'mm/dd/yy' }).val();
+        $('#txtCoverageEndDate').datepicker({ dateFormat: 'mm/dd/yy' }).val();
+        //$('#txttravellerage').datepicker({ dateFormat: 'mm/dd/yy' }).val();
+        $('#btngetquotes').click(function () {
+
+        });
+    });
+</script>
+
+<style type="text/css">
+    .modal1 {
+        /*margin: 25px 50px 25px 30px;*/
+        margin: -34px 47px 25px 30px;
+        position: absolute;
+        display: none;
+        z-index: 9;
+        /* padding-top: 62px; */
+        /*left: 755px;
+        top: 31%;*/
+        /*left: 783px;*/
+        left: 747px;
+        /*top: 22%;*/
+        /*top: 33%;*/
+        /*top: 25%;*/
+        top: 58%;
+        /*width: 35%;*/
+        width: 24EM;
+        height: 77%;
+        overflow: hidden;
+        /* background-color: rgb(0,0,0); */
+        /* background-color: rgba(0,0,0,0.4); */
+    }
+
+    .modal-content1 {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /*webkit-keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+    }*/
+
+
+    .close1 {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close1:hover,
+        .close1:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .modal-header1 {
+        /*padding: 2px 16px;*/
+        /*padding: 5px 16px 2px;*/
+        padding: 16px 6px 2px;
+        background-color: white;
+        color: black;
+        height: 35px;
+        margin-top: -8px
+    }
+
+    .modal-body1 {
+        /*padding: 2px 16px;*/
+        padding: 0px 0px;
+        margin-top: 21px;
+    }
+
+    .modal-footer1 {
+        /*padding: 2px 16px;*/
+        padding: 0px 16px;
+        background-color: #fff;
+        color: white;
+        height: 1px;
+    }
+</style>
+
+<script>
+    // Get the modal
+    function Popup() {
+
+
+        var modal = document.getElementById("myModal1");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("txtname");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close1")[0];
+
+        // When the user clicks the button, open the modal
+        modal.style.display = "block";
+        var date1 = new Date($("#txtCoverageStartDate").val());
+        var date2 = new Date($("#txtCoverageEndDate").val());
+
+        // To calculate the time difference of two dates
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        var total = Difference_In_Days + 1;
+        $("#lblnoofdays").text(total);
+        //btn.onclick = function()  {
+        //
+
+        //}
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+    function GetTravelerdetails() {
+        if ($("#txttravellerage").val() == "" && $("#txttravellerageinyear").val() == "") {
+            alert("Travelers Age or Travelers D.O.B is Required");
+        }
+
+        else {
+            //var Travelerdetail = document.getElementById("txtTravelerdetail").value;
+            //if (Travelerdetail == 1) {
+            //    document.getElementById("txttravelerdetails").value = Travelerdetail + " Traveler";
+            //}
+            //else {
+            //    document.getElementById("txttravelerdetails").value = Travelerdetail + " Travelers";
+            //}
+
+            var modal = document.getElementById("myModal1");
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+<style>
+    .center {
+        /*width: 150px;*/
+        width: 118px;
+        /*margin: 20px 5px 25px 5px;*/
+        margin: 5px 5px 12px 5px;
+    }
+
+    input-group-btn .btn-default .btn-number:hover {
+        border: 1px solid #0770e3;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        $(".btn-number").click(function (e) {
+
+            e.preventDefault();
+            fieldName = $(this).attr('data-field');
+            type = $(this).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+        });
+
+
+
+
+        $('.input-number').focusin(function () {
+            $(this).data('oldValue', $(this).val());
+        });
+        $('.input-number').change(function () {
+
+            minValue = parseInt($(this).attr('min'));
+            maxValue = parseInt($(this).attr('max'));
+            valueCurrent = parseInt($(this).val());
+
+            name = $(this).attr('name');
+            if (valueCurrent >= minValue) {
+                $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+            if (valueCurrent <= maxValue) {
+                $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+
+
+        });
+        $(".input-number").keydown(function (e) {
+
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+@*<link href="Radiobtn.css" rel="stylesheet" />*@
+@using (Html.BeginForm("Multitrip", "MultitripHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <section id="home" class="section swiper-container swiper-slider swiper-slider-1" data-loop="true"
+             data-autoplay="false" data-simulate-touch="false" data-slide-effect="fade">
+        <div class="swiper-wrapper text-center">
+
+            <div class="swiper-slide context-dark" data-slide-bg="../images/MY_Images/multitriphome1.jpg" style="background-position: 50% 50%;">
+                <div class="swiper-slide-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="swiper-slide context-dark" data-slide-bg="../images/img/Sliderimages/image2.jpeg" style="background-position: 60% 50%;">
+
+
+                    <div class="swiper-slide-caption">
+                        <div class="container">
+                            <div class="row">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="swiper-slide context-dark" data-slide-bg="../images/img/Sliderimages/image4.jpeg" style="background-position: 50% 50%;">
+                    <div class="swiper-slide-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide context-dark" data-slide-bg="../images/img/Sliderimages/image01.jpeg" style="background-position: 50% 50%;">
+                    <div class="swiper-slide-caption">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+
+
+        <!--Start Search Panel-->
+
+        <div class="slider-form" style=" right: calc(56% - 326px);width: 465px;">
+            <div class="sidebar-form-wrapper">
+                <div class="sidebar-form">
+                    <form action="javascript:;" class="form2">
+                        <div class="row" style=" ">
+
+
+
+
+                            <div class="col-md-6" style="text-align:center">
+                                <label for="txtCoverageStartDate" class="form-label" style="color: white;margin: 0px 30px 5px;">LEAVING HOME</label>
+                                <div class="form-wrap  form-group input-icons">
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+
+                                    @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageStartDate" style="width: 160.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                    @Html.TextBoxFor(model => model.LeavingHome, new { @type = "dateTime", @id = "txtCoverageStartDate", @name = "CoverageStartDate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control input-field", @required = "required" })
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" style="text-align:center">
+                                <label for="txtCoverageEndDate" class="form-label" style="color: white;margin: 0px 29px 5px;">RETURNING HOME</label>
+                                <div class="form-wrap form-group input-icons">
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+
+                                    @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageEndDate" style="width:161.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                    @Html.TextBoxFor(model => model.TillDate, new { @type = "dateTime", @id = "txtCoverageEndDate", name = "coverageEnddate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control input-field", @required = "required" })
+                                </div>
+
+                            </div>
+                            <div class="col-md-3" style="width: 20.2%;display:none">
+                                <label for="txttravelerdetails" class="form-label" style="color:white;margin:  0px 32px 5px;">TOURISTS AGES</label>
+                                <div class="form-wrap form-group">
+                                    @*<input name="txtname" type="text" ng-model="txtname" class="form-input form-control-has-validation form-control-last-child" placeholder="Name" style="width:250.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" value="1 Adult,Economy" onclick="Popup()" />*@
+                                    @Html.TextBoxFor(model => model.name, new { id = "txttravelerdetails", name = "travelerdetails", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "", @class = "form-control", onclick = "Popup()" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-top: 1%;">
+                            <div class="col-md-4">
+                            </div>
+
+                            <div class="col-md-4" style="">
+                                @*<a href="/Quotation/Quotation" class="btn-default btn-form2-submit">Get Quotes</a>*@
+                                <input type="submit" style="width: 100%;border-style:inset" class="btn-default btn-form2-submit" value="EXPLORE" />
+                                @*<button class="btn-default btn-form2-submit" id="btnGetQuotes" ng-click="GetQuotes()">Get Quotes</button>*@
+                            </div>
+                        </div>
+
+                        @*<%--<div class="reset-filters"><a href="#">RESET ALL FILTERS</a></div>--%>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModal1" class="modal1">
+
+            <!-- Modal content -->
+            <div class="modal-content1">
+                <div class="modal-header1">
+                    <span class="close1">&times;</span>
+                    @*<p><span style="font-size: 14px;"><b>No of Days :&nbsp;<label id="lblnoofdays"></label></b></span></p>*@
+                    <p style="font-size: 11px;"><span style="color:red;">* </span> Please enter the age of oldest tourist as primary for best result.</p>
+                </div>
+                <div class="modal-body1">
+
+                    <div class="center" style="width: 288px;color: #555555;">
+                        <p style="    margin: 0px;">
+                            <span><b>PRIMARY</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>SPOUSE</b></span>
+                        </p>
+
+
+                        @Html.TextBoxFor(model => model.travelersage, new { @type = "text", @id = "txttravellerageinyear", name = "travelerdetails", style = "padding: .375rem 0;width: 61.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "AGE" })
+
+                        <span>
+                            &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                            @Html.TextBoxFor(model => model.spouseage, new { @type = "text", @id = "txtspouseage", name = "travelerdetails", style = "padding: .375rem 0;width: 61.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "AGE" })
+
+                            @*@Html.TextBoxFor(model => model.TravelersDOB, new { @type = "datetime", @id = "txttravellerage", name = "travelerdetails", style = "padding: .375rem 0;width: 130.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "" })*@
+                        </span>
+
+                        <p>
+                        </p>
+
+                    </div>
+
+
+
+
+                    <div class="center" style="width: 288px;">
+                        <p style="    margin: 0px;color: #555555;">
+                            <span><b>CHILD 1</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 2</b></span>
+                        </p>
+
+                        @Html.TextBoxFor(model => model.child1age, new { @type = "text", @id = "txtchild1age", name = "travelerdetails", style = "padding: .375rem 0;width: 61.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "AGE" })
+
+                        <span>
+                            &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                            @Html.TextBoxFor(model => model.child2age, new { @type = "text", @id = "txtchild2age", name = "travelerdetails", style = "padding: .375rem 0;width: 61.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "AGE" })
+                        </span>
+
+                        @*<span>
+                                &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                                @Html.TextBoxFor(model => model.SpouseDOB, new { @type = "datetime", @id = "txtspousedob", name = "travelerdetails", style = "padding: .375rem 0;width: 130.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "" })
+                            </span>*@
+                        <p></p>
+
+                    </div>
+
+
+
+                    <div class="center" style="    width: 299px;color: #555555;">
+                        <p style="    margin: 0px;">
+                            <span><b>CHILD 3</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 4</b></span>
+                        </p>
+                        @Html.TextBoxFor(model => model.child1age, new { @type = "text", @id = "txtChild3age", name = "travelerdetails", style = "padding: .375rem 0;width: 61.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "AGE" })
+
+                        <span>
+                            &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                            @Html.TextBoxFor(model => model.child2age, new { @type = "text", @id = "txtchild4age", name = "travelerdetails", style = "padding: .375rem 0;width: 61.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "AGE" })
+                        </span>
+
+
+
+                        <span>
+                            &nbsp;&nbsp;   &nbsp;&nbsp; <button onclick="GetTravelerdetails()" value="Save" type="submit" style="box-sizing: border-box;border-radius: 0px;border: 1px solid #0770e3;padding-top: 1px;width: 62px;height: 43px;color: #fff;background: #07457a;font-weight: 700;font-family: 'Open Sans';font-size: 14px;line-height: 42px;" id="btnsave" class="btn btn-default btn-number">OK</button>
+                        </span>
+
+                        <p></p>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer1">
+
+                </div>
+            </div>
+
+        </div>
+
+        <!--End Search Panel-->
+        <!-- Swiper Pagination -->
+        @*<div class="swiper-pagination"></div>*@
+        <!-- Swiper Navigation-->
+        @*<div class="swiper-button-prev fa-arrow-left"></div>
+            <div class="swiper-button-next fa-arrow-right"></div>*@
+
+    </section>
+}
+@using (Html.BeginForm("mobMultitrip", "MultitripHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <section class="form-section">
+        <div class="container">
+            <div class="slider-form">
+                <div class="sidebar-form-wrapper">
+                    <div class="sidebar-form">
+                        <form action="javascript:;" class="form2">
+
+                            <div class="row" style=" ">
+
+
+
+
+                                <div class="col-md-6" style="text-align:center">
+                                    <label for="txtCoverageStartDate" class="form-label" style="color: white;margin: 0px 30px 5px;">LEAVING HOME</label>
+                                    <div class="form-wrap  form-group input-icons">
+                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+
+                                        @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageStartDate" style="width: 160.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                        @Html.TextBoxFor(model => model.LeavingHome, new { @type = "dateTime", @id = "mobtxtCoverageStartDate", @name = "CoverageStartDate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control input-field", @required = "required" })
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6" style="text-align:center">
+                                    <label for="txtCoverageEndDate" class="form-label" style="color: white;margin: 0px 29px 5px;">RETURNING HOME</label>
+                                    <div class="form-wrap form-group input-icons">
+                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+
+                                        @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageEndDate" style="width:161.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                        @Html.TextBoxFor(model => model.TillDate, new { @type = "dateTime", @id = "mobtxtCoverageEndDate", name = "coverageEnddate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control input-field", @required = "required" })
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3" style="width: 20.2%;display:none">
+                                    <label for="txttravelerdetails" class="form-label" style="color:white;margin:  0px 32px 5px;">TOURISTS AGES</label>
+                                    <div class="form-wrap form-group">
+                                        @*<input name="txtname" type="text" ng-model="txtname" class="form-input form-control-has-validation form-control-last-child" placeholder="Name" style="width:250.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" value="1 Adult,Economy" onclick="Popup()" />*@
+                                        @Html.TextBoxFor(model => model.name, new { id = "txttravelerdetails", name = "travelerdetails", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "", @class = "form-control", onclick = "Popup()" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top: 1%;">
+                                <div class="col-md-4">
+                                </div>
+
+                                <div class="col-md-4" style="">
+                                    @*<a href="/Quotation/Quotation" class="btn-default btn-form2-submit">Get Quotes</a>*@
+                                    <input type="submit" style="width: 100%;border-style:inset" class="btn-default btn-form2-submit" value="EXPLORE" />
+                                    @*<button class="btn-default btn-form2-submit" id="btnGetQuotes" ng-click="GetQuotes()">Get Quotes</button>*@
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <br />
+    <BR />
+    <div class="section section-md novi-background bg-cover" style="    padding: 0 0;">
+        <div class="container">
+            <div class="section-title" style="color:#043055;font-size: 40px;    line-height: 1;letter-spacing: 0px;">MULTI-TRIP</div>
+            @*<h2 class="text-accent" style="color:#07457a">MULTI-TRIP</h2>*@
+            <p class="text-block-center" style="color:black;text-align:justify">
+                Multi-trip medical insurance is for people who travel very frequently outside their home country.
+                The coverage is for 1 year. It has multiple coverages, covering up to 30-45 days in length.<br />
+                We know that this multi-tripcan bring lots of concerns to you and your family regarding your well-being
+                so we make sure that you and your loved ones don’t have any such concerns, by providing everyone the best travel medical insurance for any small or big emergency, god forbid if any. Our plans are designed to meet all the multi-trip travel medical insurance requirements.<br />
+                Pack your bags and let us unpack your worries!<br />
+                Explore, Buy, and have a great experience<br />
+                <br />
+
+            </p>
+        </div>
+    </div>
+
+
+
+
+}
+

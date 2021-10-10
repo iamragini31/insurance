@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto.Rules" />
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Product.Dto" />
+  <xs:complexType name="ChargeDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CardAuthCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardResponseMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardResult" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsThirdPartyTransaction" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Pnref" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChargeDto" nillable="true" type="tns:ChargeDto" />
+  <xs:complexType name="PaymentAccountDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountVerificationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardExpireDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreditCardIssueDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreditCardIssueNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EcheckAccountType" nillable="true" type="tns:EcheckAccountTypes" />
+      <xs:element minOccurs="0" name="EcheckRoutingNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameOnAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentAccountType" nillable="true" type="tns:PaymentAccountTypes" />
+      <xs:element minOccurs="0" name="RequestedTotal" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentAccountDto" nillable="true" type="tns:PaymentAccountDto" />
+  <xs:simpleType name="EcheckAccountTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ConsumerCheckingAccount" />
+      <xs:enumeration value="ConsumerSavingsAccount" />
+      <xs:enumeration value="CommercialCheckingAccount" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EcheckAccountTypes" nillable="true" type="tns:EcheckAccountTypes" />
+  <xs:simpleType name="PaymentAccountTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Echeck" />
+      <xs:enumeration value="Visa" />
+      <xs:enumeration value="MasterCard" />
+      <xs:enumeration value="AmericanExpress" />
+      <xs:enumeration value="Discover" />
+      <xs:enumeration value="Jcb" />
+      <xs:enumeration value="Maestro" />
+      <xs:enumeration value="Switch" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PaymentAccountTypes" nillable="true" type="tns:PaymentAccountTypes" />
+  <xs:complexType name="ArrayOfBeneficiaryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BeneficiaryDto" nillable="true" type="tns:BeneficiaryDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBeneficiaryDto" nillable="true" type="tns:ArrayOfBeneficiaryDto" />
+  <xs:complexType name="BeneficiaryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeneficiaryType" nillable="true" type="tns:BeneficiaryTypes" />
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Percentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Relationship" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BeneficiaryDto" nillable="true" type="tns:BeneficiaryDto" />
+  <xs:simpleType name="BeneficiaryTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Primary" />
+      <xs:enumeration value="Contingent" />
+      <xs:enumeration value="Charity" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BeneficiaryTypes" nillable="true" type="tns:BeneficiaryTypes" />
+  <xs:complexType name="ArrayOfContactInformationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactInformationDto" nillable="true" type="tns:ContactInformationDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContactInformationDto" nillable="true" type="tns:ArrayOfContactInformationDto" />
+  <xs:complexType name="ContactInformationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttentionTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CareOf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactInformationType" type="tns:ContactInformationTypes" />
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileOther" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubRegion" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactInformationDto" nillable="true" type="tns:ContactInformationDto" />
+  <xs:simpleType name="ContactInformationTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Mailing" />
+      <xs:enumeration value="Billing" />
+      <xs:enumeration value="Business" />
+      <xs:enumeration value="Renewal" />
+      <xs:enumeration value="Residence" />
+      <xs:enumeration value="TaxLocation" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ContactInformationTypes" nillable="true" type="tns:ContactInformationTypes" />
+  <xs:complexType name="ArrayOfEligibilityResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EligibilityResponseDto" nillable="true" type="tns:EligibilityResponseDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEligibilityResponseDto" nillable="true" type="tns:ArrayOfEligibilityResponseDto" />
+  <xs:complexType name="EligibilityResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EligibilityQuestion" type="tns:EligibilityQuestions" />
+      <xs:element minOccurs="0" name="Response" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EligibilityResponseDto" nillable="true" type="tns:EligibilityResponseDto" />
+  <xs:simpleType name="EligibilityQuestions">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ResidesInDestination">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ResidesInUnitedStatesOverSixMonths">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ResidesInUnitedStatesOverOneMonth">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ReplacingInsurance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HaveCurrentHealthPlan">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EuropeToEuropeTravel">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BornInPrimaryDestination">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ResidedContinuouslyOutsideDestination">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="J2VisaHolder">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="J1VisaHolderHaveCurrentPlan">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="EligibilityQuestions" nillable="true" type="tns:EligibilityQuestions" />
+  <xs:complexType name="SignatureDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationshipToApplicant" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SignatureDto" nillable="true" type="tns:SignatureDto" />
+  <xs:complexType name="TaxLocationInfoDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxLocation" nillable="true" type="tns:TaxLocations" />
+      <xs:element minOccurs="0" name="TaxLocationQuestionAsked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TaxLocationQuestionResponse" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxLocationInfoDto" nillable="true" type="tns:TaxLocationInfoDto" />
+  <xs:simpleType name="TaxLocations">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bahamas" />
+      <xs:enumeration value="WashingtonDc" />
+      <xs:enumeration value="Florida" />
+      <xs:enumeration value="Indiana" />
+      <xs:enumeration value="NotApplicable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TaxLocations" nillable="true" type="tns:TaxLocations" />
+  <xs:complexType name="PurchaseCertificateResponseDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CertificateNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsTest" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto.Rules" minOccurs="0" name="RuleEvaluationResponses" nillable="true" type="q1:ArrayOfRuleEvaluationResponseDto" />
+      <xs:element minOccurs="0" name="Warnings" nillable="true" type="tns:ArrayOfPurchaseCertificateWarningDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PurchaseCertificateResponseDto" nillable="true" type="tns:PurchaseCertificateResponseDto" />
+  <xs:complexType name="ArrayOfPurchaseCertificateWarningDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PurchaseCertificateWarningDto" nillable="true" type="tns:PurchaseCertificateWarningDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPurchaseCertificateWarningDto" nillable="true" type="tns:ArrayOfPurchaseCertificateWarningDto" />
+  <xs:complexType name="PurchaseCertificateWarningDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Warning" type="tns:PurchaseCertificateWarnings" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PurchaseCertificateWarningDto" nillable="true" type="tns:PurchaseCertificateWarningDto" />
+  <xs:simpleType name="PurchaseCertificateWarnings">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TripLiteTransactionFailed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FulfillmentFailed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PurchaseCertificateWarnings" nillable="true" type="tns:PurchaseCertificateWarnings" />
+  <xs:complexType name="QuoteCertificateResponseDto">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Product.Dto" minOccurs="0" name="Quote" nillable="true" type="q2:ProductQuoteDto" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Certificate.Dto.Rules" minOccurs="0" name="RuleEvaluationResponses" nillable="true" type="q3:ArrayOfRuleEvaluationResponseDto" />
+      <xs:element minOccurs="0" name="Warnings" nillable="true" type="tns:ArrayOfPurchaseCertificateWarningDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QuoteCertificateResponseDto" nillable="true" type="tns:QuoteCertificateResponseDto" />
+  <xs:simpleType name="PaymentFrequencyTypes">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Annual" />
+      <xs:enumeration value="Event" />
+      <xs:enumeration value="Monthly" />
+      <xs:enumeration value="Quarterly" />
+      <xs:enumeration value="SemiAnnual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PaymentFrequencyTypes" nillable="true" type="tns:PaymentFrequencyTypes" />
+</xs:schema>

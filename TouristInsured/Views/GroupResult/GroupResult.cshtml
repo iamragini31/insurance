@@ -1,0 +1,984 @@
+﻿@model TouristInsuredEntity.GroupResultModel
+
+@{
+                /**/
+
+                ViewBag.Title = "GroupResult";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .carrier:link {
+        text-decoration: none;
+    }
+
+    .carrier:hover {
+        color: red;
+    }
+    span{
+        font-size:14PX;
+    }
+</style>
+<div>
+
+    <div class="breadcrumbs1_wrapper novi-background">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="/Login/Login">Home</a><span></span>Result For Groups</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="width:100% ;margin-bottom: 28px;position: relative;">
+
+            <img src="~/images/img/grp.jpg" style="width: 100%;" />
+            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;display:none;text-align: center;margin-top:1%;position: absolute;z-index: 3;top: 42%;left: 42%;font-size: 34px;width: 20%;height: 15%;">
+                <h3 style="FONT-SIZE: 40px;font-weight: bolder;font-family:Open Sans;">
+                    RESULTS
+                </h3>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="section-md-bottom content novi-background bg-cover" style="">
+        <div class="container" style="">
+            <div id="loader" style="display:none;"></div>
+            @*<div class="row row-fix">
+                <div class="col-sm-12 col-md-9  column-content">*@
+            @*<div id="first-tab-group" class="tabgroup">
+                <div id="tabs2-2">*@
+            <div class="row" id="tabContainerId" style="">
+
+
+                <div class="col-md-4">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX;font-size:24PX">ATLAS GROUP</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">TOKIO MARINE</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: LLOYD'S</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;text-align:center">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"><i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                    <span class="txt">
+                        <input type="checkbox" id="checkboxs" />
+                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                </div>*@
+                                    </div>
+                                </div>
+                                <div class="txt6" style="  color:#07457a; padding:25px 10px  ">
+                                    <label style="float:left">
+                                        COVERAGE LIMIT <br> <label style="float:left;font-size:13PX;border:1px solid #918282;">
+                                            &nbsp; $50,000 UP TO  $2,000,000 &nbsp;
+                                        </label>
+                                    </label>
+                                    <label style="float:right">
+                                        DEDUCTIBLE <br />
+                                                   <label style="float:right;font-size:13PX;border:1px solid #918282;">&nbsp; $0 UP TO $5,000  &nbsp;</label>
+                                    </label>
+                                </div>
+                               
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Plan for U.S. citizens and Non-U.S. citizens  traveling with a group of atleast 5 members outside their home country.<br />
+                                    Single Plan for entire group. <br />
+
+
+                                </div>
+                                @*<div class="info2">
+            <div class="txt6" style="    width: 202%;">
+                <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                    <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;;" id="lblAmount">$34</label>
+                </div>
+            </div>
+        </div>*@
+                                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...</p>*@
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                @*<p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>*@
+                                                <ul class="list1" style="height:250px">
+                                                    @*<li><a href="INF/INFChoiceBrochure.pdf"><b style="color:black">COVERAGE PERIOD</b></a> - 5 days-2 years</li>*@
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - Plan only covers acute onset,upto overall limit, some limitations for some age groups. Excludes chronic and congenital conditions.  </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - Non Renewable</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> - 100% prior to effective date, limitations thereafter. </SPAN> </li>
+                                                    <li><a><b style="color:#07457a;">IN U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100%, after deductible.  </SPAN></li>
+                                                    @*<li><a href="#"><b style="color:#07457a;">OUT OF NETWORK </b></a><SPAN style="color:#555555"> - Plan pays, after deductible,<br />80% up to $5,000, then 100% .</SPAN></li>*@
+                                                    <li><a><b style="color:#07457a;">OUTSIDE THE U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100 %, after deductible. </SPAN></li>
+
+
+                                                    @*<li><a href="#"><b style="color:black">DENTAL </b></a> - Upto $250.</li>*@
+                                                    <li><a href="#"><u><b style="color:#07457a;" title="Not available to individuals who are physically located in: New York, Maryland, or Washington at the time of purchase. Not available if Home Country/Country of Residences is: Australia, Cuba, Iran, North Korea ,Canada at the time of purchase.">COUNTRY RESTRICTIONS.</b></u></a></li>
+                                                    @*<li><a href="#"><b>COVID 19 </b></a> - Covered, with limitations.</li>*@
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black;margin-top:28px"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="info3" style="width: 36%;" onclick="check();">
+                <span class="txt">
+                    <input type="checkbox" id="checkboxs" />
+                </span><span class="stars" style="padding-bottom: 41px;font-weight: 700;"><i class="txt">Compare</i></span>
+            </div>*@
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>Deductible</label>
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                </div>
+                                <div class="caption-footer">
+                                    <div class="info3" style="">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="window.location.href='https://quote.hccmis.com/atlasgroup/?referid=27970&language=en-US'" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX">PATRIOT GROUP TRAVEL</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">IMG</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: SIRIUS INTERNATIONAL</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;text-align:center">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"><i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                    <span class="txt">
+                        <input type="checkbox" id="checkboxs" />
+                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                </div>*@
+                                    </div>
+                                </div>
+                                <div class="txt6" style="  color:#07457a; padding:25px 10px  ">
+                                    <label style="float:left">
+                                        COVERAGE LIMIT <br> <label style="float:left;font-size:13PX;border:1px solid #918282;">
+                                            &nbsp; $50,000 UP TO  $1,000,000 &nbsp;
+                                        </label>
+                                    </label>
+                                    <label style="float:right">
+                                        DEDUCTIBLE <br />
+                                                   <label style="float:right;font-size:13PX;border:1px solid #918282;">&nbsp; $0 UP TO $2,500  &nbsp;</label>
+                                    </label>
+                                </div>
+
+                              
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Plan for U.S. citizens and Non-U.S. citizens  traveling with a group of atleast 5 members outside their home country.
+                                    <br />Single Plan for entire group. <br />
+                                    Two plans-for U.S. Citizens and for Non U.S. citizens	<br />
+
+
+                                </div>
+                                @*<div class="info2">
+            <div class="txt6" style="    width: 202%;">
+                <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                    <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;;" id="lblAmount">$34</label>
+                </div>
+            </div>
+        </div>*@
+                                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...</p>*@
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                @*<p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>*@
+                                                <ul class="list1" style="HEIGHT: 230PX;">
+                                                    @*<li><a href="INF/INFChoiceBrochure.pdf"><b style="color:black">COVERAGE PERIOD</b></a> - 5 days-2 years</li>*@
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - No benefit. </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - Upto 24 months with a fee.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> - 100% prior with in review  date, limitations thereafter. </SPAN> </li>
+
+                                                    <li><a><b style="color:#07457a;">IN U.S. </b></a><SPAN style="color:#555555"> - Plan pays,100% after deductible.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUT OF NETWORK </b></a><SPAN style="color:#555555"> - Plan pays, after deductible,<br />80% up to $5,000, then 100% .</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUTSIDE THE U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>
+
+
+                                                    @*<li><a href="#"><b style="color:black">DENTAL </b></a> - Upto $250.</li>*@
+                                                    <li><a><u><b style="color:#07457a;" title="Not available for Citizens of: Botswana, Gambia, Ghana, Niger, Nigeria & Sierra Leone. Not Available for Addresses from the Following US States: Maryland .">COUNTRY RESTRICTIONS.</b></u></a></li>
+                                                    @*<li><a href="#"><b>COVID 19 </b></a> - Covered, with limitations.</li>*@
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="info3" style="width: 36%;" onclick="check();">
+                <span class="txt">
+                    <input type="checkbox" id="checkboxs" />
+                </span><span class="stars" style="padding-bottom: 41px;font-weight: 700;"><i class="txt">Compare</i></span>
+            </div>*@
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>Deductible</label>
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                </div>
+                                <div class="caption-footer">
+                                    <div class="info3" style="  ">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="window.location.href='https://purchase.imglobal.com/Quote/Patriot_group/pre-quote?imgac=538436'" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-4">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX"> PATRIOT AMERICA PLUS GROUP</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">IMG</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: SIRIUS INTERNATIONAL</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;text-align:center">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"><i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                    <span class="txt">
+                        <input type="checkbox" id="checkboxs" />
+                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                </div>*@
+                                    </div>
+                                </div>
+
+                                <div class="txt6" style="  color:#07457a; padding:25px 10px  ">
+                                    <label style="float:left">
+                                        COVERAGE LIMIT <br> <label style="float:left;font-size:13PX;border:1px solid #918282;">
+                                            &nbsp; $50,000 UP TO  $1,000,000 &nbsp;
+                                        </label>
+                                    </label>
+                                    <label style="float:right">
+                                        DEDUCTIBLE <br />
+                                                   <label style="float:right;font-size:13PX;border:1px solid #918282;">&nbsp; $0 UP TO $2,500  &nbsp;</label>
+                                    </label>
+                                </div>
+
+                              
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Plan for U.S. citizens and Non-U.S. citizens  traveling with a group of atleast 5 members outside their home country				<br />
+                                    Single Plan for entire group.
+
+                                </div>
+                                @*<div class="info2">
+            <div class="txt6" style="    width: 202%;">
+                <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                    <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;;" id="lblAmount">$34</label>
+                </div>
+            </div>
+        </div>*@
+                                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...</p>*@
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                @*<p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>*@
+                                                <ul class="list1" style="height:270px;">
+                                                    @*<li><a href="INF/INFChoiceBrochure.pdf"><b style="color:black">COVERAGE PERIOD</b></a> - 5 days-2 years</li>*@
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - Plan only covers Acute onset , up to maximum limit, only for age under 70. </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - Upto 24 months with a fee.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> - 100% prior with in review  date, limitations thereafter. </SPAN> </li>
+                                                    <li><a><b style="color:#07457a;">IN U.S.  </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUT OF NETWORK </b></a><SPAN style="color:#555555"> - Plan pays, after deductible,<br />80% up to $5,000, then 100% .</SPAN></li>
+                                                    @*<li><a ><b style="color:#07457a;">OUTSIDE THE U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>*@
+
+
+                                                    @*<li><a href="#"><b style="color:black">DENTAL </b></a> - Upto $250.</li>*@
+                                                    <li><a><u><b style="color:#07457a;" title="Not available for Citizens of: Botswana, Gambia, Ghana, Niger, Nigeria & Sierra Leone. Not Available for Addresses from the Following US States: Maryland .">COUNTRY RESTRICTIONS.</b></u></a></li>
+                                                    @*<li><a href="#"><b>COVID 19 </b></a> - Covered, with limitations.</li>*@
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="info3" style="width: 36%;" onclick="check();">
+                <span class="txt">
+                    <input type="checkbox" id="checkboxs" />
+                </span><span class="stars" style="padding-bottom: 41px;font-weight: 700;"><i class="txt">Compare</i></span>
+            </div>*@
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>Deductible</label>
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                </div>
+                                <div class="caption-footer">
+                                    <div class="info3" style=" ">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="window.location.href='https://purchase.imglobal.com/Quote/Patriot_Plus_group/pre-quote?imgac=538436'" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX">PATRIOT PLATINUM GROUP</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">IMG</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: SIRIUS INTERNATIONAL</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;text-align:center">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"> <i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                    <span class="txt">
+                        <input type="checkbox" id="checkboxs" />
+                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                </div>*@
+                                    </div>
+                                </div>
+
+                                <div class="txt6" style="  color:#07457a; padding:25px 10px  ">
+                                    <label style="float:left">
+                                        COVERAGE LIMIT <br> <label style="float:left;font-size:13PX;border:1px solid #918282;">
+                                            &nbsp; $2,000,000 UP TO  $8,000,000 &nbsp;
+                                        </label>
+                                    </label>
+                                    <label style="float:right">
+                                        DEDUCTIBLE <br />
+                                                   <label style="float:right;font-size:13PX;border:1px solid #918282;">&nbsp; $0 UP TO $25,000  &nbsp;</label>
+                                    </label>
+                                </div>
+
+                            
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Plan for U.S. citizens and Non-U.S. citizens  traveling with a group of atleast 5 members outside their home country.				<br />
+                                    Single Plan for entire group. <br />
+                                    Two plans-for U.S. Citizens and for Non U.S. citizens
+
+                                </div>
+                                @*<div class="info2">
+            <div class="txt6" style="    width: 202%;">
+                <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                    <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;;" id="lblAmount">$34</label>
+                </div>
+            </div>
+        </div>*@
+                                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...</p>*@
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                @*<p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>*@
+                                                <ul class="list1">
+                                                    @*<li><a href="INF/INFChoiceBrochure.pdf"><b style="color:black">COVERAGE PERIOD</b></a> - 5 days-2 years</li>*@
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - Plan only covers Acute onset, up to maximum limit, some limitations for some age groups and citizenship.  </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - Upto 36 months with a fee.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> -  100% prior with in review  date,  limitations thereafter. </SPAN> </li>
+
+                                                    <li><a><b style="color:#07457a;">IN U.S.  </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUT OF NETWORK </b></a><SPAN style="color:#555555"> - Plan pays, after deductible,<br />90% up to $5,000, then 100% .</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUTSIDE THE U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>
+
+                                                    @*<li><a href="#"><b style="color:black">DENTAL </b></a> - Upto $250.</li>*@
+                                                    <li><a><u><b style="color:#07457a;" title="Not available for Citizens of: Botswana, Gambia, Ghana, Niger, Nigeria & Sierra Leone. Not Available for Addresses from the Following US States: Maryland .">COUNTRY RESTRICTIONS.</b></u></a></li>
+                                                    @*<li><a href="#"><b>COVID 19 </b></a> - Covered, with limitations.</li>*@
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="info3" style="width: 36%;" onclick="check();">
+                <span class="txt">
+                    <input type="checkbox" id="checkboxs" />
+                </span><span class="stars" style="padding-bottom: 41px;font-weight: 700;"><i class="txt">Compare</i></span>
+            </div>*@
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>Deductible</label>
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                </div>
+                                <div class="caption-footer">
+                                    <div class="info3" style=" ">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="window.location.href='https://purchase.imglobal.com/Quote/Patriot_Platinum_group/pre-quote?imgac=538436'" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-4">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX"> PATRIOT MULTI-TRIP GROUP</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">IMG</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: SIRIUS INTERNATIONAL</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;text-align:center">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"><i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                    <span class="txt">
+                        <input type="checkbox" id="checkboxs" />
+                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                </div>*@
+                                    </div>
+                                </div>
+
+
+                                <div class="txt6" style="  color:#07457a; padding:25px  ">
+                                    <label style="float:left">
+                                        COVERAGE LIMIT <br> <label style="float:left;font-size:13PX;border:1px solid #918282;">
+                                            &nbsp; $1,000,000  &nbsp;
+                                        </label>
+                                    </label>
+                                    <label style="float:right">
+                                        DEDUCTIBLE <br />
+                                                   <label style="float:right;font-size:13PX;border:1px solid #918282;">&nbsp; $250  &nbsp;</label>
+                                    </label>
+                                </div>
+
+                              
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Plan for U.S. citizens and Non-U.S. citizens, group of atleast 5.<br />
+                                    Coverage is for 1 year.<br />
+                                    Multiple coverage . up to 30-45 days in length.
+                                </div>
+                                @*<div class="info2">
+            <div class="txt6" style="    width: 202%;">
+                <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                    <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;;" id="lblAmount">$34</label>
+                </div>
+            </div>
+        </div>*@
+                                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...</p>*@
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                @*<p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>*@
+                                                <ul class="list1" style="height:318PX">
+                                                    @*<li><a href="INF/INFChoiceBrochure.pdf"><b style="color:black">COVERAGE PERIOD</b></a> - 5 days-2 years</li>*@
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - Plan only covers sudden unexpected recurrence up to $5000, per period of coverage, not per trip. </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - In increment of 12 months up to  36 months.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> -  100% prior to effective date, no refund thereafter.  </SPAN> </li>
+                                                    <li><a><b style="color:#07457a;">IN U.S.  </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.<br />90% up to $5000, then 100%</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUT OF NETWORK </b></a><SPAN style="color:#555555"> - Plan pays, after deductible,<br />80% up to $5,000, then 100% .</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUTSIDE THE U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>
+
+
+                                                    @*<li><a href="#"><b style="color:black">DENTAL </b></a> - Upto $250.</li>*@
+                                                    <li><a><u><b style="color:#07457a;" title="Not available for Citizens of: Botswana, Gambia, Ghana, Niger, Nigeria & Sierra Leone. Not Available for Addresses from the Following US States: Maryland .">COUNTRY RESTRICTIONS.</b></u></a></li>
+                                                    @*<li><a href="#"><b>COVID 19 </b></a> - Covered, with limitations.</li>*@
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="info3" style="width: 36%;" onclick="check();">
+                <span class="txt">
+                    <input type="checkbox" id="checkboxs" />
+                </span><span class="stars" style="padding-bottom: 41px;font-weight: 700;"><i class="txt">Compare</i></span>
+            </div>*@
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>Deductible</label>
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                </div>
+                                <div class="caption-footer">
+                                    <div class="info3" style="">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="window.location.href='https://purchase.imglobal.com/Quote/patriot_multitrip_group/pre-quote?imgac=538436'" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX">PATRIOT EXCHANGE GROUP</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">IMG</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: SIRIUS INTERNATIONAL</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;text-align:center">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"><i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                    <span class="txt">
+                        <input type="checkbox" id="checkboxs" />
+                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                </div>*@
+                                    </div>
+                                </div>
+
+                                <div class="txt6" style="  color:#07457a; padding:25px  ">
+                                    <label style="float:left">
+                                        COVERAGE LIMIT <br> <label style="float:left;font-size:13PX;border:1px solid #918282;">
+                                            &nbsp; $5,000,000   &nbsp;
+                                        </label>
+                                    </label>
+                                    <label style="float:right">
+                                        DEDUCTIBLE <br />
+                                                   <label style="float:right;font-size:13PX;border:1px solid #918282;">&nbsp; $0 UP TO $500  &nbsp;</label>
+                                    </label>
+                                </div>
+
+                              
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Meets U.S. student ,scholar , and cultural exchange program visa requirements. Most options designed to meet the U.S. J1/J2 visa travel insurance requirements.
+
+                                </div>
+                                @*<div class="info2">
+            <div class="txt6" style="    width: 202%;">
+                <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                    <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;;" id="lblAmount">$34</label>
+                </div>
+            </div>
+        </div>*@
+                                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...</p>*@
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                @*<p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>*@
+                                                <ul class="list1" style="height:318px">
+                                                    @*<li><a href="INF/INFChoiceBrochure.pdf"><b style="color:black">COVERAGE PERIOD</b></a> - 5 days-2 years</li>*@
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - Plan only covers sudden unexpected recurrence $5,000 maximum limit for eligible medical expenses.  </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - Upto 48 months with a fee, <br />if minimum 1 months is purchased.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> - 100% prior with in review  date, limitations and fees thereafter.  </SPAN> </li>
+
+                                                    <li><a><b style="color:#07457a;">PLAN PAYS 100% AFTER DEDUCTIBLE IS MET.  </b></a><SPAN style="color:#555555"></SPAN></li>
+                                                    @*<li><a href="#"><b style="color:#07457a;">OUT OF NETWORK </b></a><SPAN style="color:#555555"> - Plan pays, after deductible,<br />90% up to $5,000, then 100% .</SPAN></li>
+                            <li><a href="#"><b style="color:#07457a;">OUTSIDE THE U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>*@
+
+
+                                                    @*<li><a href="#"><b style="color:black">DENTAL </b></a> - Upto $250.</li>*@
+                                                    <li><a><u><b style="color:#07457a;" title="Not available for Citizens of: Botswana, Gambia, Ghana, Niger, Nigeria & Sierra Leone. Not Available for Addresses from the Following US States: Maryland .">COUNTRY RESTRICTIONS.</b></u></a></li>
+                                                    @*<li><a href="#"><b>COVID 19 </b></a> - Covered, with limitations.</li>*@
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="info3" style="width: 36%;" onclick="check();">
+                <span class="txt">
+                    <input type="checkbox" id="checkboxs" />
+                </span><span class="stars" style="padding-bottom: 41px;font-weight: 700;"><i class="txt">Compare</i></span>
+            </div>*@
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>Deductible</label>
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                </div>
+                                <div class="caption-footer">
+                                    <div class="info3" style=" ">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="window.location.href='https://purchase.imglobal.com/Quote/patriot_group_Exchange/pre-quote?imgac=538436'" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-4">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX">STUDENT HEALTH ADVANTAGE GROUP</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">IMG</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: SIRIUS INTERNATIONAL</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;text-align:center">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"><i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                    <span class="txt">
+                        <input type="checkbox" id="checkboxs" />
+                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                </div>*@
+                                    </div>
+                                </div>
+
+                                <div class="txt6" style="  color:#07457a; padding:25px  ">
+                                    <label style="float:left">
+                                        COVERAGE LIMIT <br> <label style="float:left;font-size:13PX;border:1px solid #918282;">
+                                            &nbsp; $5,000,000   &nbsp;
+                                        </label>
+                                    </label>
+                                    <label style="float:right">
+                                        DEDUCTIBLE <br />
+                                                   <label style="float:right;font-size:13PX;border:1px solid #918282;">&nbsp; $0 UP TO $500  &nbsp;</label>
+                                    </label>
+                                </div>
+
+                              
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Meets U.S. student ,scholar , and cultural exchange program visa requirements.
+                                </div>
+                                @*<div class="info2">
+            <div class="txt6" style="    width: 202%;">
+                <div class="material-bootstrap-select auto-width extra" style="text-align: center;">
+                    <label class="stars" style="padding-bottom:0px; font-size:23px; color:#07457a;;" id="lblAmount">$34</label>
+                </div>
+            </div>
+        </div>*@
+                                @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...</p>*@
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                @*<p style="font-size:10px;color:black"><span style="color:red;"> *</span> &nbsp TOTAL PRICE FOR ALL TOURISTS FOR 60 DAYS.</p>*@
+                                                <ul class="list1">
+                                                    @*<li><a href="INF/INFChoiceBrochure.pdf"><b style="color:black">COVERAGE PERIOD</b></a> - 5 days-2 years</li>*@
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - Charge excludes until after 12 months of continuous coverage.  </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - Upto 60 months with a fee.<br />if minimum 3 months is purchased.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> - 100% prior with in review  date, limitations and fees thereafter.  </SPAN> </li>
+
+
+                                                    <li><a><b style="color:#07457a;">U.S. IN NETWORK  </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUT OF NETWORK </b></a><SPAN style="color:#555555"> - Plan pays, after deductible,<br />80% up to $5,000, then 100% .</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">OUTSIDE THE U.S. </b></a><SPAN style="color:#555555"> - Plan pays, 100% after deductible.</SPAN></li>
+
+
+                                                    @*<li><a href="#"><b style="color:black">DENTAL </b></a> - Upto $250.</li>*@
+                                                    <li><a><u><b style="color:#07457a;" title="Not available for Citizens of: Botswana, Gambia, Ghana, Niger, Nigeria & Sierra Leone. Not Available for Addresses from the Following US States: Maryland .">COUNTRY RESTRICTIONS.</b></u></a></li>
+                                                    @*<li><a href="#"><b>COVID 19 </b></a> - Covered, with limitations.</li>*@
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="info3" style="width: 36%;" onclick="check();">
+                <span class="txt">
+                    <input type="checkbox" id="checkboxs" />
+                </span><span class="stars" style="padding-bottom: 41px;font-weight: 700;"><i class="txt">Compare</i></span>
+            </div>*@
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <label>Coverage Limit</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>Deductible</label>
+                                </div>
+                                <div class="txt6" style="display:none">
+                                    <select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 65px"></select>
+                                </div>
+                                <div class="caption-footer">
+                                    <div class="info3" style="">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="window.location.href='https://purchase.imglobal.com/Quote/student_health_advantage_group/pre-quote?imgac=538436'" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6" style="width: 425px;margin-left: 120px;display:none">
+
+                    <div class="product-box-vertical">
+                        <div class="box-vertical-inner">
+                            <div class="caption">
+                                <div class="caption-header" style="background-color:#3b9aaa;MARGIN: 0PX -4PX;MARGIN-TOP: -9PX;">
+                                    <div class="info1" style="padding-top: 5px;">
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 3px 5px;"><a style="font-size: 20px;"><span style="padding-top:3px;font-size:22PX">  PATRIOT EXCHANGE GROUP</span></a></div>
+                                        <div class="txt1" style="text-align:center;    margin:5px 5px 20px 5px;">
+                                            @*<a href="#" style="font-size: 13px;">Trawick International</a>*@
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">IMG</a></div>
+                                            <div class="txt1" style="text-align:center;"><a style="font-size: 13px;">UNDERWRITERS: SIRIUS INTERNATIONAL</a></div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="caption-footer" style="padding-top: 0px;">
+                                        <div class="info2" style="width:100%">
+                                            <div class="txt6" style="margin-bottom: -3px;padding-left: 134px;">
+                                                <div class="material-bootstrap-select auto-width extra">
+                                                    <span><a style="color: #ffffff;font-weight: 700;font-size:13px;" href="INF/INFChoiceBrochure.pdf"><i class="fa fa-file-pdf-o" style="font-size:15px;color:red;background-color:white;"></i>&nbsp; PLAN BROCHURE</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="info3" style="width: 32%;" onclick="check();">
+                                    <span class="txt">
+                                        <input type="checkbox" id="checkboxs" />
+                                    </span><span class="stars" style="padding-bottom: 0px;padding-left: 2px;font-weight: 700;">COMPARE</span>
+                                </div>*@
+                                    </div>
+                                </div>
+                                <div class="txt6" style="  color:#07457a;   padding-left: 35px;">
+                                    <label>COVERAGE LIMIT</label><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <label>DEDUCTIBLE</label>
+                                </div>
+                                <div class="txt6" style="  color:#07457a;   font-size: 14px;    padding-left: 10px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span style="font-size:13PX;border:1px solid #918282;">&nbsp;$5,000,000 			&nbsp;</span> @*<select class="form - control" id="ddlCoverageLimit" style="width: 90px"></select>*@<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <SPAN style="font-size:13PX;border:1px solid #918282;">&nbsp;$0 UP TO $500  &nbsp;</SPAN>@*<select id="DdlDeductible" class="selectpicker deductible-options" data-size="0" tabindex="-98" style="width: 70px;"></select>*@
+                                </div>
+                                <br />
+                                <br />
+
+                                <div class="txt6" style="text-align: inherit;;font-weight: 600;    margin-top: 8px;color:#555555;padding-left:25PX;font-size:14PX;">
+                                    Meets U.S. student ,scholar , and cultural exchange program visa requirements. Most options designed to meet the U.S. J1/J2 visa travel insurance requirements.
+
+                                </div>
+
+                                <div class="caption-footer" style="padding-top: 0px;">
+                                    <div class="info2" style="width: 98%;margin-top: 3%;">
+                                        <div class="txt6">
+                                            <div class="material-bootstrap-select auto-width extra" style="padding-left: 4px;padding-right:4px;">
+                                                <ul class="list1">
+                                                    <li><a><b style="color:#07457a;">PRE EXISTING COVERAGE </b></a><span style="color:#555555"> - Plan only covers sudden unexpected recurrence $5,000 maximum limit for eligible medical expenses.  </span></li>
+                                                    <li><a><b style="color:#07457a;">RENEWABLE </b></a><SPAN style="color:#555555"> - Upto 48 months with a fee, <br />if minimum 1 months is purchased.</SPAN></li>
+                                                    <li><a><b style="color:#07457a;">CANCELABLE </b></a><SPAN style="color:#555555"> - 100% prior with in review  date, limitations and fees thereafter.  </SPAN> </li>
+
+                                                    <li><a><b style="color:#07457a;">PLAN PAYS 100% AFTER DEDUCTIBLE IS MET.  </b></a><SPAN style="color:#555555"></SPAN></li>
+                                                    <li><a><u><b style="color:#07457a;" title="Not available for Citizens of: Botswana, Gambia, Ghana, Niger, Nigeria & Sierra Leone. Not Available for Addresses from the Following US States: Maryland .">COUNTRY RESTRICTIONS.</b></u></a></li>
+
+                                                </ul>
+                                                <p style="font-size:10px;color:black"><span style="color:red;"> * </span>&nbsp;&nbsp; PLEASE REFER TO THE PLAN BROCHURE FOR ACCURATE DETAILS,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BENEFITS, LIMITATIONS AND EXCLUSIONS </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="caption-footer">
+                                    <div class="info3" style=" ">
+                                        <div class="txt7" style="">
+                                            @*<button type="button" onclick="GotoPurchase();" class="btn-default btn3">BUY NOW</button>*@
+                                            <button type="submit" onclick="GotoPurchase();" class="btn-default btn-form2-submit" style="line-height: 30px;border-style:none">BUY</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <br />
+
+
+
+
+             
+
+                <div class="col-md-3" style="width:299px; margin-left: 35px; display:none">
+                    @*<div class="col-sm-6 col-md-12">*@
+                    @*<div class="sidebar-form-wrapper">*@
+                    <div class="sidebar-form">
+                        <form action="javascript:;" class="form2">
+                            <div class="select1_wrapper">
+                                <label>SELECT A INSURER</label>
+                                <div>
+                                    <select class="form-control" id="ddlINSURER" style="width: 100%" onchange="BindAINSURER()">
+                                        <option value="All">All</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="select1_wrapper">
+                                <label>Cover Pre-Existing Conditions</label>
+                                <div>
+                                    <select id="ddlCoverPreExistingConditions" class="form-control" style="width: 100%" onchange="BindPreExisting()">
+                                        <option value="N">No</option>
+                                        <option value="Y">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="slider-range-wrapper">
+                                <div class="txt">PRICE RANGE</div>
+                                <div class="slider-range"></div>
+                                <div class="clearfix">
+                                    <input type="text" class="amount" readonly="">
+                                    <input type="text" class="amount2" readonly="">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-default btn-form2-submit">SUBMIT FILTERS</button>
+                            <div class="reset-filters"><a href="#">RESET ALL FILTERS</a></div>
+                        </form>
+                    </div>
+                    @*</div>*@
+                    @*</div>*@
+                </div>
+
+
+               
+        </div>
+    </div>
+    <div style="text-align:center; ">
+        <h5 style="color:#555555"><b>DISCLAIMER </b></h5>
+        <p style="color:#555555;padding-left:10PX;padding-right:10PX">
+            Please refer to the plan brochure for accurate details, benefits, limitations, and exclusions. For every company and plan, benefits and conditions may differ. Information provided here is general and for knowledge-sharing purposes only. If you find any mismatch between the information provided on our website and the insurance companies' plan documents, be advised the insurance company’s plan documents take precedence.
+
+
+        </p>
+    </div>
+</div>

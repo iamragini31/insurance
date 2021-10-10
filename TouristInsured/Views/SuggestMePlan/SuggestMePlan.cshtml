@@ -1,0 +1,1174 @@
+﻿@model TouristInsuredEntity.LoginModel
+
+@{
+    ViewBag.Title = "SuggestMePlan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+@*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+
+@*<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">*@
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+    var jq = $.noConflict(true);
+    $(document).ready(function () {
+
+        $("#CountryName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Login/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#hdnisocode").val(i.item.val);
+            },
+        });
+
+
+        $("#txttouristountry").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Login/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#hdnTouristIsocode").val(i.item.val);
+            },
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger
+        //   $('input[type=datetime]').datepicker({
+        //       dateFormat: "dd-MM-yy",
+        //       changeMonth: true,
+        //       changeYear: true,
+        //       yearRange: "+0:+2",
+        //minDate: 0
+        //   }).on('changeDate', function (ev) {
+        //       $('#sDate1').text($('#txtCoverageStartDate').data('date'));
+        //       $('#txtCoverageEndDate').datepicker('hide');
+        //   });
+        $("#txtCoverageStartDate").datepicker({
+            dateFormat: "dd-MM-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "+0:+2",
+            minDate: 0
+        }).val();
+
+        //$('#txtCoverageEndDate').datepicker({
+
+        //    dateFormat: "dd-MM-yy",
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    yearRange: "+0:+2",
+        //    minDate: new Date(year, month, date)
+        //}).val();
+        //$('#txttravellerage').datepicker({ dateFormat: 'mm/dd/yy' }).val();
+        $('#btngetquotes').click(function () {
+
+        });
+        $(function () {
+
+            $(document).click(function () {
+
+                if ($("#myModal1").is(":visible") && $("#txttravellerageinyear").val() != "") {
+                    $("#txttravelerdetails").click(function () {
+                        $('#myModal1').show();
+                    });
+                    //hide the button
+                }
+            });
+        });
+        $(document).keypress(function (e) {
+            debugger
+            if (e.which == 13) {
+                var count = 0;
+                var nooftraveler = "";
+                var age = $("#txttravellerageinyear").val();
+                var spouseage = $("#txtspouseage").val();
+                if (age >= 80) {
+
+                    if (age == spouseage) {
+
+                    }
+                    else if (spouseage == "") {
+
+                    }
+                    else if (spouseage < age) {
+                        alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+                    }
+
+
+                }
+                else if (age >= 70 && age <= 79) {
+
+                    if (age == spouseage) {
+
+                    }
+                    else if (spouseage == "") {
+
+                    }
+                    else if (spouseage < age) {
+                        alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+                    }
+                }
+                else if ($("#txttravellerageinyear").val() == "") {
+                    alert("Primary Age Required");
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+
+
+            }
+        });
+    });
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+    function UpdateEndDate() {
+        debugger
+        $('#txtCoverageEndDate').val("");
+        $('#txtCoverageEndDate').datepicker('destroy');
+        var d = new Date($("#txtCoverageStartDate").val());
+        var date = d.getDate() + 1;
+        var month = d.getMonth(); // Since getMonth() returns month from 0-11 not 1-12.
+        var year = '2020'/*d.getFullYear()*/;
+        $('#txtCoverageEndDate').datepicker({
+
+            dateFormat: "dd-MM-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "+0:+2",
+            minDate: new Date(year, month, date)
+        }).val();
+    }
+</script>
+
+<style type="text/css">
+    .modal1 {
+        /* margin: -34px 91px 25px 59px; */
+        position: absolute;
+        display: none;
+        z-index: 1;
+        /* padding-top: 62px; */
+        /* left: 783px; */
+        left: -272px;
+        top: 3%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* background-color: rgb(0,0,0); */
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .modal-content1 {
+        position: relative;
+        background-color: #fefefe;
+        margin: 20% 26%;
+        padding: 0;
+        border: 1px solid #888;
+        width: 21%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+    }
+
+    /*@@webkit-keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+    }*/
+    .formstyle {
+        font-size: 13px;
+       
+        text-transform: uppercase;
+        display: block;
+        margin: 0 0 5px;
+        font-weight: 600;
+    }
+
+    .close1 {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close1:hover,
+        .close1:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .modal-header1 {
+        /*padding: 2px 16px;*/
+        /*padding: 5px 16px 2px;*/
+        padding: 16px 6px 2px;
+        background-color: white;
+        color: black;
+        height: 35px;
+        margin-top: -8px
+    }
+
+    .modal-body1 {
+        /*padding: 2px 16px;*/
+        padding: 0px 0px;
+        margin-top: 11px;
+    }
+
+    .modal-footer1 {
+        /*padding: 2px 16px;*/
+        padding: 0px 16px;
+        background-color: #fff;
+        color: white;
+        height: 1px;
+    }
+
+    .disabled2 {
+        pointer-events: none;
+        opacity: inherit;
+    }
+</style>
+
+<script>
+    // Get the modal
+    function Popup() {
+
+
+        var modal = document.getElementById("myModal1");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("txtname");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close1")[0];
+
+        // When the user clicks the button, open the modal
+        modal.style.display = "block";
+        var date1 = new Date($("#txtCoverageStartDate").val());
+        var date2 = new Date($("#txtCoverageEndDate").val());
+
+        // To calculate the time difference of two dates
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        var total = Difference_In_Days + 1;
+        $("#lblnoofdays").text(total);
+        //btn.onclick = function()  {
+        //
+
+        //}
+
+        // When the user clicks on <span> (x), close the modal
+        //span.onclick = function () {
+        //    modal.style.display = "none";
+        //}
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            debugger
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+    function GetTravelerdetails() {
+        var modal = document.getElementById("myModal1");
+        var count = 0;
+        var nooftraveler = "";
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if (age >= 80) {
+
+            if (age == spouseage) {
+
+            }
+            else if (spouseage == "") {
+
+            }
+            else if (spouseage < age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+
+
+        }
+        else if (age >= 70 && age <= 79) {
+
+            if (age == spouseage) {
+
+            }
+            else if (spouseage == "") {
+
+            }
+            else if (spouseage < age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+        }
+        else if ($("#txttravellerageinyear").val() == "") {
+            alert("Primary Age Required");
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+        else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+            count = 1
+            nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+            $("#txttravelerdetails").val(nooftraveler);
+            modal.style.display = "none";
+        }
+
+        //var Travelerdetail = document.getElementById("txtTravelerdetail").value;
+        //if (Travelerdetail == 1) {
+        //    document.getElementById("txttravelerdetails").value = Travelerdetail + " Traveler";
+        //}
+        //else {
+        //    document.getElementById("txttravelerdetails").value = Travelerdetail + " Travelers";
+        //}
+
+
+
+
+    }
+
+    function checkchild3details() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        //else if ($("#txtspouseage").val() == "" || $("#txtspouseage").val() == null) {
+        //    alert("Please Enter Spouse Age");
+        //}
+        else if ($("#txtchild1age").val() == "" || $("#txtchild1age").val() == null) {
+            alert("Please Enter Child1 Age");
+        }
+        else if ($("#txtchild2age").val() == "" || $("#txtchild2age").val() == null) {
+            alert("Please Enter Child2 Age");
+        }
+        else if ($("#txtChild3age").val() == "" || $("#txtChild3age").val() == null) {
+            alert("Please Enter Child3 Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+    function checkchild1details() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        //else if ($("#txtspouseage").val() == "" || $("#txtspouseage").val() == null) {
+        //    alert("Please Enter Spouse Age");
+        //}
+        else if ($("#txtchild1age").val() == "" || $("#txtchild1age").val() == null) {
+            alert("Please Enter Child1 Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+
+    }
+    function checkchild2details() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        //else if ($("#txtspouseage").val() == "" || $("#txtspouseage").val() == null) {
+        //    alert("Please Enter Spouse Age");
+        //}
+        else if ($("#txtchild1age").val() == "" || $("#txtchild1age").val() == null) {
+            alert("Please Enter Child1 Age");
+        }
+        else if ($("#txtchild2age").val() == "" || $("#txtchild2age").val() == null) {
+            alert("Please Enter Child2 Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+    function checkspousedetails() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+
+    function checktravelerdetails() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+
+    function Checkagelimit() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+            if (age == spouseage) {
+
+            }
+            else if (spouseage == "") {
+
+            }
+            else if (spouseage < age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+
+
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+            if (age == spouseage) {
+
+            }
+            else if (spouseage == "") {
+
+            }
+            else if (spouseage < age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+        }
+    }
+
+    function CheckCountry() {
+        var isocode = $("#hdnisocode").val();
+        var Touristisocode = $("#hdnTouristIsocode").val();
+
+        if (isocode != "" && Touristisocode != "") {
+            if (Touristisocode == isocode) {
+                alert("HOME COUNTRY AND DESTINATION COUNTRY CANNOT BE THE SAME");
+            }
+        }
+    }
+
+    function CheckValidation() {
+        debugger
+        var isocode = $("#hdnisocode").val();
+        var Touristisocode = $("#hdnTouristIsocode").val();
+        var citizenship = $("input[name='citizenship']:checked").val();
+        if (isocode == "") {
+            alert("Please Enter Valid Home Country");
+        }
+        else if (Touristisocode == "") {
+            alert("Please Enter Valid Tourist Country");
+        }
+        else if (isocode == Touristisocode )
+        {
+            alert("HOME COUNTRY AND DESTINATION COUNTRY CANNOT BE THE SAME");
+
+
+        }
+        else if ($("#txtCoverageStartDate").val() == "") {
+            alert("Leaving Home Required");
+        }
+        else if ($("#txtCoverageEndDate").val() == "") {
+            alert("Returning Home Required");
+        }
+        else if ($("#txttravelerdetails").val() == "") {
+            alert("Tourists Ages  Required");
+        }
+
+
+        else {
+            debugger
+            //var formdata = new FormData();
+            //formdata.append('ISOCODE', $("#hdnisocode").val()); formdata.append('TouristISOCODE', $("#hdnTouristIsocode").val());
+            //formdata.append('txtCoverageStartDate', $("#txtCoverageStartDate").val()); formdata.append('txtCoverageEndDate', $("#txtCoverageEndDate").val());
+            //formdata.append('txttravelerdetails', $("#txttravelerdetails").val()); formdata.append('txttravellerageinyear', $("#txttravellerageinyear").val());
+            //formdata.append('txtspouseage', $("#txtspouseage").val()); formdata.append('txtchild1age', $("#txtchild1age").val()); formdata.append('txtchild2age', $("#txtchild2age").val());
+            //formdata.append('txtchild3age', $("#txtChild3age").val()); formdata.append('txtchild4age', $("#txtchild4age").val());
+            CountryName = $("#CountryName").val();
+            txttouristountry = $("#txttouristountry").val();
+            ISOCODE = $("#hdnisocode").val();
+            TouristISOCODE = $("#hdnTouristIsocode").val();
+            txtCoverageStartDate = $("#txtCoverageStartDate").val();
+            txtCoverageEndDate = $("#txtCoverageEndDate").val();
+            txttravelerdetails = $("#txttravelerdetails").val();
+            txttravellerageinyear = $("#txttravellerageinyear").val();
+            txtspouseage = $("#txtspouseage").val();
+            txtchild1age = $("#txtchild1age").val();
+            txtchild2age = $("#txtchild2age").val();
+            txtchild3age = $("#txtChild3age").val();
+            txtchild4age = $("#txtchild4age").val();
+
+            var _array = [];
+            _array.push({
+                CountryName: CountryName,
+                txttouristountry: txttouristountry,
+                ISOCODE: ISOCODE,
+                TouristISOCODE: TouristISOCODE,
+                txtCoverageStartDate: txtCoverageStartDate,
+                txtCoverageEndDate: txtCoverageEndDate,
+                txttravelerdetails: txttravelerdetails,
+                txttravellerageinyear: txttravellerageinyear,
+                txtspouseage: txtspouseage,
+                txtchild1age: txtchild1age,
+                txtchild2age: txtchild2age,
+                txtchild3age: txtchild3age,
+                txtchild4age: txtchild4age,
+                Citizenship: citizenship
+
+            });
+            window.location.href = '/Quotation/Quotation?Data=' + JSON.stringify(_array);
+            //$.ajax({
+            //    url: "/Login/LoginForm/",
+            //    type: "POST",
+            //    contentType: false,
+            //    processData: false,
+            //    //dataType: "json",
+            //    data: formdata,
+
+
+            //    success: function (data) {
+            //        if (data == 1) {
+            //            window.location.href = '/Quotation/Quotation?form=' + formdata ;
+            //        }
+
+            //    },
+            //    error: function (response) {
+
+            //    }
+            //});
+        }
+    }
+
+
+</script>
+<style>
+    .center {
+        /*width: 150px;*/
+        width: 118px;
+        /*margin: 20px 5px 25px 5px;*/
+        margin: 5px 5px 12px 5px;
+    }
+
+    input-group-btn .btn-default .btn-number:hover {
+        border: 1px solid #0770e3;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        $(".btn-number").click(function (e) {
+
+            e.preventDefault();
+            fieldName = $(this).attr('data-field');
+            type = $(this).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+        });
+
+
+
+
+        $('.input-number').focusin(function () {
+            $(this).data('oldValue', $(this).val());
+        });
+        $('.input-number').change(function () {
+
+            minValue = parseInt($(this).attr('min'));
+            maxValue = parseInt($(this).attr('max'));
+            valueCurrent = parseInt($(this).val());
+
+            name = $(this).attr('name');
+            if (valueCurrent >= minValue) {
+                $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+            if (valueCurrent <= maxValue) {
+                $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+
+
+        });
+        $(".input-number").keydown(function (e) {
+
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+<div>
+
+    <div class="breadcrumbs1_wrapper novi-background">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="/Login/Login">Home</a><span></span>Suggest Me A Plan</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="width:100% ;margin-bottom: 28px;position: relative;">
+
+            <img src="~/images/img/suggess.jpg" style="width: 100%;" />
+            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);border-radius: 8px;
+    border: 1px solid #eeeeee;color: #fff;text-align: center;margin-top:1%;position: absolute;z-index: 3;top: 42%;left: 35%;font-size: 34px;width: 35%;height: 15%;">
+                <h3 style="FONT-SIZE: 3vw;font-weight: bolder;margin-top:0vw; font-family:Open Sans;">
+                    SUGGEST ME A PLAN
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section section-md-bottom content novi-background bg-cover">
+        <div class="container">
+            <br />
+            <br />
+            <div class="row row-fix">
+                <div class="col-sm-12 col-md-9 column-sidebar">
+                    @*<p style="font-size: 14px;"><span style="color:red;">* </span> Note this from is not meant for trip and cruise insurance</p>*@
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-12">
+                            <div class="sidebar-form-wrapper">
+                                <div class="sidebar-form" style="">
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="select1_wrapper">
+                                                    <label class="formstyle" style=" color: #555555;">Your Home Country</label>
+                                                    @Html.TextBoxFor(model => model.CountryName, new { @id = "CountryName", @type = "text", @class = "form-control", @required = "required", style = "width:50%;color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Type", Onchange = "CheckCountry()" })
+                                                    @Html.HiddenFor(model => model.ISOCODE, new { @id = "hdnisocode" })
+                                                    @*<div class="select1_inner" style="width:50%">
+                                            <select class="select2 select" style="width: 100%">
+                                                <option value="1">Select</option>
+                                                <option value="2">Alfa Romeo</option>
+                                                <option value="3">Aston Martin</option>
+                                                <option value="4">Audi</option>
+                                                <option value="5">Bentley</option>
+                                                <option value="6">BMW</option>
+                                                <option value="7">Bugatti</option>
+                                            </select>
+                                        </div>*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="select1_wrapper">
+                                                    <label class="formstyle" style="        color: #555555;">Which country are you travelling to?</label>
+                                                    @Html.TextBoxFor(model => model.TouristCountryName, new { @id = "txttouristountry", @type = "text", @class = "form-control", @required = "required", @placeholder = "Type", style = "width:50%;color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", Onchange = "CheckCountry()" })
+                                                    @Html.HiddenFor(model => model.TouristISOCODE, new { @id = "hdnTouristIsocode" })
+
+                                                    @*<div class="select1_inner" style="width:50%">
+                                            <select class="select2 select" style="width: 100%">
+                                                <option value="1">Select</option>
+                                                <option value="2">Model 1</option>
+                                                <option value="3">Model 2</option>
+                                                <option value="4">Model 3</option>
+                                                <option value="5">Model 4</option>
+                                                <option value="6">Model 5</option>
+                                                <option value="7">Model 6</option>
+                                            </select>
+                                        </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr style="border: 1px solid #eeeeee;" />
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="select1_wrapper">
+                                                    <label class="formstyle" style="        color: #555555;">What are your travel dates? </label>
+                                                    @Html.TextBoxFor(model => model.LeavingHome, new { @type = "dateTime", @id = "txtCoverageStartDate", @name = "CoverageStartDate", style = "width:50%;color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "From", @class = "form-control", @required = "required", @readonly = "true", onchange = "UpdateEndDate()" })
+
+                                                    @*<div class="select1_inner" style="width:50%">
+                                            <select class="select2 select" style="width: 100%">
+                                                <option value="1">FROM</option>
+                                                <option value="2">Alfa Romeo</option>
+                                                <option value="3">Aston Martin</option>
+                                                <option value="4">Audi</option>
+                                                <option value="5">Bentley</option>
+                                                <option value="6">BMW</option>
+                                                <option value="7">Bugatti</option>
+                                            </select>
+                                        </div>*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="select1_wrapper">
+                                                    <label class="formstyle" style=" color: #555555;visibility:hidden">Which country are you travelling to</label>
+                                                    @Html.TextBoxFor(model => model.TillDate, new { @type = "dateTime", @id = "txtCoverageEndDate", name = "coverageEnddate", style = "width:50%;color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "To", @class = "form-control", @required = "required", @readonly = "true" })
+
+                                                    @*<div class="select1_inner" style="width:50%">
+                                            <select class="select2 select" style="width: 100%">
+                                                <option value="1">TO</option>
+                                                <option value="2">Model 1</option>
+                                                <option value="3">Model 2</option>
+                                                <option value="4">Model 3</option>
+                                                <option value="5">Model 4</option>
+                                                <option value="6">Model 5</option>
+                                                <option value="7">Model 6</option>
+                                            </select>
+                                        </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <hr style="border: 1px solid #eeeeee;" />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="select1_wrapper">
+                                                    <label class="formstyle" style="        color: #555555;">Age(s) for Travel Medical</label>
+                                                    @Html.TextBoxFor(model => model.name, new { id = "txttravelerdetails", name = "travelerdetails", style = "width:50%;color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control ", onclick = "Popup()", @required = "required", @readonly = "true" })
+
+                                                    @*<div class="select1_inner" style="width:50%">
+                                            <select class="select2 select" style="width: 100%">
+                                                <option value="1">Ages</option>
+                                                <option value="2">Alfa Romeo</option>
+                                                <option value="3">Aston Martin</option>
+                                                <option value="4">Audi</option>
+                                                <option value="5">Bentley</option>
+                                                <option value="6">BMW</option>
+                                                <option value="7">Bugatti</option>
+                                            </select>
+                                        </div>*@
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="">
+                                                    <label class="formstyle" style="        color: #555555;">Do you have a pre-existing condition? </label>
+                                                    <div class="" style="width:50%">
+                                                        <span>
+                                                            <input type="radio" id="" name="preexisting" value="YES">&nbsp;
+                                                            Yes &nbsp;  &nbsp;  &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;
+                                                            <input type="radio" id="" name="preexisting" value="NO" checked>&nbsp;
+                                                            No
+                                                        </span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <hr style="border: 1px solid #eeeeee;" />
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="select1_wrapper">
+                                                    <label class="formstyle" style="color: #555555;">Do you want a renewable plan?  </label>
+                                                    <div class="" style="width:50%">
+                                                        <span>
+                                                            <input type="radio" id="" name="renew" value="YES">&nbsp;
+                                                            Yes &nbsp;  &nbsp;  &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;
+                                                            <input type="radio" id="" name="renew" value="NO" checked>&nbsp;
+                                                            No
+                                                        </span>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="select1_wrapper">
+                                                    <label class="formstyle" style="        color: #555555;">Do you want a cancellable plan?  </label>
+                                                    <div class="" style="width:50%">
+                                                        <span>
+                                                            <input type="radio" id="" name="cancel" value="YES">&nbsp;
+                                                            Yes &nbsp;  &nbsp;  &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;
+                                                            <input type="radio" id="" name="cancel" value="NO" checked>&nbsp;
+                                                            No
+                                                        </span>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <hr style="border: 1px solid #eeeeee;" />
+
+
+
+
+
+
+                                    </div>
+
+                                    <button type="button" style="width:18vw;border-style: inset;" class="btn-default btn-form2-submit" onclick="CheckValidation()">SUBMIT</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                @*<div class="col-sm-12 col-md-3  column-sidebar" style="">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-12">
+                            <div class="breadcrumbs1"><a href="http://trip.erpcart.in/SuggestMePlan/SuggestMePlan" style="    font-size: 14px;   text-decoration: underline;  font-weight: 600;">Suggest Me A Plan for Trip Insurance</a><span></span></div>
+
+                        </div>
+                    </div>
+                </div>*@
+                <div id="myModal1" class="modal1">
+
+                    <!-- Modal content -->
+                    <div class="modal-content1" style="border-radius:5PX">
+                        <div class="modal-header1" style="    padding: 0px 9px 2px;margin-top: 4px;">
+                            @*<span class="close1">&times;</span>*@
+                            <p style="font-size: 11px;margin-bottom:-10px"><span style="color:red;">* </span> Please enter the age of oldest tourist<br />&nbsp; &nbsp;as primary for best result.</p>
+
+                        </div>
+                        <div class="modal-body1">
+
+                            <div class="center" style="width: 288px;color: #555555;">
+                                <p style="    margin: 0px;">
+                                    <span><b>&nbsp;&nbsp;&nbsp;PRIMARY</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>SPOUSE</b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  <span><b>CHILD 1</b></span>
+                                </p>
+
+                                &nbsp;&nbsp; &nbsp;
+                                @Html.TextBoxFor(model => model.travelersage, new { @type = "text", @id = "txttravellerageinyear", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                                <span>
+                                    &nbsp;&nbsp; &nbsp; &nbsp;
+                                    @Html.TextBoxFor(model => model.spouseage, new { @type = "text", @id = "txtspouseage", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checktravelerdetails()", onchange = "Checkagelimit()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                                    @*@Html.TextBoxFor(model => model.TravelersDOB, new { @type = "datetime", @id = "txttravellerage", name = "travelerdetails", style = "padding: .375rem 0;width: 130.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "" })*@
+                                </span>
+                                &nbsp; &nbsp; &nbsp; &nbsp;
+                                @Html.TextBoxFor(model => model.child1age, new { @type = "text", @id = "txtchild1age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkspousedetails()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                                <p>
+                                </p>
+
+                            </div>
+
+
+
+
+                            <div class="center" style="width: 288px;">
+                                <p style="    margin: 0px;color: #555555;">
+                                    <span><b>&nbsp;&nbsp; &nbsp;CHILD 2</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 3</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 4</b></span>
+                                </p>
+                                &nbsp; &nbsp;&nbsp; @Html.TextBoxFor(model => model.child2age, new { @type = "text", @id = "txtchild2age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkchild1details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+
+                                <span>
+                                    &nbsp;&nbsp; &nbsp; &nbsp;
+                                    @Html.TextBoxFor(model => model.child3age, new { @type = "text", @id = "txtChild3age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkchild2details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                                </span>
+                                <span>
+                                    &nbsp;&nbsp; &nbsp; &nbsp;
+                                    @Html.TextBoxFor(model => model.child4age, new { @type = "text", @id = "txtchild4age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkchild3details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                                </span>
+
+                                <p></p>
+
+                            </div>
+
+
+
+                            <div class="center" style="    width: 299px;color: #555555;">
+                                <span>
+                                    <b>
+                                        ARE YOU A U.S CITIZEN? &nbsp;<input type="radio" id="citizenshipyes" name="citizenship" value="YES">
+                                        <label for="YES">Yes</label>
+                                        <input type="radio" id="citizenshipno" name="citizenship" value="NO" checked>
+                                        <label for="NO">No</label>
+                                    </b>
+                                </span>
+
+
+
+                                <span>
+                                    &nbsp;&nbsp;   &nbsp;&nbsp; <button onclick="GetTravelerdetails()" value="Save" type="button" style="margin-left:93px;box-sizing: border-box;border-radius: 0px;border: 1px solid #0770e3;padding-top: 1px;width: 62px;height: 43px;color: #fff;background: #07457a;font-weight: 700;font-family: 'Open Sans';font-size: 14px;line-height: 42px;border-style:inset" id="btnsave" class="btn btn-default btn-number">OK</button>
+                                </span>
+
+                                <p></p>
+
+                            </div>
+
+
+
+
+                        </div>
+                        @*<div class="modal-footer1">
+
+                </div>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center; ">
+        <h5 style="color:#555555"><b>DISCLAIMER </b></h5>
+        <p style="color:#555555;padding-left:10PX;padding-right:10PX">
+            Please refer to the plan brochure for accurate details, benefits, limitations, and exclusions. For every company and plan, benefits and conditions may differ. Information provided here is general and for knowledge-sharing purposes only. If you find any mismatch between the information provided on our website and the insurance companies' plan documents, be advised the insurance company’s plan documents take precedence.
+
+
+        </p>
+    </div>
+</div>

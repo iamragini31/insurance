@@ -1,0 +1,88 @@
+﻿@model TouristInsuredEntity.OrderDetailsModel
+
+@{
+    /**/
+
+    ViewBag.Title = "OrderDetails";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger
+        $.ajax({
+            url: "/OrderDetails/GetOrderDetails/",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                debugger
+                if (data == "No Data Found") {
+                    alert("No Data Found");
+                }
+                else if (data.length > 0 && data != "No Data Found") {
+                    $('#divshowtable').show(); $('#tblorderdetails').show(); $('#tblorderdetails tbody').empty();
+                    //if ($.fn.dataTable.isDataTable('#tblorderdetails')) {
+                    //    $('#tblorderdetails').DataTable().clear().destroy();
+                    //}
+                    $.each(data, function (i, item) {
+                        var rows = "<tr>"
+                            + "<td align='center'>" + (++i) + "</td>"
+                            + "<td align='center'>" + item.policyName + "</td>"
+                            + "<td align='center'>" + item.Coverage_start_Date + "</td>"
+                            + "<td align='center'>" + item.Coverage_End_Date + "</td>"
+                            + "<td align='center'>" + item.Policymax + "</td>"
+                            + "<td align='center'>" + item.Deductible + "</td>"
+                            + "<td align='center'>" + item.Total_premium + "</td>"
+                            + "<td align='center'>" + item.TranactionNO + "</td>"
+                            + "<td align='center'>" + item.AuthCode + "</td>"
+                            + "<td align='center'>" + item.certificatelink + "</td>"
+                            + "<td align='center'>" + item.PolicyNumber + "</td>"
+                            + "</tr>";
+                        $("#tblorderdetails tbody").append(rows);
+                    });
+
+                }
+                else {
+                    $('#divshowtable').hide(); $('#tblorderdetails').hide();
+                }
+            }
+        });
+    });
+</script>
+<div style="    margin-bottom: 28px;">
+
+    <img src="~/images/img/image2.jpg" />
+
+</div>
+<div class="container">
+   
+    <h4 style="text-align:center">Order Details</h4>
+
+    <div id="divshowtable" style="margin: 37px;display:none">
+        <div class="row">
+            <div class="table-responsive">
+                <table id="tblorderdetails" class="table table-striped table-bordered text-nowrap">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Sr. No.</th>
+                            <th style="text-align:center">Policy Name</th>
+                            <th style="text-align:center">Coverage Start Date</th>
+                            <th style="text-align:center">Coverage End Date</th>
+                            <th style="text-align:center">Policy MAximum</th>
+                            <th style="text-align:center">Deductible</th>
+                            <th style="text-align:center">Total Premium</th>
+                            <th style="text-align:center">Transaction NO</th>
+                            <th style="text-align:center">Auth Code</th>
+                            <th style="text-align:center">Certificate Link</th>
+                            <th style="text-align:center">Policy Number</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

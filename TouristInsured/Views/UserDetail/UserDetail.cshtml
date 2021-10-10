@@ -1,0 +1,214 @@
+﻿@model TouristInsuredEntity.UserDetailModel
+
+@{
+    ViewBag.Title = "UserDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .additional {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: -2px;
+        text-align: left;
+        color: #0069aa;
+        margin-top: 40px;
+    }
+
+    a.edit {
+        margin-right: 41px;
+        text-decoration: none;
+        color: #2072ae;
+        float: right;
+        font-size: 14px;
+        font-weight: normal;
+        margin-top: 5px;
+        text-align: right;
+    }
+</style>
+<script>
+    function EditDetails() {
+        var pnluserpanel = document.getElementById('pnluserpanel');
+
+        pnluserpanel.style.display = "block";
+        $.ajax({
+            url: "/UserDetail/GetUserDetail/",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            //data: { "ISOCODE": ISOCODE },
+
+            success: function (result) {
+                debugger
+                var Gender = result[0].Gender;
+                var Firstname = result[0].First_Name;
+                var Last_name = result[0].Last_Name;
+                var DOB = result[0].DOB;
+                var Contact_No = result[0].Contact_No;
+                var Address = result[0].Address;
+                //$("#ddlGender").find('Opt;
+                $("#txtContactNo").val(Contact_No);
+                $("#txtAddress").val(Address);
+                $("#txtfirstname").val(Firstname);
+                $("#txtLastname").val(Last_name)
+                $("#txtDob").val(DOB);
+            }
+            ,
+            error: function (Countryname) {
+            }
+        });
+    }
+    function Clear() {
+        $("#txtfirstname").val("");
+        $("#txtLastname").val("");
+        $("#txtDob").val("");
+        $("#txtEmail").val("");
+        $("#txtContactNo").val("");
+        $("#txtAddress").val("");
+        $("#ddlGender").val(0);
+        $("#txtPassword").val("");
+        $("#txtConfirmpassword").val("");
+    }
+    function Submit() {
+        debugger
+        var txtfirstname = $("#txtfirstname").val();
+        var txtLastname = $("#txtLastname").val();
+        var txtDob = $("#txtDob").val();
+
+        var txtContactNo = $("#txtContactNo").val();
+        var txtAddress = $("#txtAddress").val();
+        var ddlGender = $("#ddlGender").find("option:selected").val();
+
+        if (txtfirstname == "" || txtfirstname == "undefined") {
+            alert("Please enter First Name");
+        }
+        else if (txtLastname == "" || txtLastname == "undefined") {
+            alert("Please enter Last Name");
+        }
+        else if (txtDob == "" || txtDob == "undefined") {
+            alert("Please enter Date of Birth");
+        }
+
+        else if (txtContactNo == "" || txtContactNo == "undefined") {
+            alert("Please enter Contact No");
+        }
+        else if (txtAddress == "" || txtAddress == "undefined") {
+            alert("Please enter Address");
+        }
+        else if (ddlGender == 0 || ddlGender == "undefined") {
+            alert("Please Select Gender");
+        }
+
+        else {
+            var Gender = $("#ddlGender").find("option:selected").text();
+            var formdata = new FormData();
+
+            formdata.append('txtfirstname', txtfirstname); formdata.append('txtLastname', txtLastname); formdata.append('txtDob', txtDob);
+            formdata.append('txtContactNo', txtContactNo);
+            formdata.append('txtAddress', txtAddress); formdata.append('Gender', Gender);
+            $.ajax({
+                url: "/UserDetail/UpdateUser/",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                //dataType: "json",
+                data: formdata,
+                success: function (data) {
+                    debugger
+                    if (data != 0) {
+                        Clear();
+                        alert("Data Updated Successfully");
+                        // window.location.href = '/Signup/ConfirmTrawick?Data=' + data;
+                    }
+                    else {
+                        alert("Data Not Updated");
+                    }
+
+
+
+                },
+                error: function (data) {
+                }
+            });
+        }
+    }
+</script>
+<div style="    margin-bottom: 28px;">
+
+    <img src="~/images/img/image2.jpg" />
+
+</div>
+<div class="container">
+   
+    <h4 style="text-align:center">UserDetail</h4>
+
+
+
+    <div class="row" style="padding-top: 22px;margin-left:25px">
+        @*<div class="cor_icon"></div>*@
+        <div class="additional" style="font-weight: bold; font-size: 20px;text-align:right">
+            <a href="#" class="edit" onclick="EditDetails()">Edit details</a>
+        </div>
+
+    </div>
+    <div id="pnluserpanel" style="display:none">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>First Name</label>
+                    @Html.TextBoxFor(Model => Model.First_Name, new { @id = "txtfirstname", @class = "form-control", @placeholder = "Enter First Name" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Last Name</label>
+                    @Html.TextBoxFor(Model => Model.Last_Name, new { @id = "txtLastname", @class = "form-control", @placeholder = "Enter Last Name" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    @Html.TextBoxFor(Model => Model.DOB, new { @id = "txtDob", @class = "form-control", @placeholder = "Enter Date of Birth" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Gender</label>
+                    @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+      {
+                          new SelectListItem() {Text = "Select", Value="0"},
+                          new SelectListItem() {Text = "MALE", Value="M"},
+                          new SelectListItem() {Text = "FEMALE", Value="F"}
+      }, new { @id = "ddlGender", @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Contact No</label>
+                    @Html.TextBoxFor(Model => Model.Contact_No, new { @id = "txtContactNo", @class = "form-control", @placeholder = "Enter Contact No" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Address</label>
+                    @Html.TextBoxFor(Model => Model.Address, new { @id = "txtAddress", @class = "form-control", @placeholder = "Enter Address" })
+                </div>
+            </div>
+        </div>
+
+
+        <div style="text-align: center">
+            <button class="btn-cf-submit2" id="btnupdateuserdetails" style="background-color: #07457a;width: 83px; color: white" onclick="Submit()">
+                Update
+                <img src="" width="14" height="13" alt="">
+            </button>
+        </div>
+
+    </div>
+</div>

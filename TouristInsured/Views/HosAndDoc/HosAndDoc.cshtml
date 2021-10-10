@@ -1,0 +1,525 @@
+﻿@model TouristInsuredEntity.HosAndDocModel
+
+@{
+    ViewBag.Title = "HosAndDoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .head1 {
+        margin-top: 50px;
+    }
+
+
+    .figure-section-text {
+        padding-bottom: 35px;
+    }
+    p {
+        font-size: 16px;
+    }
+    .btn-default {
+        margin-top: 20px;
+        transform: translate(-50%, -50%);
+        left: 50%;
+    }
+</style>
+<div>
+
+    <div class="breadcrumbs1_wrapper novi-background">
+        <div class="container">
+            <div class="breadcrumbs1"><a href="/Login/Login">Home</a><span></span>Doctors And Hospitals Directory</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="width:100% ;margin-bottom: 28px;position: relative;">
+
+            <img src="~/images/img/hosp.jpg" style="width: 100%;" />
+            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;    border-radius: 8px; border: 1px solid #eeeeee;text-align: center;margin-top:1%;position: absolute;z-index: 3;top: 42%;left:21%;font-size: 34px;width: 59%;height: 15%;">
+                <h3 style="FONT-SIZE: 3vw;font-weight: bolder;font-family:Open Sans;margin-top:0vw">
+                    DOCTORS AND HOSPITALS DIRECTORY
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="section section-md novi-background bg-cover" style="    padding: 60px 0;">
+        <div class="container">
+           
+                    @*<div class="banner-title">DOCTORS AND HOSPITALS DIRECTORY </div>*@
+                    @*<br>*@
+                    @*<p>202 W 7th St, Suite 233 Los Angeles, CA 90014 USA</p>
+                        <p><i class="fa fa-envelope novi-icon" aria-hidden="true"></i> - <a href="mailto:#">info@demolink.org</a></p>
+                        <p><i class="fa fa-phone novi-icon" aria-hidden="true"></i> - <a href="tel:#">1-800-624-5462</a></p>
+                        <p><i class="fa fa-clock-o novi-icon" aria-hidden="true"></i> - Monday to Friday from 09.00 to 18.00</p>*@
+                    <p>
+                        If you need to go to a doctor or hospital, you can find one in your area from the list of the PPO network for each insurance company.
+                    </p>
+                    <p>
+                        Below is the list of companies and all their plan names with the link resource, to find the doctors and hospitals in your area. Please choose your insurer and check the available PPO network.
+                    </p>
+
+                </div>
+               
+        </div>
+    </div>
+
+
+    <div class="row row-fix" style="width:100%;">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+            <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                @*<div class="head1 " style=" font-family: 'Open Sans';font-weight: 700;font-size: 22px;line-height: 20px;color: #043055;">
+                    T R A W I C K &nbsp; I N T E R N A T I O N A L
+                </div>*@
+                @*<h3>Why People Choose Us</h3>*@
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @*<h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PLAN NAMES</h4>*@
+                        <div class="figure-section-text" style="">
+
+                            <ul class="list-marked-left" style="text-align:center">
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                </li>
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">TRAWICK INTERNATIONAL</h4>
+                                </li>
+                                @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS USA</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS USA COST SAVER</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS USA COMPREHENSIVE</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS FOR VISITORS TO THE USA</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS INTERNATIONAL COST SAVER</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS INTERNATIONAL </li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS SCHENGEN VISA</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS OUTBOUND</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">SAFE TRAVELS OUTBOUND COST PLUS</li>
+
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- STANDARD</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- PREFERRED</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- SILVER</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">COLLEGIATE CARE- GOLD</li>*@
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        @*<h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>*@
+                        <ul class="list-marked-left" style="text-align:center">
+
+
+                            <li>
+                                <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                            </li>
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                IN USA
+                            </li>
+
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://www.firsthealthinternational.com/LocateProvider/CustomPage'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                               
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT: 0PX;" href="https://www.firsthealthinternational.com/LocateProvider/CustomPage"> PLACE YOUR REQUEST </a>*@
+                            </li>
+                          
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                INTERNATIONAL EXCLUDING USA
+                            </li>
+
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://providers.gbg.com/ProviderSearch/ProviderSearch.aspx?Network=GBGN'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                               
+
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT: 0PX;" href="https://providers.gbg.com/ProviderSearch/ProviderSearch.aspx?Network=GBGN"> PLACE YOUR REQUEST </a>*@
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="row row-fix" style="width:100%;">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+            <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                @*<div class="head1 " style=" font-family: 'Open Sans';font-weight: 700;font-size: 22px;line-height: 20px;color: #043055;">
+                    T O K I O &nbsp; M A R I N E &nbsp; H C C
+                </div>*@
+                @*<h3>Why People Choose Us</h3>*@
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="figure-section-text" style="">
+                            <ul class="list-marked-left" style="text-align:center">
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                </li>
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">TOKIO MARINE HCC</h4>
+                                </li>
+                                @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> ATLAS TRAVEL</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> ATLAS ESSENTIAL</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> ATLAS PREMIUM</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITOR SECURE</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDENT SECURE- BUDGET</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT SECURE- ELITE </li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT SECURE- SELECT</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT SECURE- SMART</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">ATLAS MULTITRIP</li>
+                                <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">ATLAS GROUP</li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-marked-left" style="text-align:center">
+                            <li>
+                                <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                            </li>
+                          
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">  IN USA</li>
+
+
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://us1.welcometouhc.com/find-a-doctor'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                             
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT: 0PX;" href="https://www.hccmis.com/find-a-doctor/"> PLACE YOUR REQUEST</a>*@
+                            </li>
+                       
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://www.firsthealthinternational.com/LocateProvider/SelectNetworkType'" style="width: 225px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE - FOR EU CITIZENS</button>
+                                </div>
+                              
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT: 0PX;" href="https://www.firsthealthinternational.com/LocateProvider/SelectNetworkType/"> PLACE YOUR REQUEST - FOR EU CITIZENS  </a>*@
+                            </li>
+                         
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                INTERNATIONAL EXCLUDING USA
+                            </li>
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://www.hccmis.com/find-a-doctor/international-providers/'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                              
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT: 0PX;" href="https://www.hccmis.com/find-a-doctor/international-providers/"> PLACE YOUR REQUEST </a>*@
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+   
+
+    <br />
+    <br />
+    <br />
+
+    <div class="row row-fix" style="width:100%;">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+            <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                @*<div class="head1 " style=" font-family: 'Open Sans';font-weight: 700;font-size: 19px;line-height: 20px;color: #043055;">
+                    U S I &nbsp; A F F I N I T Y
+                </div>*@
+                @*<h3>Why People Choose Us</h3>*@
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="figure-section-text" style="">
+                            <ul class="list-marked-left" style="text-align:center">
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                </li>
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">USI AFFINITY</h4>
+                                </li>
+                                @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDY USA HEALTHCARE- BASIC </li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDY USA HEALTHCARE- STANDARD  </li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#"> STUDY USA HEALTHCARE- PREFERRED300  </li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDY USA HEALTHCARE- PREFERRED500  </li>*@
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-marked-left" style="text-align:center">
+                            <li>
+                                <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                            </li>
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                IN USA
+                            </li>
+
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://us1.welcometouhc.com/find-a-doctor'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                               
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT:0PX;" href="https://us1.welcometouhc.com/find-a-doctor"> PLACE YOUR REQUEST </a>*@
+                            </li>
+                         
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://www.firsthealthinternational.com/LocateProvider/SelectNetworkType'" style="width: 225px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE - FOR EU CITIZENS</button>
+                                </div>
+                               
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT:0PX;" href="https://www.firsthealthinternational.com/LocateProvider/SelectNetworkType"> PLACE YOUR REQUEST - FOR EU CITIZENS  </a>*@
+                            </li>
+                        
+
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                INTERNATIONAL EXCLUDING USA
+                            </li>
+
+                            <li>
+                                <h4 style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 600; PADDING-LEFT: 0PX;" href="#"> CALL- 1-317-262-2162. </h4>
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="row row-fix" style="width:100%;">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+            <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                <div class="head1 " style=" font-family: 'Open Sans';font-weight: 700;font-size: 19px;line-height: 20px;color: #043055;">
+                    G L O B A L &nbsp; U N D E R W R I T E R S
+                </div>
+                @*<h3>Why People Choose Us</h3>*@
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="figure-section-text" style="">
+                            <ul class="list-marked-left" style="">
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PLAN NAMES</h4>
+                                </li>
+                                <br />
+                                <li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> DIPLOMAT AMERICA </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-marked-left">
+                            <li>
+                                <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                            </li>
+                            <li>
+
+                                <p style=" font-size: 16px;line-height: 2;color: #181c2a; PADDING-LEFT:0PX;" href="#">THERE IS NO PPO NETWORK FOR DIPLOMAT AMERICA. SO YOU CAN GO TO ANY LICENSED, PRACTICING DOCTOR OR HOSPITAL YOU WOULD LIKE, AND FILE THE APPLICABLE CLAIMS FOR REIMBURSEMENT UNLESS THEY SAY THEY CAN BILL THE PROVIDER DIRECTLY. </p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="row row-fix" style="width:100%;">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+            <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                <div class="head1 " style=" font-family: 'Open Sans';font-weight: 700;font-size: 19px;line-height: 20px;color: #043055;">
+                    A Z I M U T H &nbsp; R I S K &nbsp; S O L U T I O N S
+                </div>
+                @*<h3>Why People Choose Us</h3>*@
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="figure-section-text" style="">
+
+                            <ul class="list-marked-left" style="text-align:center">
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                </li>
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">AZIMUTH RISK SOLUTIONS</h4>
+                                </li>
+                                @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> BEACON AMERICA </li>
+                                <li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#"> BEACON INTERNATIONAL </li>*@
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-marked-left" style="text-align:center">
+                            <li>
+                                <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                            </li>
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                IN USA
+                            </li>
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://us1.welcometouhc.com/find-a-doctor'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                             
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a; PADDING-LEFT: 0PX;" href="https://us1.welcometouhc.com/find-a-doctor"> PLACE YOUR REQUEST </a>*@
+                            </li>
+                            <li>&nbsp;</li>
+                            @*<li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                INTERNATIONAL EXCLUDING USA
+                            </li>
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='#'" class="btn-default btn-cf-submit3" style=" background: #07457a;content:none;font-weight: 700;margin-top: 0px; font-size: 16px;padding: 0 10px;">LOCATE</button>
+                                </div>
+                            </li>*@
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div class="row row-fix" style="width:100%;">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-left: 5.666667%;    width: 100%;margin-right:5.66666%;padding-right: 9.66%;">
+            <div class="figure-section" style="position: relative;background: url(../images/testimonial-bg.jpg) center;background-size: cover;">
+                @*<div class="head1 " style=" font-family: 'Open Sans';font-weight: 700;font-size: 19px;line-height: 20px;color: #043055;">
+                    I M G
+                </div>*@
+                @*<h3>Why People Choose Us</h3>*@
+                <br />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="figure-section-text" style="">
+                            <ul class="list-marked-left" style="text-align:center">
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color: #043055;">PROVIDER</h4>
+                                </li>
+                                <li>
+                                    <h4 style=" font-family: 'Open Sans';font-weight: 600;font-size: 16px;line-height: 20px;color: #043055;">IMG</h4>
+                                </li>
+                                @*<li style="    font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT AMERICA TRAVEL</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT AMERICA PLUS </li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT PLATINUM AMERICA</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITORS CARE PLAN A.</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITORS CARE PLAN B.</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">VISITORS CARE PLAN C. </li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT INTERNATIONAL TRAVEL</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT PLATINUM INTERNATIONAL</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT  EXCHANGE PROGRAM</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE AMERICA</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE PLATINUM AMERICA</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE INTERNATIONAL</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE PLATINUM INTERNATIONAL</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT MULTITRIP</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">GLOBEHOPPER SENIOR MULTI-TRIP </li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">IMG GLOBAL MEDICAL </li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT GROUP TRAVEL MEDICAL INSURANCE</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT AMERICA PLUS GROUP</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT PLATINUM GROUP TRAVEL MEDICAL INSURANCE</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT MULTI-TRIP GROUP</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">PATRIOT GROUP EXCHANGE PROGRAM</li>
+        <li style=" font-size: 16px;line-height: 2;color: #181c2a;" href="#">STUDENT HEALTH ADVANTAGE GROUP</li>*@
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-marked-left" style="text-align:center">
+                            <li>
+                                <h4 style=" font-family: 'Open Sans';font-weight: 700;font-size: 16px;line-height: 20px;color:#043055;">RESOURCE</h4>
+                            </li>
+                           
+
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                IN USA
+                            </li>
+
+
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://providerlocator.firsthealth.com/LocateProvider/CustomPage'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                               
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT: 0PX;" href="https://providerlocator.firsthealth.com/LocateProvider/CustomPage"> PLACE YOUR REQUEST  </a>*@
+                            </li>
+                          
+
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://us1.welcometouhc.com'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                               
+                            </li>
+                           
+                            <li style=" font-size: 16px;line-height: 2;color: #181c2a; font-weight: 600;">
+                                INTERNATIONAL EXCLUDING USA
+                            </li>
+
+                            <li>
+                                <div class="">
+                                    <button type="submit" onclick="window.location.href='https://ipa.imglobal.com'" style="width: 200px;  border-style: none;" class="btn-default btn-form2-submit">LOCATE</button>
+                                </div>
+                                
+                                @*<a style=" font-size: 16px;line-height: 2;color: #181c2a;font-weight: 400; PADDING-LEFT:0PX;" href="https://ipa.imglobal.com">  PLACE YOUR REQUEST</a>*@
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div style="text-align:center; ">
+        <h5 style="color:#555555"><b>DISCLAIMER </b></h5>
+        <p style="color:#555555;padding-left:10PX;padding-right:10PX;font-size:13PX">
+            Please refer to the plan brochure for accurate details, benefits, limitations, and exclusions. For every company and plan, benefits and conditions may differ. Information provided here is general and for knowledge-sharing purposes only. If you find any mismatch between the information provided on our website and the insurance companies' plan documents, be advised the insurance company’s plan documents take precedence.
+
+
+        </p>
+    </div>
+</div>
+

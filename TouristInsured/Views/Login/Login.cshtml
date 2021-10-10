@@ -1,0 +1,2741 @@
+﻿@model TouristInsuredEntity.LoginModel
+
+@{
+    /**/
+
+    /**/
+
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+@*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+
+@*<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">*@
+<link href="~/css/Custom/LoginCS.css" rel="stylesheet" />
+<script src="~/js/CustomJS/LoginJS.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+    var jq = $.noConflict(true);
+    $(document).ready(function () {
+
+        $("#CountryName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Login/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#hdnisocode").val(i.item.val);
+            },
+        });
+
+
+        $("#txttouristountry").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Login/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#hdnTouristIsocode").val(i.item.val);
+            },
+        });
+
+        $("#mobCountryName").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Login/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#mobhdnisocode").val(i.item.val);
+            },
+        });
+
+
+        $("#mobtxttouristountry").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Login/Index",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term },
+                    success: function (data) {
+
+
+                        response($.map(data, function (item) {
+
+                            return item;
+                        }))
+
+                    }
+                })
+            },
+            select: function (e, i) {
+
+                $("#mobhdnTouristIsocode").val(i.item.val);
+            },
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger
+        //   $('input[type=datetime]').datepicker({
+        //       dateFormat: "dd-MM-yy",
+        //       changeMonth: true,
+        //       changeYear: true,
+        //       yearRange: "+0:+2",
+        //minDate: 0
+        //   }).on('changeDate', function (ev) {
+        //       $('#sDate1').text($('#txtCoverageStartDate').data('date'));
+        //       $('#txtCoverageEndDate').datepicker('hide');
+        //   });
+        $("#txtCoverageStartDate").datepicker({
+            dateFormat: "MM-dd-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "+0:+2",
+            minDate: 0
+        }).val();
+        $("#txtCoverageEndDate").datepicker({
+            dateFormat: "MM-dd-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "+0:+2",
+            minDate: 0
+        }).val();
+        $("#mobtxtCoverageStartDate").datepicker({
+            dateFormat: "MM-dd-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "+0:+2",
+            minDate: 0
+        }).val();
+        $("#mobtxtCoverageEndDate").datepicker({
+            dateFormat: "MM-dd-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "+0:+2",
+            minDate: 0
+        }).val();
+        //$('#txtCoverageEndDate').datepicker({
+
+        //    dateFormat: "dd-MM-yy",
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    yearRange: "+0:+2",
+        //    minDate: new Date(year, month, date)
+        //}).val();
+        //$('#txttravellerage').datepicker({ dateFormat: 'mm/dd/yy' }).val();
+        $('#btngetquotes').click(function () {
+
+        });
+        $(function () {
+
+            $(document).click(function () {
+
+                if ($("#myModal1").is(":visible") && $("#txttravellerageinyear").val() != "") {
+                    $("#txttravelerdetails").click(function () {
+                        $('#myModal1').show();
+                    });
+                    //hide the button
+                }
+            });
+        });
+        $(document).keypress(function (e) {
+
+            if (e.which == 13) {
+                var count = 0;
+                var nooftraveler = "";
+                var age = $("#txttravellerageinyear").val();
+                var spouseage = $("#txtspouseage").val();
+                if (age >= 80) {
+
+                    if (age == spouseage) {
+
+                    }
+                    else if (spouseage == "") {
+
+                    }
+                    else if (spouseage < age) {
+                        alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+                    }
+
+
+                }
+                else if (age >= 70 && age <= 79) {
+
+                    if (age == spouseage) {
+
+                    }
+                    else if (spouseage == "") {
+
+                    }
+                    else if (spouseage < age) {
+                        alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+                    }
+                }
+                else if ($("#txttravellerageinyear").val() == "") {
+                    alert("Primary Age Required");
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    $('#myModal1').hide();
+                }
+
+
+            }
+        });
+    });
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+    function UpdateEndDate() {
+        debugger
+        $('#txtCoverageEndDate').val("");
+        $('#txtCoverageEndDate').datepicker('destroy');
+        var d = new Date($("#txtCoverageStartDate").val());
+        var date = d.getDate() + 1;
+        var month = d.getMonth(); // Since getMonth() returns month from 0-11 not 1-12.
+        var year = d.getFullYear();
+        $('#txtCoverageEndDate').datepicker({
+
+            dateFormat: "MM-dd-yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "+0:+2",
+            minDate: new Date(year, month, date)
+        }).val();
+    }
+</script>
+
+<style type="text/css">
+    .modal1 {
+        margin: -34px 47px 25px 30px;
+        position: absolute;
+        display: none;
+        z-index: 9;
+        /* padding-top: 62px; */
+        /*left: 783px;*/
+        left: 144px;
+        top: 15.2%;
+        width: 95EM;
+        height: 108%;
+        overflow: hidden;
+        /* background-color: rgb(0,0,0); */
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .modal-content1 {
+        position: relative;
+        background-color: #fefefe;
+        margin: 69px 805px;
+        padding: 0;
+        border: 1px solid #888;
+        width: 21%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /*@@webkit-keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+    }*/
+
+
+    .close1 {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close1:hover,
+        .close1:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .modal-header1 {
+        /*padding: 2px 16px;*/
+        /*padding: 5px 16px 2px;*/
+        padding: 16px 6px 2px;
+        background-color: white;
+        color: black;
+        height: 35px;
+        margin-top: -8px
+    }
+
+    .modal-body1 {
+        /*padding: 2px 16px;*/
+        padding: 0px 0px;
+        margin-top: 11px;
+    }
+
+    .modal-footer1 {
+        /*padding: 2px 16px;*/
+        padding: 0px 16px;
+        background-color: #fff;
+        color: white;
+        height: 1px;
+    }
+
+    .disabled2 {
+        pointer-events: none;
+        opacity: inherit;
+    }
+</style>
+
+<script>
+    // Get the modal
+    function Popup() {
+
+
+        var modal = document.getElementById("myModal1");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("txtname");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close1")[0];
+
+        // When the user clicks the button, open the modal
+        modal.style.display = "block";
+        var date1 = new Date($("#txtCoverageStartDate").val());
+        var date2 = new Date($("#txtCoverageEndDate").val());
+
+        // To calculate the time difference of two dates
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        var total = Difference_In_Days + 1;
+        $("#lblnoofdays").text(total);
+        //btn.onclick = function()  {
+        //
+
+        //}
+
+        // When the user clicks on <span> (x), close the modal
+        //span.onclick = function () {
+        //    modal.style.display = "none";
+        //}
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+    function GetTravelerdetails() {
+        debugger
+        var modal = document.getElementById("myModal1");
+        var count = 0;
+        var nooftraveler = "";
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if (spouseage == "") {
+            spouseage = 0;
+        }
+        if (age >= 80) {
+
+            if (age == spouseage) {
+
+            }
+            //else if (spouseage == "") {
+
+            //}
+            else if (spouseage > age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+            else {
+                     if ($("#txttravellerageinyear").val() == "") {
+                    alert("Primary Age Required");
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+        }
+        else if (age >= 70 && age <= 79) {
+
+            if (age == spouseage) {
+
+            }
+            //else if (spouseage == "") {
+
+            //}
+            else if (spouseage > age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+            else {
+                     if ($("#txttravellerageinyear").val() == "") {
+                    alert("Primary Age Required");
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+                else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                    count = 1
+                    nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                    $("#txttravelerdetails").val(nooftraveler);
+                    modal.style.display = "none";
+                }
+
+
+            }
+
+        }
+
+        else {
+                 if ($("#txttravellerageinyear").val() == "") {
+                alert("Primary Age Required");
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() == "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() != "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtspouseage").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() == "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() == "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() == "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+            else if ($("#txttravellerageinyear").val() != "" && $("#txtspouseage").val() == "" && $("#txtchild1age").val() != "" && $("#txtchild2age").val() != "" && $("#txtChild3age").val() != "" && $("#txtchild4age").val() != "") {
+                count = 1
+                nooftraveler = $("#txttravellerageinyear").val() + ',' + $("#txtchild1age").val() + ',' + $("#txtchild2age").val() + ',' + $("#txtChild3age").val() + ',' + $("#txtchild4age").val();
+                $("#txttravelerdetails").val(nooftraveler);
+                modal.style.display = "none";
+            }
+
+
+        }
+      //var Travelerdetail = document.getElementById("txtTravelerdetail").value;
+        //if (Travelerdetail == 1) {
+        //    document.getElementById("txttravelerdetails").value = Travelerdetail + " Traveler";
+        //}
+        //else {
+        //    document.getElementById("txttravelerdetails").value = Travelerdetail + " Travelers";
+        //}
+
+
+
+
+    }
+
+    function checkchild3details() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        //else if ($("#txtspouseage").val() == "" || $("#txtspouseage").val() == null) {
+        //    alert("Please Enter Spouse Age");
+        //}
+        else if ($("#txtchild1age").val() == "" || $("#txtchild1age").val() == null) {
+            alert("Please Enter Child1 Age");
+        }
+        else if ($("#txtchild2age").val() == "" || $("#txtchild2age").val() == null) {
+            alert("Please Enter Child2 Age");
+        }
+        else if ($("#txtChild3age").val() == "" || $("#txtChild3age").val() == null) {
+            alert("Please Enter Child3 Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+    function checkchild1details() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        //else if ($("#txtspouseage").val() == "" || $("#txtspouseage").val() == null) {
+        //    alert("Please Enter Spouse Age");
+        //}
+        else if ($("#txtchild1age").val() == "" || $("#txtchild1age").val() == null) {
+            alert("Please Enter Child1 Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+
+    }
+    function checkchild2details() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        //else if ($("#txtspouseage").val() == "" || $("#txtspouseage").val() == null) {
+        //    alert("Please Enter Spouse Age");
+        //}
+        else if ($("#txtchild1age").val() == "" || $("#txtchild1age").val() == null) {
+            alert("Please Enter Child1 Age");
+        }
+        else if ($("#txtchild2age").val() == "" || $("#txtchild2age").val() == null) {
+            alert("Please Enter Child2 Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+    function checkspousedetails() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+
+    function checktravelerdetails() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if ($("#txttravellerageinyear").val() == "" || $("#txttravellerageinyear").val() == "") {
+            alert("Please Enter Primary Traveler Age");
+        }
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+
+        }
+    }
+
+    function Checkagelimit() {
+        var age = $("#txttravellerageinyear").val();
+        var spouseage = $("#txtspouseage").val();
+        if (age >= 80) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+            if (age == spouseage) {
+
+            }
+            else if (spouseage == "") {
+
+            }
+            else if (spouseage < age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+
+
+        }
+        else if (age >= 70 && age <= 79) {
+            $("#txtchild1age").addClass("disabled2");
+            $("#txtchild2age").addClass("disabled2");
+            $("#txtChild3age").addClass("disabled2");
+            $("#txtchild4age").addClass("disabled2");
+            if (age == spouseage) {
+
+            }
+            else if (spouseage == "") {
+
+            }
+            else if (spouseage < age) {
+                alert("PLEASE PURCHASE SEPARATE PLANS FOR EACH INDIVIDUAL FOR AGE 70 YEARS AND ABOVE");
+            }
+        }
+    }
+
+    function CheckCountry() {
+        var isocode = $("#hdnisocode").val();
+        var Touristisocode = $("#hdnTouristIsocode").val();
+
+        if (isocode != "" && Touristisocode != "") {
+            if (Touristisocode == isocode) {
+                alert("HOME COUNTRY AND DESTINATION COUNTRY CANNOT BE THE SAME");
+            }
+        }
+    }
+
+    function CheckValidation() {
+        debugger
+        var isocode = $("#hdnisocode").val();
+        var Touristisocode = $("#hdnTouristIsocode").val();
+        var citizenship = $("input[name='citizenship']:checked").val();
+        if (isocode == "") {
+            alert("Please Enter Valid Home Country");
+        }
+        else if (Touristisocode == "") {
+            alert("Please Enter Valid Tourist Country");
+        }
+        else if (isocode == Touristisocode) {
+            alert("HOME COUNTRY AND DESTINATION COUNTRY CANNOT BE THE SAME");
+
+
+        }
+        else if ($("#txtCoverageStartDate").val() == "") {
+            alert("Leaving Home Required");
+        }
+        else if ($("#txtCoverageEndDate").val() == "") {
+            alert("Returning Home Required");
+        }
+        else if ($("#txttravelerdetails").val() == "") {
+            alert("Tourists Ages  Required");
+        }
+
+
+        else {
+            debugger
+            //var formdata = new FormData();
+            //formdata.append('ISOCODE', $("#hdnisocode").val()); formdata.append('TouristISOCODE', $("#hdnTouristIsocode").val());
+            //formdata.append('txtCoverageStartDate', $("#txtCoverageStartDate").val()); formdata.append('txtCoverageEndDate', $("#txtCoverageEndDate").val());
+            //formdata.append('txttravelerdetails', $("#txttravelerdetails").val()); formdata.append('txttravellerageinyear', $("#txttravellerageinyear").val());
+            //formdata.append('txtspouseage', $("#txtspouseage").val()); formdata.append('txtchild1age', $("#txtchild1age").val()); formdata.append('txtchild2age', $("#txtchild2age").val());
+            //formdata.append('txtchild3age', $("#txtChild3age").val()); formdata.append('txtchild4age', $("#txtchild4age").val());
+            CountryName = $("#CountryName").val();
+            txttouristountry = $("#txttouristountry").val();
+            ISOCODE = $("#hdnisocode").val();
+            TouristISOCODE = $("#hdnTouristIsocode").val();
+            txtCoverageStartDate = $("#txtCoverageStartDate").val();
+            txtCoverageEndDate = $("#txtCoverageEndDate").val();
+            txttravelerdetails = $("#txttravelerdetails").val();
+            txttravellerageinyear = $("#txttravellerageinyear").val();
+            txtspouseage = $("#txtspouseage").val();
+            txtchild1age = $("#txtchild1age").val();
+            txtchild2age = $("#txtchild2age").val();
+            txtchild3age = $("#txtChild3age").val();
+            txtchild4age = $("#txtchild4age").val();
+
+            var _array = [];
+            _array.push({
+                CountryName: CountryName,
+                txttouristountry: txttouristountry,
+                ISOCODE: ISOCODE,
+                TouristISOCODE: TouristISOCODE,
+                txtCoverageStartDate: txtCoverageStartDate,
+                txtCoverageEndDate: txtCoverageEndDate,
+                txttravelerdetails: txttravelerdetails,
+                txttravellerageinyear: txttravellerageinyear,
+                txtspouseage: txtspouseage,
+                txtchild1age: txtchild1age,
+                txtchild2age: txtchild2age,
+                txtchild3age: txtchild3age,
+                txtchild4age: txtchild4age,
+                Citizenship: citizenship
+
+            });
+            window.location.href = '/Quotation/Quotation?Data=' + JSON.stringify(_array);
+            //$.ajax({
+            //    url: "/Login/LoginForm/",
+            //    type: "POST",
+            //    contentType: false,
+            //    processData: false,
+            //    //dataType: "json",
+            //    data: formdata,
+
+
+            //    success: function (data) {
+            //        if (data == 1) {
+            //            window.location.href = '/Quotation/Quotation?form=' + formdata ;
+            //        }
+
+            //    },
+            //    error: function (response) {
+
+            //    }
+            //});
+        }
+    }
+
+
+</script>
+<style>
+    .center {
+        /*width: 150px;*/
+        width: 118px;
+        /*margin: 20px 5px 25px 5px;*/
+        margin: 5px 5px 12px 5px;
+    }
+
+    input-group-btn .btn-default .btn-number:hover {
+        border: 1px solid #0770e3;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        $(".btn-number").click(function (e) {
+
+            e.preventDefault();
+            fieldName = $(this).attr('data-field');
+            type = $(this).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+        });
+
+
+
+
+        $('.input-number').focusin(function () {
+            $(this).data('oldValue', $(this).val());
+        });
+        $('.input-number').change(function () {
+
+            minValue = parseInt($(this).attr('min'));
+            maxValue = parseInt($(this).attr('max'));
+            valueCurrent = parseInt($(this).val());
+
+            name = $(this).attr('name');
+            if (valueCurrent >= minValue) {
+                $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+            if (valueCurrent <= maxValue) {
+                $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+
+
+        });
+        $(".input-number").keydown(function (e) {
+
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+@*<link href="Radiobtn.css" rel="stylesheet" />*@
+@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <section id="home" class="section swiper-container swiper-slider swiper-slider-1" data-loop="true"
+             data-autoplay="false" data-simulate-touch="false" data-slide-effect="fade">
+        <div class="swiper-wrapper text-center">
+
+            <div class="swiper-slide context-dark" data-slide-bg="../images/img/Sliderimages/image1.jpg" style="background-position: 50% 50%;">
+                <div class="swiper-slide-caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*<div class="row">
+                <div style="width:100% ;margin-bottom: 28px;position: relative;">
+
+                    <img src="~/images/img/Sliderimages/image1.jpg" style="width: 100%;" />
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />*@
+
+        <!--Start Search Panel-->
+
+        <div class="slider-form">
+            <div class="sidebar-form-wrapper">
+                <div class="sidebar-form">
+                    <form action="javascript:;" class="form2">
+                        <div class="row" style="">
+                            <div class="col-md-3" style="width: 20.2%;TEXT-ALIGN: CENTER;">
+                                <label for="CountryName" class="form-label" style="color: white;">HOME COUNTRY</label>
+                                <div class="form-wrap form-group">
+                                    @Html.TextBoxFor(model => model.CountryName, new { @id = "CountryName", @type = "text", @class = "form-control", @required = "required", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Type", Onchange = "CheckCountry()" })
+                                    @Html.HiddenFor(model => model.ISOCODE, new { @id = "hdnisocode" })
+
+                                    @*@Html.DropDownList("ISOCODE", ViewData["ddlHomeCountry"] as IEnumerable<SelectListItem>, "Select Home Country", new { @id = "ddlHomeCountry", @class = "form-control", @name = "homecountry", @required = "required", })*@
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="width: 20.2%; TEXT-ALIGN: CENTER;">
+                                <label for="txttouristountry" style="color: white;">TOURIST COUNTRY</label>
+                                <div class="form-wrap form-group">
+                                    @Html.TextBoxFor(model => model.TouristCountryName, new { @id = "txttouristountry", @type = "text", @class = "form-control", @required = "required", @placeholder = "Type", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", Onchange = "CheckCountry()" })
+                                    @Html.HiddenFor(model => model.TouristISOCODE, new { @id = "hdnTouristIsocode" })
+
+                                    @*@Html.DropDownList("TouristISOCODE", ViewData["ddlTouristCountry"] as IEnumerable<SelectListItem>, "Select Tourist Country", new { @id = "ddlTouristCountry", @class = "form-control", @required = "required", })*@
+                                </div>
+                            </div>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                            <style>
+                                .input-icons i {
+                                    position: absolute;
+                                    top: 39px;
+                                    right: 20px;
+                                    font-size: 13px;
+                                }
+
+                                .input-icons {
+                                    width: 100%;
+                                    margin-bottom: 10px;
+                                }
+
+                                .icon {
+                                    padding: 10px;
+                                    min-width: 40px;
+                                }
+
+                                .input-field {
+                                    width: 100%;
+                                    padding: 10px;
+                                    text-align: center;
+                                }
+
+                                /*.input-field {
+                                        text-transform: uppercase;
+                                    }*/
+                            </style>
+                            <div class="col-md-2" style="width: 17.666667%;TEXT-ALIGN: CENTER;">
+                                <label for="txtCoverageStartDate" class="form-label" style="color: white;">LEAVING HOME</label>
+                                <div class="form-wrap  form-group input-icons">
+                                    @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageStartDate" style="width: 160.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                    @Html.TextBoxFor(model => model.LeavingHome, new { @type = "dateTime", @id = "txtCoverageStartDate", @name = "CoverageStartDate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px;text-transform: uppercase;", @placeholder = "Select", @class = "form-control input-field", @required = "required", @readonly = "true", onchange = "UpdateEndDate()" })
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-2" style="width: 18.666667%;TEXT-ALIGN: CENTER;">
+                                <label for="txtCoverageEndDate" class="form-label" style="color: white;">RETURING HOME</label>
+                                <div class="form-wrap form-group input-icons">
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                    @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageEndDate" style="width:161.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                    @Html.TextBoxFor(model => model.TillDate, new { @type = "dateTime", @id = "txtCoverageEndDate", name = "coverageEnddate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px;text-transform: uppercase;", @placeholder = "Select", @class = "form-control input-field", @required = "required", @readonly = "true" })
+                                </div>
+
+                            </div>
+                            <div class="col-md-3" style="width: 20.2%;TEXT-ALIGN: CENTER;">
+                                <label for="txttravelerdetails" class="form-label" style="color:white;">TOURISTS AGES</label>
+                                <div class="form-wrap form-group">
+                                    @*<input name="txtname" type="text" ng-model="txtname" class="form-input form-control-has-validation form-control-last-child" placeholder="Name" style="width:250.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" value="1 Adult,Economy" onclick="Popup()" />*@
+                                    @Html.TextBoxFor(model => model.name, new { id = "txttravelerdetails", name = "travelerdetails", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control ", onclick = "Popup()", @required = "required", @readonly = "true" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-top: 1%;">
+                            <div class="col-md-4">
+                            </div>
+
+                            <div class="col-md-4" style="padding-left: 95px;">
+                                @*<a href="/Quotation/Quotation" class="btn-default btn-form2-submit">Get Quotes</a>*@
+                                <input type="button" style="width: 63%;border-style:inset" class="btn-default btn-form2-submit" value="EXPLORE" onclick="CheckValidation()" />
+                                @*<button class="btn-default btn-form2-submit" id="btnGetQuotes" ng-click="GetQuotes()">Get Quotes</button>*@
+                            </div>
+                        </div>
+
+                        @*<%--<div class="reset-filters"><a href="#">RESET ALL FILTERS</a></div>--%>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModal1" class="modal1">
+
+            <!-- Modal content -->
+            <div class="modal-content1" style="border-radius:5PX">
+                <div class="modal-header1" style="    padding: 0px 9px 2px;margin-top: 4px;">
+                    @*<span class="close1">&times;</span>*@
+                    <p style="font-size: 11px;margin-bottom:-10px"><span style="color:red;">* </span> Please enter the age of oldest tourist<br />&nbsp; &nbsp;as primary for best result.</p>
+
+                </div>
+                <div class="modal-body1">
+
+                    <div class="center" style="width: 288px;color: #555555;">
+                        <p style="    margin: 0px;">
+                            <span><b>&nbsp;&nbsp;&nbsp;PRIMARY</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>SPOUSE</b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  <span><b>CHILD 1</b></span>
+                        </p>
+
+                        &nbsp;&nbsp; &nbsp;
+                        @Html.TextBoxFor(model => model.travelersage, new { @type = "text", @id = "txttravellerageinyear", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                        <span>
+                            &nbsp;&nbsp; &nbsp; &nbsp;
+                            @Html.TextBoxFor(model => model.spouseage, new { @type = "text", @id = "txtspouseage", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checktravelerdetails()", onchange = "Checkagelimit()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                            @*@Html.TextBoxFor(model => model.TravelersDOB, new { @type = "datetime", @id = "txttravellerage", name = "travelerdetails", style = "padding: .375rem 0;width: 130.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "" })*@
+                        </span>
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        @Html.TextBoxFor(model => model.child1age, new { @type = "text", @id = "txtchild1age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkspousedetails()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                        <p>
+                        </p>
+
+                    </div>
+
+
+
+
+                    <div class="center" style="width: 288px;">
+                        <p style="    margin: 0px;color: #555555;">
+                            <span><b>&nbsp;&nbsp; &nbsp;CHILD 2</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 3</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 4</b></span>
+                        </p>
+                        &nbsp; &nbsp;&nbsp; @Html.TextBoxFor(model => model.child2age, new { @type = "text", @id = "txtchild2age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkchild1details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+
+                        <span>
+                            &nbsp;&nbsp; &nbsp; &nbsp;
+                            @Html.TextBoxFor(model => model.child3age, new { @type = "text", @id = "txtChild3age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkchild2details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                        </span>
+                        <span>
+                            &nbsp;&nbsp; &nbsp; &nbsp;
+                            @Html.TextBoxFor(model => model.child4age, new { @type = "text", @id = "txtchild4age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "checkchild3details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                        </span>
+
+                        <p></p>
+
+                    </div>
+
+
+
+                    <div class="center" style="    width: 299px;color: #555555;">
+                        <span>
+                            <b>
+                                ARE YOU A U.S CITIZEN? &nbsp;<input type="radio" id="citizenshipyes" name="citizenship" value="YES">
+                                <label for="YES">Yes</label>
+                                <input type="radio" id="citizenshipno" name="citizenship" value="NO" checked>
+                                <label for="NO">No</label>
+                            </b>
+                        </span>
+
+
+
+                        <span>
+                            &nbsp;&nbsp;   &nbsp;&nbsp; <button onclick="GetTravelerdetails()" value="Save" type="button" style="margin-left:93px;box-sizing: border-box;border-radius: 0px;border: 1px solid #0770e3;padding-top: 1px;width: 62px;height: 43px;color: #fff;background: #07457a;font-weight: 700;font-family: 'Open Sans';font-size: 14px;line-height: 42px;border-style:inset" id="btnsave" class="btn btn-default btn-number">OK</button>
+                        </span>
+
+                        <p></p>
+
+                    </div>
+
+
+
+
+                </div>
+                @*<div class="modal-footer1">
+
+                    </div>*@
+            </div>
+
+        </div>
+
+        <!--End Search Panel-->
+        <!-- Swiper Pagination -->
+        @*<div class="swiper-pagination"></div>*@
+        <!-- Swiper Navigation-->
+        <div class="swiper-button-prev fa-arrow-left"></div>
+        <div class="swiper-button-next fa-arrow-right"></div>
+
+    </section>
+    <section class="form-section">
+        <div class="container">
+            <div class="slider-form">
+                <div class="sidebar-form-wrapper">
+                    <div class="sidebar-form">
+                        <form action="javascript:;" class="form2">
+                            <div class="select1_wrapper">
+                                <label for="CountryName" class="form-label" style="color: white;">HOME COUNTRY</label>
+                                <div class="form-wrap form-group">
+                                    @Html.TextBoxFor(model => model.CountryName, new { @id = "mobCountryName", @type = "text", @class = "form-control", @required = "required", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Type", Onchange = "CheckCountry()" })
+                                    @Html.HiddenFor(model => model.ISOCODE, new { @id = "mobhdnisocode" })
+
+                                    @*@Html.DropDownList("ISOCODE", ViewData["ddlHomeCountry"] as IEnumerable<SelectListItem>, "Select Home Country", new { @id = "ddlHomeCountry", @class = "form-control", @name = "homecountry", @required = "required", })*@
+                                </div>
+                            </div>
+                            <div class="select1_wrapper">
+                                <label for="txttouristountry" style="color: white;">TOURIST COUNTRY</label>
+                                <div class="form-wrap form-group">
+                                    @Html.TextBoxFor(model => model.TouristCountryName, new { @id = "mobtxttouristountry", @type = "text", @class = "form-control", @required = "required", @placeholder = "Type", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", Onchange = "CheckCountry()" })
+                                    @Html.HiddenFor(model => model.TouristISOCODE, new { @id = "mobhdnTouristIsocode" })
+
+                                    @*@Html.DropDownList("TouristISOCODE", ViewData["ddlTouristCountry"] as IEnumerable<SelectListItem>, "Select Tourist Country", new { @id = "ddlTouristCountry", @class = "form-control", @required = "required", })*@
+                                </div>
+                            </div>
+                            <div class="select1_wrapper">
+                                <label for="txtCoverageStartDate" class="form-label" style="color: white;">LEAVING HOME</label>
+                                <div class="form-wrap form-group input-iconss">
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                    @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageStartDate" style="width: 160.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                    @Html.TextBoxFor(model => model.LeavingHome, new { @type = "dateTime", @id = "mobtxtCoverageStartDate", @name = "CoverageStartDate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control input-field", @required = "required", @readonly = "true", onchange = "mobUpdateEndDate()" })
+
+                                </div>
+                            </div>
+                            <div class="select1_wrapper">
+                                <label for="txtCoverageEndDate" class="form-label" style="color: white;margin: 0px 29px 5px;">RETURING HOME</label>
+                                <div class="form-wrap form-group input-iconss">
+                                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                                    @*<input type="text" placeholder="mm/dd/yyyy" ng-model="txtCoverageEndDate" style="width:161.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" />*@
+                                    @Html.TextBoxFor(model => model.TillDate, new { @type = "dateTime", @id = "mobtxtCoverageEndDate", name = "coverageEnddate", style = "color: black;text-align: left;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control input-field", @required = "required", @readonly = "true" })
+                                </div>
+                            </div>
+                            <div class="select1_wrapper">
+                                <label for="txttravelerdetails" class="form-label" style="color:white;margin:  0px 32px 5px;">TOURISTS AGES</label>
+                                <div class="form-wrap form-group">
+                                    @*<input name="txtname" type="text" ng-model="txtname" class="form-input form-control-has-validation form-control-last-child" placeholder="Name" style="width:250.39px;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color: #3CBC8D;color: white;" value="1 Adult,Economy" onclick="Popup()" />*@
+                                    @Html.TextBoxFor(model => model.Travelersnumber, new { id = "mobtxttravelerdetails", name = "mobtravelerdetails", style = "color: black;text-align: center;vertical-align: middle;font-weight: 600;height: 39px", @placeholder = "Select", @class = "form-control ", onclick = "mobPopup()", @required = "required", @readonly = "true" })
+                                </div>
+                            </div>
+                            <input type="button" style="width: 63%;border-style:inset" class="btn-default btn-form2-submit" value="EXPLORE" onclick="mobCheckValidation()" />
+                            @*<button type="submit" class="btn-default btn-form2-submit">SUBMIT FILTERS</button>*@
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div id="mobmyModal1" class="modal11">
+
+        <!-- Modal content -->
+        <div class="modal-content11" style="border-radius:5PX">
+            <div class="modal-header11" style="    padding: 0px 9px 2px;margin-top: 4px;">
+                @*<span class="close1">&times;</span>*@
+                <p style="font-size: 11px;margin-bottom:-10px"><span style="color:red;">* </span> Please enter the age of oldest tourist<br />&nbsp; &nbsp;as primary for best result.</p>
+
+            </div>
+            <div class="modal-body11">
+
+                <div class="center" style="width: 288px;color: #555555;">
+                    <p style="    margin: 0px;">
+                        <span><b>&nbsp;&nbsp;&nbsp;PRIMARY</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>SPOUSE</b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  <span><b>CHILD 1</b></span>
+                    </p>
+
+                    &nbsp;&nbsp; &nbsp;
+                    @Html.TextBoxFor(model => model.travelersage, new { @type = "text", @id = "mobtxttravellerageinyear", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                    <span>
+                        &nbsp;&nbsp; &nbsp; &nbsp;
+                        @Html.TextBoxFor(model => model.spouseage, new { @type = "text", @id = "mobtxtspouseage", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "mobchecktravelerdetails()", onchange = "mobCheckagelimit()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                        @*@Html.TextBoxFor(model => model.TravelersDOB, new { @type = "datetime", @id = "txttravellerage", name = "travelerdetails", style = "padding: .375rem 0;width: 130.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#3cb0bc96;color: white;", @placeholder = "" })*@
+                    </span>
+                    &nbsp; &nbsp; &nbsp; &nbsp;
+                    @Html.TextBoxFor(model => model.child1age, new { @type = "text", @id = "mobtxtchild1age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "mobcheckspousedetails()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                    <p>
+                    </p>
+
+                </div>
+
+
+
+
+                <div class="center" style="width: 288px;">
+                    <p style="    margin: 0px;color: #555555;">
+                        <span><b>&nbsp;&nbsp; &nbsp;CHILD 2</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 3</b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>CHILD 4</b></span>
+                    </p>
+                    &nbsp; &nbsp;&nbsp; @Html.TextBoxFor(model => model.child2age, new { @type = "text", @id = "mobtxtchild2age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "mobcheckchild1details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+
+                    <span>
+                        &nbsp;&nbsp; &nbsp; &nbsp;
+                        @Html.TextBoxFor(model => model.child3age, new { @type = "text", @id = "mobtxtChild3age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "mobcheckchild2details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                    </span>
+                    <span>
+                        &nbsp;&nbsp; &nbsp; &nbsp;
+                        @Html.TextBoxFor(model => model.child4age, new { @type = "text", @id = "mobtxtchild4age", name = "travelerdetails", style = "padding: .375rem 0;width: 51.39px;text-align: center;vertical-align: middle;height: 39px;box-sizing: border-box;border-radius: 5px;border: none;background-color:#dadada96;color: BLACK;FONT-WEIGHT: 600;", @placeholder = "AGE", onclick = "mobcheckchild3details()", onkeypress = "return isNumberKey(event)", @maxlength = 2 })
+
+                    </span>
+
+                    <p></p>
+
+                </div>
+
+
+
+                <div class="center" style="    width: 299px;color: #555555;">
+                    <span>
+                        <b>
+                            ARE YOU A U.S CITIZEN? &nbsp;<input type="radio" id="mobcitizenshipyes" name="mobcitizenship" value="YES">
+                            <label for="YES">Yes</label>
+                            <input type="radio" id="mobcitizenshipno" name="mobcitizenship" value="NO" checked>
+                            <label for="NO">No</label>
+                        </b>
+                    </span>
+
+
+
+                    <span>
+                        &nbsp;&nbsp;   &nbsp;&nbsp; <button onclick="mobGetTravelerdetails()" value="Save" type="button" style="margin-left:93px;box-sizing: border-box;border-radius: 0px;border: 1px solid #0770e3;padding-top: 1px;width: 62px;height: 43px;color: #fff;background: #07457a;font-weight: 700;font-family: 'Open Sans';font-size: 14px;line-height: 42px;border-style:inset" id="btnsave" class="btn btn-default btn-number">OK</button>
+                    </span>
+
+                    <p></p>
+
+                </div>
+
+
+
+
+            </div>
+            @*<div class="modal-footer1">
+
+                </div>*@
+        </div>
+
+    </div>
+    <div class="section section-md novi-background bg-cover" style="display:none">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img">
+                                <a href="details.html">
+                                    <img src="images/home-1-370x200.jpg" alt="" class="img-responsive">
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                <div class="rating-block">
+                                    <span class="rating-text">FIRST DRIVE REVIEW</span>
+                                    <span class="stars">
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="product-item-title"><a href="details.html">2010 Ford Mustang / YELLOW</a></div>
+                                <div class="product-item-text">
+                                    The 2010 Ford Mustang beats its competitors with top safety scores and a
+                                    large trunk. A redesigned cabin also helps the Mustang stand out in its class.
+                                </div>
+                                <div class="link">
+                                    <a href="details.html" class="btn-default btn1">
+                                        <span>READ MORE</span>
+                                        <input type="submit" style="width: 63%;" class="btn-default btn-form2-submit" value="Get Quotes" />
+
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img">
+                                <a href="details.html">
+                                    <img src="images/home-2-370x200.jpg" alt="" class="img-responsive">
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                <div class="rating-block">
+                                    <span class="rating-text">INSTRUMENTED TEST</span>
+                                    <span class="stars">
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="product-item-title"><a href="details.html">1950 Bugatti / BLACK</a></div>
+                                <div class="product-item-text">
+                                    The Type 101 was presented at the 1951 Paris Salon, of which two examples
+                                    were shown. These were a convertible and a coupe, both bodied by Gangloff.
+                                </div>
+                                <div class="link">
+                                    <a href="details.html" class="btn-default btn1">
+                                        <span>READ MORE</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img">
+                                <a href="details.html">
+                                    <img src="images/home-3-370x200.jpg" alt="" class="img-responsive">
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                <div class="rating-block">
+                                    <span class="rating-text">BUYERS INFO</span>
+                                    <span class="stars">
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="product-item-title"><a href="details.html">2013 Mercedes C / WHITE</a></div>
+                                <div class="product-item-text">
+                                    The base 2013 Mercedes C250 is powered by a turbocharged four-cylinder
+                                    engine that has enough acceleration to make highway passing maneuvers easy.
+                                </div>
+                                <div class="link">
+                                    <a href="details.html" class="btn-default btn1">
+                                        <span>READ MORE</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-md novi-background bg-cover" style="">
+        <div class="container">
+            <div class="section-title-md" style="color:#07457a;font-size:45px">
+                KNOWLEDGE BANK
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img" style="border-style:inset">
+                                <div>
+                                    <a href="/deduc/deduc">
+                                        <img src="~/images/img/k2.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title">
+                                    <h4 style="    font-size: 16px;
+    line-height: 2px;font-weight: 600;
+    position: relative;
+    padding: 5px 0;color:black">
+                                        UNDERSTANDING DEDUCTIBLES
+                                    </h4>
+                                </div>
+                                <div class="link">
+                                    <a href="/deduc/deduc" class="btn-default btn1">
+                                        <span> LEARN </span>
+                                    </a>
+                                </div>
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;width: 47%;">
+                                        <a type="submit" style="width: 75%;padding: 0px 10px 0px 7px;border-style:inset" class="btn-default btn-form2-submit" href="/deduc/deduc">LEARN</a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img" style="border-style:inset">
+                                <div>
+                                    <a href="/typesofplans/typesofplans">
+                                        <img src="~/images/img/TOP11.jpg" class="img-responsive" />
+                                    </a>
+
+                                </div>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title">
+                                    <h4 style="font-size: 16px;
+    line-height: 2px;font-weight: 600;
+    position: relative;
+    padding: 5px 0;color:black">
+                                        TYPES OF COVERAGES
+                                    </h4>
+                                </div>
+
+                                <div class="link">
+                                    <a href="/typesofplans/typesofplans" class="btn-default btn1">
+                                        <span> LEARN </span>
+                                    </a>
+                                </div>
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;width: 47%;">
+                                        <a type="submit" style="width: 75%;padding: 0px 10px 0px 7px;border-style:inset" class="btn-default btn-form2-submit" href="/typesofplans/typesofplans">LEARN</a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img" style="border-style:inset">
+                                <div>
+                                    <a href="/whatToSee/whatToSee">
+                                        <img src="~/images/img/k3.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title">
+                                    <h4 style="    font-size: 16px;
+    line-height: 2px;font-weight: 600;
+    position: relative;
+    padding: 5px 0;color:black">
+                                        WHAT TO SEE IN A PLAN
+                                    </h4>
+                                </div>
+                                <div class="link">
+                                    <a href="/whatToSee/whatToSee" class="btn-default btn1">
+                                        <span> LEARN </span>
+                                    </a>
+                                </div>
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;width: 47%;">
+                                        <a type="submit" style="width: 75%;padding: 0px 10px 0px 7px;border-style:inset" class="btn-default btn-form2-submit" href="/whatToSee/whatToSee">LEARN</a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+            <br />
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img" style="border-style:inset">
+                                <div href="#">
+                                    <a href="/HowInsuranceWorks/HowInsuranceWorks">
+                                        <img src="~/images/img/k4.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title">
+                                    <h4 style="    font-size: 16px;
+    line-height: 2px;font-weight: 600;
+    position: relative;
+    padding: 5px 0;color:black">
+                                        HOW INSURANCE WORKS
+                                    </h4>
+                                </div>
+                                <div class="link">
+                                    <a href="/HowInsuranceWorks/HowInsuranceWorks" class="btn-default btn1">
+                                        <span> LEARN </span>
+                                    </a>
+                                </div>
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;width: 47%;">
+                                        <a type="submit" style="width: 75%;padding: 0px 10px 0px 7px;border-style:inset" class="btn-default btn-form2-submit" href="/HowInsuranceWorks/HowInsuranceWorks">LEARN</a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img" style="border-style:inset">
+                                <div href="#">
+                                    <a href="/FAQ/FAQ">
+                                        <img src="~/images/img/k6.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title">
+                                    <h4 style="    font-size: 16px;
+    line-height: 2px;font-weight: 600;
+    position: relative;
+    padding: 5px 0;color:black">
+                                        FREQUENTLY ASKED QUESTIONS
+                                    </h4>
+                                </div>
+                                <div class="link">
+                                    <a href="/FAQ/FAQ" class="btn-default btn1">
+                                        <span> LEARN </span>
+                                    </a>
+                                </div>
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;width: 47%;">
+                                        <a type="submit" style="width: 75%;padding: 0px 10px 0px 7px;border-style:inset" class="btn-default btn-form2-submit" href="/FAQ/FAQ">LEARN</a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <figure class="product-item-img" style="border-style:inset">
+                                <div>
+                                    <a href="/HowtripWorks/HowtripWorks">
+                                        <img src="~/images/img/howtrip.jpg" class="img-responsive" />
+                                    </a>
+                                </div>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title">
+                                    <h4 style="    font-size: 16px;
+    line-height: 2px;font-weight: 600;
+    position: relative;
+    padding: 5px 0;color:black;text-transform:uppercase">
+                                        How Trip Insurance Works
+                                    </h4>
+                                </div>
+                                <div class="link">
+                                    <a href="/HowtripWorks/HowtripWorks" class="btn-default btn1">
+                                        <span> LEARN </span>
+                                    </a>
+                                </div>
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;width: 47%;">
+                                        <a type="submit" style="width: 75%;padding: 0px 10px 0px 7px;border-style:inset" class="btn-default btn-form2-submit" href="/SuggestMePlan/SuggestMePlan">LEARN</a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container parallax1" data-parallax-img="images/img/Sliderimages/whych.jpg">
+        <div class="material-parallax parallax">
+            <img src="~/images/img/Sliderimages/Whych.jpg" style="display: block; transform: translate3d(-50%, 117px, 0px);" />
+            @*<img src="images/bg-01-1600x600.jpg" alt="" style="display: block; transform: translate3d(-50%, 386px, 0px);">*@
+        </div>
+        <div class="parallax-content">
+            <div class="section">
+                <div class="container">
+                    <div class="row row-fix">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <div class="figure-section">
+                                <div class="">
+                                    <h3 style="">WHY TOURIST INSURED?</h3>
+                                </div>
+                                @*<h3>Why People Choose Us</h3>*@
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="figure-section-text" style="margin-top:14%;">
+                                            <p style="font-weight: 500;display:none">
+                                                When you plan a trip for yourself or your loved ones, one thing that comes to your mind after the recent pandemic is medical coverage in the touring country.
+                                                <span><br /></span>
+                                                Knowing that medical treatment is very expensive worldwide, we always recommend you to buy travel medical insurance to take care of any unwanted or unexpected emergency.
+                                                <span><br /></span>
+
+                                            </p>
+                                            <p style="font-weight: 500;">
+                                                Tourist insured is a digital marketplace designed to connect
+                                                tourists and their travel needs. We provide the platform to
+                                                explore, compare, and insure themselves for all travel and
+                                                insurance related services across the world for the best
+                                                experience.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-marked-left">
+
+                                            <li style="padding-bottom: 0px;">
+                                                <p href="#" style="font-weight: 500;display: block;   color: #fff;   text-decoration: none;   position: relative;    line-height: 20px;    padding-left: 30px"><i class="material-icons" style="font-size:15px">&#xe5ca;</i> Easy claim process.     </p>
+                                            </li>
+                                            <li style="padding-bottom: 0px;">
+                                                <p href="#" style="font-weight: 500;display: block;   color: #fff;   text-decoration: none;   position: relative;    line-height: 20px;    padding-left: 30px;"><i class="material-icons" style="font-size:15px">&#xe5ca;</i>  Price regulated by law.</p>
+                                            </li>
+                                            <li style="padding-bottom: 0px;">
+                                                <p href="#" style="font-weight: 500;display: block;   color: #fff;   text-decoration: none;   position: relative;    line-height: 20px;    padding-left: 30px;"><i class="material-icons" style="font-size:15px">&#xe5ca;</i> Plans available with acute onset of  pre-existing <br />&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;conditions.  &nbsp;</p>
+                                            </li>
+                                            <li style="padding-bottom: 0px;">
+                                                <p href="#" style="font-weight: 500;display: block;   color: #fff;   text-decoration: none;   position: relative;    line-height: 20px;    padding-left: 30px;"><i class="material-icons" style="font-size:15px">&#xe5ca;</i>  Policies are widely accepted all over the country’s<br />&nbsp; &nbsp;   &nbsp;network.</p>
+                                            </li>
+                                            <li style="padding-bottom: 0px;">
+                                                <p href="#" style="font-weight: 500;display: block;   color: #fff;   text-decoration: none;   position: relative;    line-height: 20px;    padding-left: 30px;"><i class="material-icons" style="font-size:15px">&#xe5ca;</i> Maximum benefit, best tie-ups, and negotiated<br />&nbsp; &nbsp;  &nbsp; rates with hospitals.</p>
+                                            </li>
+                                            <li style="padding-bottom: 0px;">
+                                                <p style="font-weight: 500;display: block;   color: #fff;   text-decoration: none;   position: relative;    line-height: 20px;    padding-left: 30px;padding-bottom:15PX"><i class="material-icons" style="font-size:15px">&#xe5ca;</i> Live chat at a local time and 24 hours of emergency<br />&nbsp; &nbsp;  &nbsp;  support from the insurance company.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section section-md novi-background bg-cover" style="">
+        <div class="container">
+            <div class="section-title-md" style="color:#07457a;font-size:45px">
+                TRAVEL MEDICAL PRODUCTS
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/Login/Login" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/Login/Login">
+                                    @*<img src="images/home-1-370x200.jpg" alt="" class="img-responsive">
+                                        <img src="images/MY_Images/download%20(8).jpg" style="height: 250px;" />*@
+                                    <img src="~/images/img/x1.jpg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">FIRST INSURANCE REVIEW</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">TOURIST WORLDWIDE</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="display:none">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 21.5%;left: 33%;font-size: 34px;width: 35%;height: 11%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/InternationalStudentWorldWide/InternationalStudentWorldWide" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/InternationalStudentWorldWide/InternationalStudentWorldWide">
+                                    @*<img src="images/home-2-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/x5.jpeg" class="img-responsive" />
+
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">INSTRUMENTED TEST</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">INTERNATIONAL STUDENTS/SCHOLARS WORLDWIDE</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/Schengen/Schengen" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/Schengen/Schengen">
+                                    @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/Capt.jpg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">BUYERS INFO</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">TOURIST TO SCHENGEN/EUROPE</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/TouristToUS/TouristToUS" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/TouristToUS/TouristToUS">
+                                    @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/X2.jpg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">BUYERS INFO</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">TOURIST TO USA</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/BusinessTrip/BusinessTrip" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/BusinessTrip/BusinessTrip">
+                                    @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/x8.jpeg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">BUYERS INFO</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">BUSINESS TOUR TO USA</h4></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+
+
+            <div class="row" style="    margin-top: -30px;">
+                <div class="col-sm-3" style="display:none">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 23.4%;left: 33%;font-size: 34px;width: 35%;height: 12%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/InternationalStudentToUsa/InternationalStudentToUsa" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/InternationalStudentToUsa/InternationalStudentToUsa">
+                                    @*<img src="images/home-1-370x200.jpg" alt="" class="img-responsive">
+                                        <img src="images/MY_Images/download%20(8).jpg" style="height: 250px;" />*@
+                                    <img src="~/images/img/X6.jpeg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">FIRST INSURANCE REVIEW</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;font-weight: 600;position: relative;padding: 5px 0;color: black;">INTERNATIONAL STUDENTS/SCHOLARS TO USA</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="display:none">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/Immigrant/Immigrant" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/Immigrant/Immigrant">
+                                    @*<img src="images/home-2-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/X4.jpg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">NEW IMMIGRANT TO USA</h4></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3" style="display:none">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/JVISA/JVISA" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/JVISA/JVISA">
+                                    @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/x9.jpeg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">BUYERS INFO</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 2px;font-weight: 600;position: relative;padding: 5px 0;color: black;">J VISA USA</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br /><br />
+
+
+            <div class="row" style="margin-top: -30px;">
+                <div class="col-sm-2" style="">
+                </div>
+                <div class="col-sm-3" style="">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/MultitripHome/Multitrip" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/MultitripHome/Multitrip">
+                                    @*<img src="images/home-1-370x200.jpg" alt="" class="img-responsive">
+                                        <img src="images/MY_Images/download%20(8).jpg" style="height: 250px;" />*@
+                                    <img src="~/images/img/X7.jpeg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">MULTI-TRIP</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="">
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/GlobalHome/Global" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+                                <a href="/GlobalHome/Global">
+                                    @*<img src="images/home-2-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/X11.jpg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">INSTRUMENTED TEST</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">GLOBAL TOURIST</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left:0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="">
+
+                    <div class="product-item-classic">
+                        <div class="thumbnail clearfix">
+                            <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                    <a href="/GroupTripHome/GroupTrip" style="color: white;text-decoration: none;">EXPLORE</a>
+                                </h3>
+                            </div>
+                            <figure class="product-item-img" style="border-style:inset">
+
+                                <a href="/GroupTripHome/GroupTrip">
+                                    @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                    <img src="~/images/img/X10.jpeg" class="img-responsive" />
+                                </a>
+                            </figure>
+                            <div class="caption">
+                                @*<div class="rating-block">
+                                        <span class="rating-text">BUYERS INFO</span>
+                                        <span class="stars">
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                            <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                        </span>
+                                    </div>*@
+                                <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">GROUP TRAVEL</h4></div>
+                                @*<div class="product-item-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                                    </div>*@
+                                @*<div class="link">
+                                        <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                            <span>Buy Now</span>
+                                        </a>
+                                    </div>*@
+                                @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                        <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row " style="    background-color: #043055;">
+        <div class="col-sm-12" style="    padding: 0px 25px;">
+            <h2 class="text-accent" style="    padding-bottom: 0px;">#FIND BEST PLAN</h2>
+            <p class="text-block-center" style="    font-size: 20PX;
+    font-weight: 500;
+    LETTER-SPACING: 1.5PX;
+    word-spacing: 0.5px;
+    padding-bottom: 20px;">
+                Let us help you find the best plan for you, according to your needs.
+                <a href="/SuggestMePlan/SuggestMePlan" style="text-decoration:underline;color:#fff">Learn</a>
+
+            </p>
+        </div>
+    </div>
+
+
+    <div class="section section-md novi-background bg-cover" style="padding-top:100px">
+        <div class="container">
+            <div class="section-title-md" style="color:#07457a;font-size:45px">
+                Other Insurance Products
+            </div>
+            <div class="row">
+                <div class="col-sm-2" style="">
+
+                </div>
+
+                    <div class="col-sm-3" style="">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 21.5%;left: 33%;font-size: 34px;width: 35%;height: 11%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                    <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                        <a href="/InternationalStudentWorldWide/InternationalStudentWorldWide" style="color: white;text-decoration: none;">EXPLORE</a>
+                                    </h3>
+                                </div>
+                                <figure class="product-item-img" style="border-style:inset">
+                                    <a href="/InternationalStudentWorldWide/InternationalStudentWorldWide">
+                                        @*<img src="images/home-2-370x200.jpg" alt="" class="img-responsive">*@
+                                        <img src="~/images/img/x5.jpeg" class="img-responsive" />
+
+                                    </a>
+                                </figure>
+                                <div class="caption">
+                                    @*<div class="rating-block">
+                                <span class="rating-text">INSTRUMENTED TEST</span>
+                                <span class="stars">
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>*@
+                                    <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">INTERNATIONAL STUDENTS/SCHOLARS WORLDWIDE</h4></div>
+                                    @*<div class="product-item-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                            </div>*@
+                                    @*<div class="link">
+                                <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                    <span>Buy Now</span>
+                                </a>
+                            </div>*@
+                                    @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                            </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 23.4%;left: 33%;font-size: 34px;width: 35%;height: 12%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                    <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                        <a href="/InternationalStudentToUsa/InternationalStudentToUsa" style="color: white;text-decoration: none;">EXPLORE</a>
+                                    </h3>
+                                </div>
+                                <figure class="product-item-img" style="border-style:inset">
+                                    <a href="/InternationalStudentToUsa/InternationalStudentToUsa">
+                                        @*<img src="images/home-1-370x200.jpg" alt="" class="img-responsive">
+                                <img src="images/MY_Images/download%20(8).jpg" style="height: 250px;" />*@
+                                        <img src="~/images/img/X6.jpeg" class="img-responsive" />
+                                    </a>
+                                </figure>
+                                <div class="caption">
+                                    @*<div class="rating-block">
+                                <span class="rating-text">FIRST INSURANCE REVIEW</span>
+                                <span class="stars">
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>*@
+                                    <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;font-weight: 600;position: relative;padding: 5px 0;color: black;">INTERNATIONAL STUDENTS/SCHOLARS TO USA</h4></div>
+                                    @*<div class="product-item-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                            </div>*@
+                                    @*<div class="link">
+                                <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                    <span>Buy Now</span>
+                                </a>
+                            </div>*@
+                                    @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                            </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                    <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                        <a href="/Immigrant/Immigrant" style="color: white;text-decoration: none;">EXPLORE</a>
+                                    </h3>
+                                </div>
+                                <figure class="product-item-img" style="border-style:inset">
+                                    <a href="/Immigrant/Immigrant">
+                                        @*<img src="images/home-2-370x200.jpg" alt="" class="img-responsive">*@
+                                        <img src="~/images/img/X4.jpg" class="img-responsive" />
+                                    </a>
+                                </figure>
+                                <div class="caption">
+
+                                    <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 19px;font-weight: 600;position: relative;padding: 5px 0;color: black;">NEW IMMIGRANT TO USA</h4></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <br /><br />
+
+
+                <div class="row" style="    margin-top: -30px;">
+                    <div class="col-sm-3" style="">
+                    </div>
+                    <div class="col-sm-3" style="">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                    <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                        <a href="/JVISA/JVISA" style="color: white;text-decoration: none;">EXPLORE</a>
+                                    </h3>
+                                </div>
+                                <figure class="product-item-img" style="border-style:inset">
+                                    <a href="/JVISA/JVISA">
+                                        @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                        <img src="~/images/img/x9.jpeg" class="img-responsive" />
+                                    </a>
+                                </figure>
+                                <div class="caption">
+                                    @*<div class="rating-block">
+                                <span class="rating-text">BUYERS INFO</span>
+                                <span class="stars">
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>*@
+                                    <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 2px;font-weight: 600;position: relative;padding: 5px 0;color: black;">J VISA USA</h4></div>
+                                    @*<div class="product-item-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                            </div>*@
+                                    @*<div class="link">
+                                <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                    <span>Buy Now</span>
+                                </a>
+                            </div>*@
+                                    @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                            </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                    <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                        <a href="http://trip.erpcart.in/" style="color: white;text-decoration: none;">EXPLORE</a>
+                                    </h3>
+                                </div>
+                                <figure class="product-item-img" style="border-style:inset">
+                                    <a href="http://trip.erpcart.in/">
+                                        @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                        <img src="~/images/img/Trip.jpg" class="img-responsive" />
+                                    </a>
+                                </figure>
+                                <div class="caption">
+                                    @*<div class="rating-block">
+                                <span class="rating-text">BUYERS INFO</span>
+                                <span class="stars">
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>*@
+                                    <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 2px;font-weight: 600;position: relative;padding: 5px 0;color: black;text-transform:uppercase">trip Insurance</h4></div>
+                                    @*<div class="product-item-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                            </div>*@
+                                    @*<div class="link">
+                                <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                    <span>Buy Now</span>
+                                </a>
+                            </div>*@
+                                    @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                            </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3" style="display:none">
+                        <div class="product-item-classic">
+                            <div class="thumbnail clearfix">
+                                <div style="background: rgb(0, 0, 0);background: rgba(21, 173, 187, 0.64);color: #fff;text-align: center;position: absolute;z-index: 9;top: 25%;left: 33%;font-size: 34px;width: 35%;height: 14%;    border: 1px solid #eeeeee;
+    border-radius: 5px;">
+                                    <h3 style="FONT-SIZE: 14px;font-weight: bolder;font-family:Open Sans;margin-bottom: 10px;margin-top: 10px;cursor: pointer;">
+                                        <a href="http://cruise.erpcart.in/" style="color: white;text-decoration: none;">EXPLORE</a>
+                                    </h3>
+                                </div>
+                                <figure class="product-item-img" style="border-style:inset">
+                                    <a href="http://cruise.erpcart.in/">
+                                        @*<img src="images/home-3-370x200.jpg" alt="" class="img-responsive">*@
+                                        <img src="~/images/img/Cruise.jpg" class="img-responsive" />
+                                    </a>
+                                </figure>
+                                <div class="caption">
+                                    @*<div class="rating-block">
+                                <span class="rating-text">BUYERS INFO</span>
+                                <span class="stars">
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o novi-icon" aria-hidden="true"></i>
+                                </span>
+                            </div>*@
+                                    <div class="product-item-title" style="text-align:center;"><h4 style="font-size: 16px;line-height: 2px;font-weight: 600;position: relative;padding: 5px 0;color: black;text-transform:uppercase">Cruise trip Insurance</h4></div>
+                                    @*<div class="product-item-text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco ...
+                            </div>*@
+                                    @*<div class="link">
+                                <a href="https://zone.piu.org/international_medical/start?producer=069D4D" class="btn-default btn1">
+                                    <span>Buy Now</span>
+                                </a>
+                            </div>*@
+                                    @*<div class="col-md-4" style="padding-left: 0px;padding-top: 20px;">
+                                <input type="submit" style="" class="btn-default btn-form2-submit" value="READ MORE" />
+                            </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+    </div>
+
+
+
+    @*<div class="section-title" style="color:yellow;">Welcome to our website</div>*@
+
+
+
+    <div id="welcome" class="section text-center" style="display:none">
+        <section class="parallax-container parallax1" data-parallax-img="../images/img/Sliderimages/image01h.jpg ">
+            <div class="parallax-content">
+                <div class="container">
+                    <div class="brand">
+
+                    </div>
+                    @*<div class="section-title" style="color:yellow;">Welcome to our website</div>*@
+                    <div class="row ">
+                        <div class="col-sm-12">
+                            <h2 class="text-accent" style=""><br />&nbsp;<br /> #FIND BEST PLAN</h2>
+                            <p class="text-block-center" style="font-size:20PX;    font-weight: 700;    LETTER-SPACING: 1.5PX; word-spacing: 3.5px;">
+                                Let us help you find the best plan for you, according to your needs.
+
+                                <br />&nbsp;<br />
+                                <a href="/SuggestMePlan/SuggestMePlan" style="text-decoration:underline;color:#fff">Learn</a>
+                                <br />&nbsp;
+                                <br />&nbsp;<br />&nbsp;
+                                <br />&nbsp;<br />
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="testimonials" class="section section-lg testimonials-bg novi-background custom-bg-image">
+
+        <div class="container">
+            <div class="owl-carousel" data-items='1' data-dots='true' data-nav='false' data-stage-padding='15'
+                 data-loop='false' data-margin='30' data-mouse-drag="false">
+                <div class="review">
+                    <div class="review_inner">
+                        <div class="testimonial-wrapper">
+
+                            <div class="txt2">
+                                <div class="img-wrapper">
+                                    @*<img src="~/images/customer-1-104x104.jpg" alt="" class="img-responsive">*@
+                                </div>
+                            </div>
+                            <div class="txt1">
+                                <b style="color:#07457a;">Anshika,</b> Customer
+
+                            </div>
+                            <div class="txt3">
+                                Tourist Insured Assistance was an absolute pleasure to deal with. I wish all insurance
+                                companies in any capacity were as helpful, considerate and accessible!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review_inner">
+                        <div class="testimonial-wrapper">
+                            <div class="txt2">
+                                <div class="img-wrapper">
+                                    @*<img src="images/customer-2-104x104.jpg" alt="" class="img-responsive">*@
+                                </div>
+                            </div>
+                            <div class="txt1">
+                                <b style="color:#07457a;">Brooklyn,</b> Customer
+
+                            </div>
+                            <div class="txt3">
+                                Apart from providing useful service that I should have gotten a long time ago, Tourist
+                                Insured went above and beyond by giving the best policy/product and suggestion
+                                regarding the products.
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review">
+                    <div class="review_inner">
+                        <div class="testimonial-wrapper">
+                            <div class="txt2">
+                                <div class="img-wrapper">
+                                    @*<img src="images/customer-3-104x104.jpg" alt="" class="img-responsive">*@
+                                </div>
+                            </div>
+                            <div class="txt1">
+                                <b style="color:#07457a;">Aaradhya,</b> Customer
+
+                            </div>
+                            <div class="txt3">
+                                I had a great experience with Tourist Insured. It was my first time out of the United
+                                States and being sick and alone was not a good feeling. Tourist Insured assisted me so
+                                quickly and it really felt like they did everything they could for me!
+                                I am so glad that I decided to purchase the insurance plan and always will advise anyone
+                                to purchase a travel insurance plan from Tourist Insured on their next trip.
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-sm novi-background bg-cover bg-gray-light section-shadow">
+        <div class="container">
+            <div class="row counter-list">
+                <div class="col-sm-6 col-md-3 counter-list-item">
+                    <div class="counter-classic">
+                        <div class="counter-classic-inner animated fadeInDown visible" data-animation="fadeInDown" data-animation-delay="200">
+                            @*<img src="images/ic1.png" alt="" class="counter-img">*@
+                            <div class="caption">
+                                <div class="counter" style="text-align:center;color:#07457a;">
+                                    <span class="animated-number" data-duration="2000" data-animation-delay="0" style="color:#07457a;">999999</span>+
+                                </div>
+                                <div class="counter-title" style="text-align:center">MEDICAL COVERAGE UPTO A MILLION DOLLAR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 counter-list-item">
+                    <div class="counter-classic">
+                        <div class="counter-classic-inner animated fadeInDown visible" data-animation="fadeInDown" data-animation-delay="200">
+                            @*<img src="images/ic2.png" alt="" class="counter-img">*@
+                            <div class="caption">
+                                <div class="counter" style="text-align:center;color:#07457a;">
+                                    <span class="animated-number" data-duration="2000" data-animation-delay="0" style="color:#07457a;">360</span>+
+                                </div>
+                                <div class="counter-title">DAYS OF CONTINUOUS COVERAGE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 counter-list-item">
+                    <div class="counter-classic">
+                        <div class="counter-classic-inner animated fadeInDown visible" data-animation="fadeInDown" data-animation-delay="200">
+                            @*<img src="images/ic3.png" alt="" class="counter-img">*@
+                            <div class="caption">
+                                <div class="counter" style="text-align:center;color:#07457a;">
+                                    <span class="animated-number" data-duration="2000" data-animation-delay="0" style="color:#07457a;">180</span>+
+                                </div>
+                                <div class="counter-title">COUNTRIES THE PLANS COVER</div>
+                                @*<div class="counter-title">THE PLANS</div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 counter-list-item">
+                    <div class="counter-classic">
+                        <div class="counter-classic-inner animated fadeInDown visible" data-animation="fadeInDown" data-animation-delay="200">
+                            @*<img src="images/ic4.png" alt="" class="counter-img">*@
+                            <div class="caption">
+                                <div class="counter" style="text-align:center;color:#07457a;">
+                                    <span class="animated-number" data-duration="2000" data-animation-delay="0" style="color:#07457a;">799999</span>+
+                                </div>
+                                <div class="counter-title" style="text-align:center">HOSPITALS AND DOCTORS COVERED GLOBALLY</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

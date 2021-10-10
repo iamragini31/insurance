@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://services.imglobal.com/PurchaseWebService/Certificate/Travel/TravelServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core" />
+  <xs:complexType name="DestinationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CorrelationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DestinationDto" nillable="true" type="tns:DestinationDto" />
+  <xs:complexType name="ArrayOfSelectedProductOptionDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SelectedProductOptionDto" nillable="true" type="tns:SelectedProductOptionDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSelectedProductOptionDto" nillable="true" type="tns:ArrayOfSelectedProductOptionDto" />
+  <xs:complexType name="SelectedProductOptionDto">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Imglobal.WebServices.Core" minOccurs="0" name="ProductOptionType" type="q1:ProductOptionTypes" />
+      <xs:element minOccurs="0" name="SelectedLevel" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SelectedProductOptionDto" nillable="true" type="tns:SelectedProductOptionDto" />
+  <xs:complexType name="ProducerDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProducerDto" nillable="true" type="tns:ProducerDto" />
+</xs:schema>
